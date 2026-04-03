@@ -1,0 +1,1693 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영락 챔피언스리그 — 포메이션</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --gold: #c9a84c;
+        --gold-light: #f0d080;
+        --gold-dark: #8a6a1a;
+        --bg: #05080f;
+        --bg2: #0a0f1e;
+        --blue-deep: #0d1b3e;
+        --blue-mid: #1a3070;
+        --white: #f5f5f5;
+        --star-white: #ffffff;
+        --pitch-green: #1e5c2a;
+        --pitch-light: #25712f;
+        --pitch-line: rgba(255, 255, 255, 0.5);
+        --neon: #4fc3f7;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--white);
+        font-family: "Noto Sans KR", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* === STARS BG === */
+      .stars-bg {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(
+            ellipse at 20% 10%,
+            rgba(196, 160, 60, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 90%,
+            rgba(26, 48, 112, 0.3) 0%,
+            transparent 50%
+          ),
+          var(--bg);
+      }
+      .stars-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(1px 1px at 10% 20%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 30% 60%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 50% 10%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 70% 40%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 85% 75%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 15% 85%, white 0%, transparent 100%),
+          radial-gradient(1px 1px at 60% 90%, white 0%, transparent 100%),
+          radial-gradient(
+            1.5px 1.5px at 90% 15%,
+            rgba(255, 255, 255, 0.7) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 45% 50%,
+            rgba(255, 255, 255, 0.5) 0%,
+            transparent 100%
+          );
+        opacity: 0.4;
+      }
+
+      /* === WRAPPER === */
+      .wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 16px 60px;
+      }
+
+      /* === HEADER === */
+      header {
+        text-align: center;
+        padding: 40px 0 24px;
+        position: relative;
+      }
+
+      .ucl-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .star-row {
+        display: flex;
+        gap: 5px;
+      }
+      .star-row span {
+        font-size: 18px;
+        color: var(--gold);
+        text-shadow: 0 0 8px var(--gold);
+        animation: twinkle 2s infinite alternate;
+      }
+      .star-row span:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .star-row span:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .star-row span:nth-child(4) {
+        animation-delay: 0.9s;
+      }
+      .star-row span:nth-child(5) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes twinkle {
+        from {
+          opacity: 0.6;
+          transform: scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.15);
+        }
+      }
+
+      .ucl-logo-text {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 4px;
+        color: var(--gold);
+        border: 1px solid var(--gold-dark);
+        padding: 3px 12px;
+      }
+
+      h1 {
+        font-family: "Anton", sans-serif;
+        font-size: clamp(32px, 7vw, 64px);
+        letter-spacing: 2px;
+        line-height: 1;
+        color: var(--white);
+        text-transform: uppercase;
+      }
+      h1 .yl {
+        color: var(--gold);
+        text-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+      }
+
+      .subtitle {
+        font-size: 12px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
+      }
+
+      .gold-divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 20px 0;
+      }
+
+      /* === MATCH HEADER === */
+      .match-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(13, 27, 62, 0.9) 0%,
+          rgba(10, 15, 30, 0.95) 100%
+        );
+        border: 1px solid var(--gold-dark);
+        border-radius: 4px;
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .match-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(201, 168, 76, 0.05),
+          transparent
+        );
+      }
+
+      .team-name-block {
+        text-align: center;
+        flex: 1;
+      }
+      .team-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .team-name {
+        font-family: "Anton", sans-serif;
+        font-size: clamp(16px, 3.5vw, 26px);
+        letter-spacing: 1px;
+        color: var(--white);
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .team-name:hover {
+        color: var(--gold-light);
+      }
+
+      .vs-block {
+        text-align: center;
+        flex: 0 0 auto;
+      }
+      .vs-text {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .match-date {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* === TABS === */
+      .tabs {
+        display: flex;
+        gap: 0;
+        margin-bottom: 0;
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 10px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: rgba(10, 15, 30, 0.8);
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .tab-btn.active {
+        background: linear-gradient(
+          180deg,
+          rgba(201, 168, 76, 0.15) 0%,
+          transparent 100%
+        );
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .tab-btn:hover:not(.active) {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* === FORMATION PANEL === */
+      .formation-panel {
+        display: none;
+      }
+      .formation-panel.active {
+        display: block;
+      }
+
+      /* === FORMATION CONTROLS === */
+      .controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: rgba(10, 15, 30, 0.8);
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        border-top: none;
+        margin-bottom: 0;
+      }
+      .formation-select-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .formation-select-wrap label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .formation-select {
+        background: rgba(5, 8, 15, 0.9);
+        border: 1px solid var(--gold-dark);
+        color: var(--gold-light);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 4px 8px;
+        cursor: pointer;
+        outline: none;
+      }
+      .formation-select option {
+        background: #0a0f1e;
+      }
+
+      .edit-toggle {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: none;
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        color: rgba(255, 255, 255, 0.5);
+        padding: 5px 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .edit-toggle.on {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* === PITCH === */
+      .pitch-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 0.6;
+        max-height: 620px;
+        overflow: hidden;
+      }
+
+      .pitch-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* === PLAYER TOKENS === */
+      .player-token {
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .player-token:hover {
+        transform: scale(1.08);
+      }
+      .player-token.dragging {
+        opacity: 0.85;
+        cursor: grabbing;
+      }
+
+      .token-circle {
+        transition:
+          fill 0.2s,
+          stroke 0.2s;
+      }
+      .player-token.selected .token-circle {
+        stroke: var(--gold-light) !important;
+        stroke-width: 3 !important;
+        filter: url(#glow-gold);
+      }
+
+      .token-number {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        fill: white;
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+      }
+      .token-name {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        fill: white;
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+      }
+      .token-label {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 9px;
+        fill: rgba(255, 255, 255, 0.8);
+        text-anchor: middle;
+        pointer-events: none;
+        letter-spacing: 0.5px;
+      }
+
+      /* === PLAYER EDIT PANEL === */
+      .edit-panel {
+        background: linear-gradient(
+          135deg,
+          rgba(13, 27, 62, 0.97) 0%,
+          rgba(10, 15, 30, 0.99) 100%
+        );
+        border: 1px solid var(--gold-dark);
+        border-top: none;
+        padding: 16px 20px;
+        display: none;
+      }
+      .edit-panel.visible {
+        display: block;
+      }
+      .edit-panel h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 18px;
+        letter-spacing: 3px;
+        color: var(--gold);
+        margin-bottom: 12px;
+      }
+      .edit-fields {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+      .edit-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .edit-field label {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .edit-field input,
+      .edit-field select {
+        background: rgba(5, 8, 15, 0.9);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        color: var(--white);
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 13px;
+        padding: 6px 10px;
+        outline: none;
+        width: 120px;
+      }
+      .edit-field input:focus {
+        border-color: var(--gold);
+      }
+      .save-btn {
+        background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+        border: none;
+        color: #000;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding: 8px 20px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .save-btn:hover {
+        opacity: 0.85;
+      }
+
+      /* === TEAM ROSTER === */
+      .roster {
+        margin-top: 0;
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        border-top: none;
+      }
+      .roster-header {
+        display: grid;
+        grid-template-columns: 36px 1fr 60px 60px;
+        padding: 8px 16px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        background: rgba(5, 8, 15, 0.6);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      }
+      .roster-row {
+        display: grid;
+        grid-template-columns: 36px 1fr 60px 60px;
+        padding: 8px 16px;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        transition: background 0.15s;
+        cursor: pointer;
+      }
+      .roster-row:hover {
+        background: rgba(201, 168, 76, 0.05);
+      }
+      .roster-row.selected-row {
+        background: rgba(201, 168, 76, 0.1);
+      }
+      .roster-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 18px;
+        color: var(--gold);
+      }
+      .roster-player-name {
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .roster-pos {
+        font-size: 10px;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .pos-badge {
+        display: inline-block;
+        font-size: 9px;
+        letter-spacing: 1px;
+        padding: 2px 6px;
+        border-radius: 2px;
+        font-weight: 700;
+      }
+      .pos-GK {
+        background: rgba(255, 170, 0, 0.15);
+        color: #ffa500;
+        border: 1px solid rgba(255, 170, 0, 0.3);
+      }
+      .pos-DEF {
+        background: rgba(79, 195, 247, 0.1);
+        color: #4fc3f7;
+        border: 1px solid rgba(79, 195, 247, 0.25);
+      }
+      .pos-MID {
+        background: rgba(100, 221, 100, 0.1);
+        color: #64dd64;
+        border: 1px solid rgba(100, 221, 100, 0.25);
+      }
+      .pos-FWD {
+        background: rgba(255, 80, 80, 0.1);
+        color: #ff5050;
+        border: 1px solid rgba(255, 80, 80, 0.25);
+      }
+      .pos-PV {
+        background: rgba(201, 168, 76, 0.1);
+        color: var(--gold);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+      }
+
+      /* === FOOTER === */
+      footer {
+        text-align: center;
+        padding: 30px 0 10px;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.15);
+      }
+      footer span {
+        color: var(--gold-dark);
+      }
+
+      /* === ANIMATIONS === */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .wrapper > * {
+        animation: fadeUp 0.5s ease both;
+      }
+      .wrapper > *:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .wrapper > *:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      @keyframes pulse-ring {
+        0% {
+          stroke-width: 1;
+          opacity: 0.5;
+        }
+        50% {
+          stroke-width: 2.5;
+          opacity: 1;
+        }
+        100% {
+          stroke-width: 1;
+          opacity: 0.5;
+        }
+      }
+      .pulse-ring {
+        animation: pulse-ring 2s ease-in-out infinite;
+      }
+
+      /* responsive */
+      @media (max-width: 520px) {
+        .match-header {
+          padding: 14px 10px;
+        }
+        .controls {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stars-bg"></div>
+    <div class="wrapper">
+      <!-- HEADER -->
+      <header>
+        <div class="ucl-badge">
+          <div class="star-row">
+            <span>★</span><span>★</span><span>★</span><span>★</span
+            ><span>★</span>
+          </div>
+          <div class="ucl-logo-text">UEFA Champions League</div>
+          <div class="star-row">
+            <span>★</span><span>★</span><span>★</span><span>★</span
+            ><span>★</span>
+          </div>
+        </div>
+        <h1><span class="yl">영락</span> CL</h1>
+        <p class="subtitle">Youngnak Futsal Championship 2026</p>
+      </header>
+
+      <div class="gold-divider"></div>
+
+      <!-- MATCH HEADER -->
+      <div class="match-header">
+        <div class="team-name-block">
+          <div class="team-label">Home</div>
+          <div
+            class="team-name"
+            id="team-a-name"
+            ondblclick="editTeamName('a')">
+            레전드 FC
+          </div>
+        </div>
+        <div class="vs-block">
+          <div class="vs-text">VS</div>
+          <div class="match-date" id="match-date">GROUP STAGE · MD1</div>
+        </div>
+        <div class="team-name-block">
+          <div class="team-label">Away</div>
+          <div
+            class="team-name"
+            id="team-b-name"
+            ondblclick="editTeamName('b')">
+            다크나이츠
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTeam('a', this)">
+          홈 포메이션
+        </button>
+        <button class="tab-btn" onclick="switchTeam('b', this)">
+          어웨이 포메이션
+        </button>
+      </div>
+
+      <!-- TEAM A PANEL -->
+      <div class="formation-panel active" id="panel-a">
+        <div class="controls">
+          <div class="formation-select-wrap">
+            <label>포메이션</label>
+            <select
+              class="formation-select"
+              onchange="applyFormation('a', this.value)">
+              <option value="2-2-1">2-2-1</option>
+              <option value="3-1-1">3-1-1</option>
+              <option value="1-3-1">1-3-1</option>
+              <option value="2-1-2">2-1-2</option>
+            </select>
+          </div>
+          <button
+            class="edit-toggle"
+            id="edit-toggle-a"
+            onclick="toggleEdit('a')">
+            ✎ 선수 편집
+          </button>
+        </div>
+        <div class="pitch-container">
+          <svg
+            class="pitch-svg"
+            id="pitch-a"
+            viewBox="0 0 340 560"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="glow-gold">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="glow-soft">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <radialGradient id="pitch-grad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#256b2e" />
+                <stop offset="100%" stop-color="#1a4d22" />
+              </radialGradient>
+              <linearGradient id="home-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a3070" />
+                <stop offset="100%" stop-color="#0d1b3e" />
+              </linearGradient>
+              <linearGradient id="gk-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8a6a1a" />
+                <stop offset="100%" stop-color="#4a3800" />
+              </linearGradient>
+            </defs>
+            <!-- pitch bg -->
+            <rect width="340" height="560" fill="url(#pitch-grad)" rx="4" />
+            <!-- stripes -->
+            <rect
+              x="0"
+              y="0"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="112"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="224"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="336"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="448"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <!-- outer border -->
+            <rect
+              x="14"
+              y="14"
+              width="312"
+              height="532"
+              fill="none"
+              stroke="rgba(255,255,255,0.45)"
+              stroke-width="2"
+              rx="2" />
+            <!-- halfway line -->
+            <line
+              x1="14"
+              y1="280"
+              x2="326"
+              y2="280"
+              stroke="rgba(255,255,255,0.45)"
+              stroke-width="1.5" />
+            <!-- center circle -->
+            <circle
+              cx="170"
+              cy="280"
+              r="40"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.5" />
+            <circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)" />
+            <!-- top penalty area -->
+            <rect
+              x="72"
+              y="14"
+              width="196"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.3" />
+            <rect
+              x="120"
+              y="14"
+              width="100"
+              height="30"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.6)" />
+            <path
+              d="M 130 84 A 40 40 0 0 1 210 84"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <!-- bottom penalty area -->
+            <rect
+              x="72"
+              y="476"
+              width="196"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.3" />
+            <rect
+              x="120"
+              y="516"
+              width="100"
+              height="30"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.6)" />
+            <path
+              d="M 130 476 A 40 40 0 0 0 210 476"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <!-- corner arcs -->
+            <path
+              d="M 14 24 A 10 10 0 0 1 24 14"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 316 14 A 10 10 0 0 1 326 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 14 536 A 10 10 0 0 0 24 546"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 316 546 A 10 10 0 0 0 326 536"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <!-- goals -->
+            <rect
+              x="126"
+              y="8"
+              width="88"
+              height="14"
+              fill="rgba(201,168,76,0.1)"
+              stroke="rgba(201,168,76,0.5)"
+              stroke-width="1.5" />
+            <rect
+              x="126"
+              y="538"
+              width="88"
+              height="14"
+              fill="rgba(201,168,76,0.1)"
+              stroke="rgba(201,168,76,0.5)"
+              stroke-width="1.5" />
+            <!-- players rendered by JS -->
+          </svg>
+        </div>
+        <div class="edit-panel" id="edit-panel-a">
+          <h3>선수 정보 수정</h3>
+          <div class="edit-fields">
+            <div class="edit-field">
+              <label>등번호</label>
+              <input
+                type="number"
+                id="edit-num-a"
+                min="1"
+                max="99"
+                placeholder="10"
+                style="width: 70px" />
+            </div>
+            <div class="edit-field">
+              <label>선수명</label>
+              <input
+                type="text"
+                id="edit-name-a"
+                placeholder="홍길동"
+                style="width: 140px" />
+            </div>
+            <div class="edit-field">
+              <label>포지션</label>
+              <select
+                id="edit-pos-a"
+                class="formation-select"
+                style="
+                  width: 90px;
+                  font-size: 13px;
+                  font-family: &quot;Noto Sans KR&quot;, sans-serif;
+                ">
+                <option value="GK">GK</option>
+                <option value="DEF">DEF</option>
+                <option value="MID">MID</option>
+                <option value="FWD">FWD</option>
+                <option value="PV">PV</option>
+              </select>
+            </div>
+            <button class="save-btn" onclick="savePlayer('a')">저장</button>
+          </div>
+        </div>
+        <div class="roster" id="roster-a"></div>
+      </div>
+
+      <!-- TEAM B PANEL -->
+      <div class="formation-panel" id="panel-b">
+        <div class="controls">
+          <div class="formation-select-wrap">
+            <label>포메이션</label>
+            <select
+              class="formation-select"
+              onchange="applyFormation('b', this.value)">
+              <option value="2-2-1">2-2-1</option>
+              <option value="3-1-1">3-1-1</option>
+              <option value="1-3-1">1-3-1</option>
+              <option value="2-1-2">2-1-2</option>
+            </select>
+          </div>
+          <button
+            class="edit-toggle"
+            id="edit-toggle-b"
+            onclick="toggleEdit('b')">
+            ✎ 선수 편집
+          </button>
+        </div>
+        <div class="pitch-container">
+          <svg
+            class="pitch-svg"
+            id="pitch-b"
+            viewBox="0 0 340 560"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="glow-gold-b">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <radialGradient id="pitch-grad-b" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#256b2e" />
+                <stop offset="100%" stop-color="#1a4d22" />
+              </radialGradient>
+              <linearGradient id="away-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6b1515" />
+                <stop offset="100%" stop-color="#3d0a0a" />
+              </linearGradient>
+              <linearGradient id="gk-grad-b" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8a6a1a" />
+                <stop offset="100%" stop-color="#4a3800" />
+              </linearGradient>
+            </defs>
+            <rect width="340" height="560" fill="url(#pitch-grad-b)" rx="4" />
+            <rect
+              x="0"
+              y="0"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="112"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="224"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="336"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="0"
+              y="448"
+              width="340"
+              height="56"
+              fill="rgba(255,255,255,0.025)" />
+            <rect
+              x="14"
+              y="14"
+              width="312"
+              height="532"
+              fill="none"
+              stroke="rgba(255,255,255,0.45)"
+              stroke-width="2"
+              rx="2" />
+            <line
+              x1="14"
+              y1="280"
+              x2="326"
+              y2="280"
+              stroke="rgba(255,255,255,0.45)"
+              stroke-width="1.5" />
+            <circle
+              cx="170"
+              cy="280"
+              r="40"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.5" />
+            <circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)" />
+            <rect
+              x="72"
+              y="14"
+              width="196"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.3" />
+            <rect
+              x="120"
+              y="14"
+              width="100"
+              height="30"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.6)" />
+            <path
+              d="M 130 84 A 40 40 0 0 1 210 84"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <rect
+              x="72"
+              y="476"
+              width="196"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.3" />
+            <rect
+              x="120"
+              y="516"
+              width="100"
+              height="30"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.6)" />
+            <path
+              d="M 130 476 A 40 40 0 0 0 210 476"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 14 24 A 10 10 0 0 1 24 14"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 316 14 A 10 10 0 0 1 326 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 14 536 A 10 10 0 0 0 24 546"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <path
+              d="M 316 546 A 10 10 0 0 0 326 536"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              stroke-width="1.2" />
+            <rect
+              x="126"
+              y="8"
+              width="88"
+              height="14"
+              fill="rgba(201,168,76,0.1)"
+              stroke="rgba(201,168,76,0.5)"
+              stroke-width="1.5" />
+            <rect
+              x="126"
+              y="538"
+              width="88"
+              height="14"
+              fill="rgba(201,168,76,0.1)"
+              stroke="rgba(201,168,76,0.5)"
+              stroke-width="1.5" />
+          </svg>
+        </div>
+        <div class="edit-panel" id="edit-panel-b">
+          <h3>선수 정보 수정</h3>
+          <div class="edit-fields">
+            <div class="edit-field">
+              <label>등번호</label>
+              <input
+                type="number"
+                id="edit-num-b"
+                min="1"
+                max="99"
+                placeholder="10"
+                style="width: 70px" />
+            </div>
+            <div class="edit-field">
+              <label>선수명</label>
+              <input
+                type="text"
+                id="edit-name-b"
+                placeholder="홍길동"
+                style="width: 140px" />
+            </div>
+            <div class="edit-field">
+              <label>포지션</label>
+              <select
+                id="edit-pos-b"
+                class="formation-select"
+                style="
+                  width: 90px;
+                  font-size: 13px;
+                  font-family: &quot;Noto Sans KR&quot;, sans-serif;
+                ">
+                <option value="GK">GK</option>
+                <option value="DEF">DEF</option>
+                <option value="MID">MID</option>
+                <option value="FWD">FWD</option>
+                <option value="PV">PV</option>
+              </select>
+            </div>
+            <button class="save-btn" onclick="savePlayer('b')">저장</button>
+          </div>
+        </div>
+        <div class="roster" id="roster-b"></div>
+      </div>
+
+      <div class="gold-divider" style="margin-top: 24px"></div>
+      <footer>
+        영락중학교 풋살 챔피언스리그 2026 <span>·</span> Legend Football Club
+      </footer>
+    </div>
+
+    <script>
+      // ============================================================
+      // DATA
+      // ============================================================
+      const teamData = {
+        a: {
+          name: "레전드 FC",
+          color: "home-grad",
+          gkColor: "gk-grad",
+          formation: "2-2-1",
+          players: [
+            { id: 1, num: 1, name: "수문장", pos: "GK" },
+            { id: 2, num: 4, name: "수비1", pos: "DEF" },
+            { id: 3, num: 5, name: "수비2", pos: "DEF" },
+            { id: 4, num: 8, name: "미드1", pos: "MID" },
+            { id: 5, num: 10, name: "미드2", pos: "MID" },
+            { id: 6, num: 9, name: "에이스", pos: "FWD" },
+          ],
+        },
+        b: {
+          name: "다크나이츠",
+          color: "away-grad",
+          gkColor: "gk-grad-b",
+          formation: "2-2-1",
+          players: [
+            { id: 1, num: 1, name: "골키퍼", pos: "GK" },
+            { id: 2, num: 3, name: "수비A", pos: "DEF" },
+            { id: 3, num: 6, name: "수비B", pos: "DEF" },
+            { id: 4, num: 7, name: "미드A", pos: "MID" },
+            { id: 5, num: 11, name: "미드B", pos: "MID" },
+            { id: 6, num: 9, name: "스트라이커", pos: "FWD" },
+          ],
+        },
+      };
+
+      // formation positions: [x%, y%] on 340x560 viewBox
+      // y: 0=top(opponent goal), 560=bottom(own goal)
+      // Futsal: GK at bottom, FWD at top
+      const FORMATIONS = {
+        "2-2-1": [
+          [170, 510], // GK
+          [110, 420],
+          [230, 420], // DEF
+          [110, 300],
+          [230, 300], // MID
+          [170, 140], // FWD
+        ],
+        "3-1-1": [
+          [170, 510],
+          [80, 410],
+          [170, 420],
+          [260, 410],
+          [170, 290],
+          [170, 140],
+        ],
+        "1-3-1": [
+          [170, 510],
+          [170, 430],
+          [80, 320],
+          [170, 300],
+          [260, 320],
+          [170, 140],
+        ],
+        "2-1-2": [
+          [170, 510],
+          [100, 420],
+          [240, 420],
+          [170, 330],
+          [100, 200],
+          [240, 200],
+        ],
+      };
+
+      const POS_COLORS = {
+        GK: { fill: "#8a6a1a", stroke: "#c9a84c" },
+        DEF: { fill: "#0d3a6e", stroke: "#4fc3f7" },
+        MID: { fill: "#1a5c1a", stroke: "#64dd64" },
+        FWD: { fill: "#6e0d0d", stroke: "#ff5050" },
+        PV: { fill: "#3d2060", stroke: "#b060ff" },
+      };
+
+      let selectedPlayer = { team: null, idx: null };
+      let editMode = { a: false, b: false };
+      let isDragging = false;
+      let dragState = null;
+
+      // ============================================================
+      // RENDER
+      // ============================================================
+      function renderPitch(team) {
+        const svg = document.getElementById(`pitch-${team}`);
+        // remove old players
+        svg.querySelectorAll(".player-group").forEach((el) => el.remove());
+
+        const td = teamData[team];
+        const positions = FORMATIONS[td.formation];
+
+        td.players.forEach((p, i) => {
+          const [cx, cy] = positions[i] || [170, 280];
+          const col = POS_COLORS[p.pos] || POS_COLORS.MID;
+          const isSelected =
+            selectedPlayer.team === team && selectedPlayer.idx === i;
+
+          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.classList.add("player-group", "player-token");
+          if (isSelected) g.classList.add("selected");
+          g.setAttribute("transform", `translate(${cx}, ${cy})`);
+          g.dataset.team = team;
+          g.dataset.idx = i;
+
+          // shadow
+          const shadow = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "ellipse",
+          );
+          shadow.setAttribute("rx", "22");
+          shadow.setAttribute("ry", "6");
+          shadow.setAttribute("cy", "22");
+          shadow.setAttribute("fill", "rgba(0,0,0,0.35)");
+
+          // pulse ring (selected)
+          if (isSelected) {
+            const ring = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "circle",
+            );
+            ring.setAttribute("r", "26");
+            ring.setAttribute("fill", "none");
+            ring.setAttribute("stroke", "#f0d080");
+            ring.setAttribute("stroke-width", "1.5");
+            ring.classList.add("pulse-ring");
+            g.appendChild(ring);
+          }
+
+          // outer ring
+          const outerRing = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          outerRing.setAttribute("r", "22");
+          outerRing.setAttribute("fill", "none");
+          outerRing.setAttribute("stroke", col.stroke);
+          outerRing.setAttribute("stroke-width", isSelected ? "2.5" : "1.5");
+          outerRing.setAttribute("opacity", "0.7");
+
+          // main circle
+          const circle = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          circle.setAttribute("r", "19");
+          circle.setAttribute("fill", col.fill);
+          circle.setAttribute("stroke", col.stroke);
+          circle.setAttribute("stroke-width", isSelected ? "3" : "2");
+          circle.classList.add("token-circle");
+
+          // number
+          const numText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          numText.classList.add("token-number");
+          numText.setAttribute("y", "-3");
+          numText.textContent = p.num;
+
+          // name
+          const nameText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          nameText.classList.add("token-name");
+          nameText.setAttribute("y", "7");
+          nameText.textContent =
+            p.name.length > 4 ? p.name.slice(0, 4) : p.name;
+
+          // label below
+          const label = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          label.classList.add("token-label");
+          label.setAttribute("y", "32");
+          label.textContent = p.pos;
+
+          g.appendChild(shadow);
+          g.appendChild(outerRing);
+          g.appendChild(circle);
+          g.appendChild(numText);
+          g.appendChild(nameText);
+          g.appendChild(label);
+
+          // events
+          g.addEventListener("click", () => selectPlayer(team, i));
+          if (editMode[team]) {
+            makeDraggable(g, team, i, svg);
+          }
+
+          svg.appendChild(g);
+        });
+      }
+
+      function renderRoster(team) {
+        const el = document.getElementById(`roster-${team}`);
+        const td = teamData[team];
+        let html = `<div class="roster-header">
+    <div>#</div><div>선수명</div><div>포지션</div><div>등번호</div>
+  </div>`;
+        td.players.forEach((p, i) => {
+          const sel =
+            selectedPlayer.team === team && selectedPlayer.idx === i
+              ? "selected-row"
+              : "";
+          html += `<div class="roster-row ${sel}" onclick="selectPlayer('${team}', ${i})">
+      <div class="roster-num">${p.num}</div>
+      <div class="roster-player-name">${p.name}</div>
+      <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
+      <div class="roster-pos">${i === 0 ? "주장" : ""}</div>
+    </div>`;
+        });
+        el.innerHTML = html;
+      }
+
+      function render(team) {
+        renderPitch(team);
+        renderRoster(team);
+        // update edit panel if player selected
+        if (selectedPlayer.team === team && selectedPlayer.idx !== null) {
+          fillEditPanel(team);
+        }
+      }
+
+      // ============================================================
+      // SELECTION
+      // ============================================================
+      function selectPlayer(team, idx) {
+        if (selectedPlayer.team === team && selectedPlayer.idx === idx) {
+          selectedPlayer = { team: null, idx: null };
+        } else {
+          selectedPlayer = { team, idx };
+        }
+        render(team);
+        if (selectedPlayer.idx !== null && editMode[team]) {
+          document
+            .getElementById(`edit-panel-${team}`)
+            .classList.add("visible");
+          fillEditPanel(team);
+        }
+      }
+
+      function fillEditPanel(team) {
+        const p = teamData[team].players[selectedPlayer.idx];
+        if (!p) return;
+        document.getElementById(`edit-num-${team}`).value = p.num;
+        document.getElementById(`edit-name-${team}`).value = p.name;
+        document.getElementById(`edit-pos-${team}`).value = p.pos;
+      }
+
+      // ============================================================
+      // EDIT
+      // ============================================================
+      function toggleEdit(team) {
+        editMode[team] = !editMode[team];
+        const btn = document.getElementById(`edit-toggle-${team}`);
+        const panel = document.getElementById(`edit-panel-${team}`);
+        if (editMode[team]) {
+          btn.classList.add("on");
+          btn.textContent = "✓ 편집 완료";
+          if (selectedPlayer.team === team) panel.classList.add("visible");
+        } else {
+          btn.classList.remove("on");
+          btn.textContent = "✎ 선수 편집";
+          panel.classList.remove("visible");
+          selectedPlayer = { team: null, idx: null };
+        }
+        render(team);
+      }
+
+      function savePlayer(team) {
+        if (selectedPlayer.team !== team || selectedPlayer.idx === null) return;
+        const p = teamData[team].players[selectedPlayer.idx];
+        p.num =
+          parseInt(document.getElementById(`edit-num-${team}`).value) || p.num;
+        p.name =
+          document.getElementById(`edit-name-${team}`).value.trim() || p.name;
+        p.pos = document.getElementById(`edit-pos-${team}`).value;
+        render(team);
+      }
+
+      function applyFormation(team, val) {
+        teamData[team].formation = val;
+        selectedPlayer = { team: null, idx: null };
+        render(team);
+      }
+
+      function switchTeam(team, btn) {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document
+          .querySelectorAll(".formation-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById(`panel-${team}`).classList.add("active");
+      }
+
+      function editTeamName(team) {
+        const el = document.getElementById(`team-${team}-name`);
+        const current = el.textContent;
+        const input = document.createElement("input");
+        input.value = current;
+        input.style.cssText =
+          "background:transparent;border:none;border-bottom:1px solid #c9a84c;color:white;font-family:Anton,sans-serif;font-size:inherit;letter-spacing:1px;outline:none;width:120px;text-align:center";
+        el.textContent = "";
+        el.appendChild(input);
+        input.focus();
+        const done = () => {
+          teamData[team].name = input.value.trim() || current;
+          el.textContent = teamData[team].name;
+        };
+        input.addEventListener("blur", done);
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") done();
+        });
+      }
+
+      // ============================================================
+      // DRAG
+      // ============================================================
+      function makeDraggable(g, team, idx, svg) {
+        g.style.cursor = "grab";
+
+        const getPoint = (e) => {
+          const rect = svg.getBoundingClientRect();
+          const vbW = 340,
+            vbH = 560;
+          const scaleX = vbW / rect.width;
+          const scaleY = vbH / rect.height;
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          return {
+            x: (clientX - rect.left) * scaleX,
+            y: (clientY - rect.top) * scaleY,
+          };
+        };
+
+        const onStart = (e) => {
+          e.preventDefault();
+          isDragging = true;
+          dragState = { team, idx, g, svg };
+          g.style.cursor = "grabbing";
+          g.style.opacity = "0.85";
+          selectedPlayer = { team, idx };
+          render(team); // re-render to show selection
+          // re-grab element after render
+          const newG = svg.querySelector(
+            `[data-team="${team}"][data-idx="${idx}"]`,
+          );
+          if (newG) {
+            dragState.g = newG;
+            newG.style.cursor = "grabbing";
+            newG.style.opacity = "0.85";
+          }
+        };
+
+        const onMove = (e) => {
+          if (!isDragging || !dragState || dragState.idx !== idx) return;
+          e.preventDefault();
+          const pt = getPoint(e);
+          const clampedX = Math.max(25, Math.min(315, pt.x));
+          const clampedY = Math.max(25, Math.min(535, pt.y));
+          if (dragState.g) {
+            dragState.g.setAttribute(
+              "transform",
+              `translate(${clampedX}, ${clampedY})`,
+            );
+          }
+        };
+
+        const onEnd = (e) => {
+          if (!isDragging || !dragState || dragState.idx !== idx) return;
+          const pt = getPoint(
+            e.changedTouches
+              ? {
+                  clientX: e.changedTouches[0].clientX,
+                  clientY: e.changedTouches[0].clientY,
+                }
+              : e,
+          );
+          const clampedX = Math.max(25, Math.min(315, pt.x));
+          const clampedY = Math.max(25, Math.min(535, pt.y));
+          // Update the formation position for this player
+          if (!teamData[team]._customPos)
+            teamData[team]._customPos = [
+              ...FORMATIONS[teamData[team].formation],
+            ];
+          teamData[team]._customPos[idx] = [clampedX, clampedY];
+          FORMATIONS[`_custom_${team}`] = teamData[team]._customPos;
+          isDragging = false;
+          dragState = null;
+          render(team);
+        };
+
+        g.addEventListener("mousedown", onStart);
+        g.addEventListener("touchstart", onStart, { passive: false });
+        document.addEventListener("mousemove", onMove);
+        document.addEventListener("touchmove", onMove, { passive: false });
+        document.addEventListener("mouseup", onEnd);
+        document.addEventListener("touchend", onEnd);
+      }
+
+      // Override render to support custom positions
+      const _origRender = renderPitch;
+      function renderPitch(team) {
+        const svg = document.getElementById(`pitch-${team}`);
+        svg.querySelectorAll(".player-group").forEach((el) => el.remove());
+
+        const td = teamData[team];
+        let positions = FORMATIONS[td.formation];
+        if (td._customPos && editMode[team]) positions = td._customPos;
+
+        td.players.forEach((p, i) => {
+          const [cx, cy] = positions[i] || [170, 280];
+          const col = POS_COLORS[p.pos] || POS_COLORS.MID;
+          const isSelected =
+            selectedPlayer.team === team && selectedPlayer.idx === i;
+
+          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.classList.add("player-group", "player-token");
+          if (isSelected) g.classList.add("selected");
+          g.setAttribute("transform", `translate(${cx}, ${cy})`);
+          g.dataset.team = team;
+          g.dataset.idx = i;
+
+          const shadow = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "ellipse",
+          );
+          shadow.setAttribute("rx", "22");
+          shadow.setAttribute("ry", "6");
+          shadow.setAttribute("cy", "22");
+          shadow.setAttribute("fill", "rgba(0,0,0,0.35)");
+
+          if (isSelected) {
+            const ring = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "circle",
+            );
+            ring.setAttribute("r", "26");
+            ring.setAttribute("fill", "none");
+            ring.setAttribute("stroke", "#f0d080");
+            ring.setAttribute("stroke-width", "1.5");
+            ring.classList.add("pulse-ring");
+            g.appendChild(ring);
+          }
+
+          const outerRing = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          outerRing.setAttribute("r", "22");
+          outerRing.setAttribute("fill", "none");
+          outerRing.setAttribute("stroke", col.stroke);
+          outerRing.setAttribute("stroke-width", "1.5");
+          outerRing.setAttribute("opacity", "0.6");
+
+          const circle = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          circle.setAttribute("r", "19");
+          circle.setAttribute("fill", col.fill);
+          circle.setAttribute("stroke", col.stroke);
+          circle.setAttribute("stroke-width", isSelected ? "3" : "2");
+          circle.classList.add("token-circle");
+
+          const numText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          numText.classList.add("token-number");
+          numText.setAttribute("y", "-3");
+          numText.textContent = p.num;
+
+          const nameText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          nameText.classList.add("token-name");
+          nameText.setAttribute("y", "7");
+          nameText.textContent =
+            p.name.length > 4 ? p.name.slice(0, 4) : p.name;
+
+          const label = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          label.classList.add("token-label");
+          label.setAttribute("y", "32");
+          label.textContent = p.pos;
+
+          g.appendChild(shadow);
+          g.appendChild(outerRing);
+          g.appendChild(circle);
+          g.appendChild(numText);
+          g.appendChild(nameText);
+          g.appendChild(label);
+
+          g.addEventListener("click", () => selectPlayer(team, i));
+          if (editMode[team]) makeDraggable(g, team, i, svg);
+
+          svg.appendChild(g);
+        });
+      }
+
+      // reset custom pos when formation changes
+      const _origApply = applyFormation;
+      function applyFormation(team, val) {
+        teamData[team].formation = val;
+        teamData[team]._customPos = null;
+        selectedPlayer = { team: null, idx: null };
+        render(team);
+      }
+
+      // ============================================================
+      // INIT
+      // ============================================================
+      render("a");
+      render("b");
+    </script>
+  </body>
+</html>
