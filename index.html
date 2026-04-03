@@ -383,6 +383,15 @@
         pointer-events: none;
         letter-spacing: 0.5px;
       }
+      .token-ovr {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        fill: var(--gold);
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+        letter-spacing: 0px;
+      }
       @keyframes pulse-ring {
         0% {
           stroke-width: 1;
@@ -492,6 +501,38 @@
         padding: 2px 8px;
         border-radius: 2px;
       }
+
+      /* OVR BADGE in card */
+      .card-ovr-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(201, 168, 76, 0.18) 0%,
+          rgba(201, 168, 76, 0.06) 100%
+        );
+        border: 1px solid rgba(201, 168, 76, 0.35);
+        border-radius: 6px;
+        padding: 8px 14px;
+        flex-shrink: 0;
+      }
+      .card-ovr-label {
+        font-size: 8px;
+        letter-spacing: 2px;
+        color: rgba(201, 168, 76, 0.6);
+        text-transform: uppercase;
+        margin-bottom: 2px;
+      }
+      .card-ovr-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 30px;
+        line-height: 1;
+        color: var(--gold);
+        text-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
+      }
+
       .card-stats {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -580,13 +621,15 @@
       .card-close:hover {
         color: var(--white);
       }
+
+      /* ROSTER - OVR 컬럼 추가 */
       .roster {
         border: 1px solid rgba(201, 168, 76, 0.15);
         border-top: none;
       }
       .roster-header {
         display: grid;
-        grid-template-columns: 32px 1fr 48px 56px;
+        grid-template-columns: 32px 1fr 48px 44px 48px;
         padding: 7px 14px;
         font-size: 9px;
         letter-spacing: 2px;
@@ -597,7 +640,7 @@
       }
       .roster-row {
         display: grid;
-        grid-template-columns: 32px 1fr 48px 56px;
+        grid-template-columns: 32px 1fr 48px 44px 48px;
         padding: 8px 14px;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -623,6 +666,28 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+      .r-ovr {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 16px;
+        color: var(--gold);
+        text-align: right;
+      }
+      .r-ovr.ovr-s {
+        color: #ff6060;
+      } /* 90+ */
+      .r-ovr.ovr-a {
+        color: #ffa040;
+      } /* 80-89 */
+      .r-ovr.ovr-b {
+        color: #64dd64;
+      } /* 70-79 */
+      .r-ovr.ovr-c {
+        color: #4fc3f7;
+      } /* 60-69 */
+      .r-ovr.ovr-d {
+        color: rgba(255, 255, 255, 0.4);
+      } /* ~59 */
+
       .pos-badge {
         display: inline-block;
         font-size: 9px;
@@ -651,6 +716,37 @@
         color: #ff5050;
         border: 1px solid rgba(255, 80, 80, 0.25);
       }
+
+      /* TEAM OVR BAR */
+      .team-ovr-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+        background: rgba(5, 8, 15, 0.5);
+        border: 1px solid rgba(201, 168, 76, 0.12);
+        border-top: none;
+      }
+      .team-ovr-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .team-ovr-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        color: var(--gold);
+        letter-spacing: 2px;
+      }
+      .team-ovr-grade {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+
       footer {
         text-align: center;
         padding: 28px 0 10px;
@@ -699,6 +795,10 @@
         }
         .club-logo {
           width: 64px;
+        }
+        .roster-header,
+        .roster-row {
+          grid-template-columns: 28px 1fr 40px 36px 42px;
         }
       }
 
@@ -1195,7 +1295,7 @@
         </div>
         <div class="vs-block">
           <div class="vs-text">VS</div>
-          <div class="match-stage">챔피언스리그 결승전</div>
+          <div class="match-stage">GROUP STAGE · MD1</div>
         </div>
         <div class="team-name-block">
           <div class="team-label">Team B</div>
@@ -1368,6 +1468,7 @@
           </svg>
         </div>
         <div class="roster" id="roster-a"></div>
+        <div class="team-ovr-bar" id="team-ovr-a"></div>
       </div>
 
       <div class="formation-panel" id="panel-b">
@@ -1528,6 +1629,7 @@
           </svg>
         </div>
         <div class="roster" id="roster-b"></div>
+        <div class="team-ovr-bar" id="team-ovr-b"></div>
       </div>
 
       <div class="card-overlay" id="card-overlay">
@@ -1540,6 +1642,10 @@
               <div class="card-player-name" id="c-name"></div>
               <div class="card-pos-text" id="c-pos-text"></div>
               <div class="card-team-tag" id="c-team-tag"></div>
+            </div>
+            <div class="card-ovr-badge">
+              <div class="card-ovr-label">OVR</div>
+              <div class="card-ovr-val" id="c-ovr">--</div>
             </div>
           </div>
           <div class="card-stats" id="c-stats"></div>
@@ -1563,6 +1669,58 @@
         document.getElementById("cost-overlay").style.display = "none";
       }
 
+      // ===================== OVR 계산 =====================
+      // 포지션별 스탯 가중치
+      const OVR_WEIGHTS = {
+        GK: {
+          스피드: 0.05,
+          슈팅: 0.1,
+          패스: 0.1,
+          드리블: 0.05,
+          체력: 0.2,
+          수비: 0.5,
+        },
+        DEF: {
+          스피드: 0.15,
+          슈팅: 0.05,
+          패스: 0.15,
+          드리블: 0.1,
+          체력: 0.2,
+          수비: 0.35,
+        },
+        MID: {
+          스피드: 0.15,
+          슈팅: 0.15,
+          패스: 0.25,
+          드리블: 0.2,
+          체력: 0.15,
+          수비: 0.1,
+        },
+        FWD: {
+          스피드: 0.2,
+          슈팅: 0.35,
+          패스: 0.1,
+          드리블: 0.25,
+          체력: 0.05,
+          수비: 0.05,
+        },
+      };
+
+      function calcOvr(p) {
+        const w = OVR_WEIGHTS[p.pos];
+        let sum = 0;
+        for (const k in w) sum += p.stats[k] * w[k];
+        return Math.round(sum);
+      }
+
+      function ovrGrade(ovr) {
+        if (ovr >= 90) return { label: "S", cls: "ovr-s" };
+        if (ovr >= 80) return { label: "A", cls: "ovr-a" };
+        if (ovr >= 70) return { label: "B", cls: "ovr-b" };
+        if (ovr >= 60) return { label: "C", cls: "ovr-c" };
+        return { label: "D", cls: "ovr-d" };
+      }
+
       // ===================== PLAYER DATA =====================
       const PLAYERS = {
         bc: {
@@ -1573,7 +1731,7 @@
           stats: {
             스피드: 18,
             슈팅: 85,
-            패스: 62,
+            패스: 52,
             드리블: 40,
             체력: 35,
             수비: 72,
@@ -1592,7 +1750,7 @@
           stats: {
             스피드: 98,
             슈팅: 95,
-            패스: 40,
+            패스: 50,
             드리블: 92,
             체력: 97,
             수비: 90,
@@ -1615,7 +1773,7 @@
             패스: 75,
             드리블: 72,
             체력: 74,
-            수비: 65,
+            수비: 55,
           },
           traits: [
             { text: "풋살 좀 함", type: "skill" },
@@ -1686,10 +1844,10 @@
           stats: {
             스피드: 85,
             슈팅: 79,
-            패스: 70,
+            패스: 80,
             드리블: 77,
             체력: 99,
-            수비: 52,
+            수비: 62,
           },
           traits: [
             { text: "⚡ 파워에이드", type: "special" },
@@ -1706,7 +1864,7 @@
             스피드: 88,
             슈팅: 65,
             패스: 72,
-            드리블: 74,
+            드리블: 84,
             체력: 82,
             수비: 60,
           },
@@ -1727,7 +1885,7 @@
             패스: 60,
             드리블: 48,
             체력: 72,
-            수비: 80,
+            수비: 90,
           },
           traits: [
             { text: "🚗 세차장 CEO", type: "special" },
@@ -1742,7 +1900,7 @@
           team: "b",
           stats: {
             스피드: 74,
-            슈팅: 62,
+            슈팅: 82,
             패스: 78,
             드리블: 68,
             체력: 76,
@@ -1759,8 +1917,8 @@
           pos: "DEF",
           team: "b",
           stats: {
-            스피드: 55,
-            슈팅: 58,
+            스피드: 75,
+            슈팅: 88,
             패스: 65,
             드리블: 52,
             체력: 60,
@@ -1840,6 +1998,7 @@
         FWD: { fill: "#6e0d0d", stroke: "#ff5050", text: "#ff7070" },
       };
 
+      // ===================== RENDER PITCH =====================
       function renderPitch(team) {
         const svg = document.getElementById(`pitch-${team}`);
         svg.querySelectorAll(".player-group").forEach((el) => el.remove());
@@ -1847,12 +2006,14 @@
         const positions = FORMATION[team][1];
         td.order.forEach((pid, i) => {
           const p = PLAYERS[pid];
+          const ovr = calcOvr(p);
           const [cx, cy] = positions[i];
           const col = POS_COLORS[p.pos];
           const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
           g.classList.add("player-group", "player-token");
           g.setAttribute("transform", `translate(${cx},${cy})`);
           g.dataset.pid = pid;
+
           const shadow = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "ellipse",
@@ -1861,6 +2022,7 @@
           shadow.setAttribute("ry", "6");
           shadow.setAttribute("cy", "22");
           shadow.setAttribute("fill", "rgba(0,0,0,0.4)");
+
           const outerRing = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
@@ -1870,6 +2032,7 @@
           outerRing.setAttribute("stroke", col.stroke);
           outerRing.setAttribute("stroke-width", "1.5");
           outerRing.setAttribute("opacity", "0.6");
+
           const circle = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
@@ -1879,21 +2042,24 @@
           circle.setAttribute("stroke", col.stroke);
           circle.setAttribute("stroke-width", "2");
           circle.classList.add("token-circle");
+
           const numText = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
           );
           numText.classList.add("token-number");
-          numText.setAttribute("y", "-3");
+          numText.setAttribute("y", "-4");
           numText.textContent = p.num;
+
           const nameText = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
           );
           nameText.classList.add("token-name");
-          nameText.setAttribute("y", "7");
+          nameText.setAttribute("y", "8");
           nameText.textContent =
             p.name.length > 3 ? p.name.slice(0, 3) : p.name;
+
           const label = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
@@ -1901,49 +2067,118 @@
           label.classList.add("token-label");
           label.setAttribute("y", "32");
           label.textContent = p.pos;
+
+          // OVR 배지 — 토큰 우측 바깥
+          const ovrBg = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect",
+          );
+          ovrBg.setAttribute("x", "17");
+          ovrBg.setAttribute("y", "-18");
+          ovrBg.setAttribute("width", "26");
+          ovrBg.setAttribute("height", "16");
+          ovrBg.setAttribute("rx", "3");
+          ovrBg.setAttribute("fill", "#05080f");
+          ovrBg.setAttribute("stroke", "rgba(201,168,76,0.65)");
+          ovrBg.setAttribute("stroke-width", "1");
+
+          const ovrText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          ovrText.classList.add("token-ovr");
+          ovrText.setAttribute("x", "30");
+          ovrText.setAttribute("y", "-10");
+          ovrText.textContent = ovr;
+
           g.appendChild(shadow);
           g.appendChild(outerRing);
           g.appendChild(circle);
           g.appendChild(numText);
           g.appendChild(nameText);
           g.appendChild(label);
+          g.appendChild(ovrBg);
+          g.appendChild(ovrText);
           g.addEventListener("click", () => openCard(pid));
           svg.appendChild(g);
         });
       }
 
+      // ===================== RENDER ROSTER =====================
       function renderRoster(team) {
         const el = document.getElementById(`roster-${team}`);
         const td = TEAMS[team];
-        let html = `<div class="roster-header"><div>#</div><div>선수명</div><div>포지션</div><div>특성</div></div>`;
+        let html = `<div class="roster-header"><div>#</div><div>선수명</div><div>포지션</div><div>특성</div><div style="text-align:right">OVR</div></div>`;
+        let totalOvr = 0;
         td.order.forEach((pid) => {
           const p = PLAYERS[pid];
+          const ovr = calcOvr(p);
+          totalOvr += ovr;
+          const { cls } = ovrGrade(ovr);
           const firstTrait = p.traits[0]?.text || "-";
-          html += `<div class="roster-row" onclick="openCard('${pid}')"><div class="r-num">${p.num}</div><div class="r-name">${p.name}</div><div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div><div class="r-trait">${firstTrait}</div></div>`;
+          html += `<div class="roster-row" onclick="openCard('${pid}')">
+            <div class="r-num">${p.num}</div>
+            <div class="r-name">${p.name}</div>
+            <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
+            <div class="r-trait">${firstTrait}</div>
+            <div class="r-ovr ${cls}">${ovr}</div>
+          </div>`;
         });
         el.innerHTML = html;
+
+        // 팀 평균 OVR
+        const avgOvr = Math.round(totalOvr / td.order.length);
+        const { label, cls } = ovrGrade(avgOvr);
+        const gradeColors = {
+          "ovr-s": "#ff6060",
+          "ovr-a": "#ffa040",
+          "ovr-b": "#64dd64",
+          "ovr-c": "#4fc3f7",
+          "ovr-d": "rgba(255,255,255,0.4)",
+        };
+        const gc = {
+          "ovr-s": "#ff6060",
+          "ovr-a": "#ffa040",
+          "ovr-b": "#64dd64",
+          "ovr-c": "#4fc3f7",
+          "ovr-d": "rgba(255,255,255,0.4)",
+        }[cls];
+        const ovrBar = document.getElementById(`team-ovr-${team}`);
+        ovrBar.innerHTML = `
+          <span class="team-ovr-label">팀 평균 OVR</span>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="team-ovr-val">${avgOvr}</span>
+            <span class="team-ovr-grade" style="background:${gc}22;border:1px solid ${gc}55;color:${gc}">${label} GRADE</span>
+          </div>`;
       }
 
+      // ===================== PLAYER CARD =====================
       function openCard(pid) {
         const p = PLAYERS[pid];
+        const ovr = calcOvr(p);
         const col = POS_COLORS[p.pos];
         const teamName = TEAMS[p.team].name;
         const teamColor = p.team === "a" ? "#1a3070" : "#6e1a1a";
         const teamTextColor = p.team === "a" ? "#4fc3f7" : "#ff8080";
+
         document.getElementById("c-num").textContent = p.num;
         document.getElementById("c-name").textContent = p.name;
         document.getElementById("c-pos-text").textContent =
           p.pos + " · " + posLabel(p.pos);
+        document.getElementById("c-ovr").textContent = ovr;
+
         const posBadge = document.getElementById("c-pos-badge");
         posBadge.style.background = col.fill;
         posBadge.style.border = `2px solid ${col.stroke}`;
         posBadge.style.color = col.text;
         posBadge.textContent = p.pos;
+
         const teamTag = document.getElementById("c-team-tag");
         teamTag.style.background = teamColor + "33";
         teamTag.style.border = `1px solid ${teamTextColor}44`;
         teamTag.style.color = teamTextColor;
         teamTag.textContent = teamName;
+
         const statNames = Object.keys(p.stats);
         const statColors = {
           스피드: "#ff9040",
@@ -1953,18 +2188,26 @@
           체력: "#c9a84c",
           수비: "#b060ff",
         };
+        const weights = OVR_WEIGHTS[p.pos];
         let statsHtml = "";
         statNames.forEach((s) => {
           const val = p.stats[s];
           const color = statColors[s] || "#aaa";
-          statsHtml += `<div class="stat-item"><div class="stat-label">${s}</div><div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div><div class="stat-val" style="color:${color}">${val}</div></div>`;
+          const wPct = Math.round(weights[s] * 100);
+          statsHtml += `<div class="stat-item">
+            <div class="stat-label">${s} <span style="color:rgba(255,255,255,0.2);font-size:7px">${wPct}%</span></div>
+            <div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div>
+            <div class="stat-val" style="color:${color}">${val}</div>
+          </div>`;
         });
         document.getElementById("c-stats").innerHTML = statsHtml;
+
         let traitsHtml = "";
         p.traits.forEach((t) => {
           traitsHtml += `<span class="trait-chip ${t.type}">${t.text}</span>`;
         });
         document.getElementById("c-traits").innerHTML = traitsHtml;
+
         const overlay = document.getElementById("card-overlay");
         overlay.classList.add("show");
         setTimeout(() => {
