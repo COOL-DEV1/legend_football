@@ -30,7 +30,6 @@
         min-height: 100vh;
         overflow-x: hidden;
       }
-
       .stars-bg {
         position: fixed;
         inset: 0;
@@ -68,7 +67,6 @@
           );
         opacity: 0.4;
       }
-
       .wrapper {
         position: relative;
         z-index: 1;
@@ -76,8 +74,6 @@
         margin: 0 auto;
         padding: 0 16px 80px;
       }
-
-      /* HEADER */
       header {
         text-align: center;
         padding: 36px 0 20px;
@@ -202,8 +198,6 @@
         );
         margin: 18px 0;
       }
-
-      /* MATCH INFO */
       .match-info-bar {
         display: flex;
         align-items: center;
@@ -247,8 +241,6 @@
         color: rgba(255, 255, 255, 0.22);
         padding: 5px 0 14px;
       }
-
-      /* MATCH HEADER */
       .match-header {
         display: flex;
         align-items: center;
@@ -308,8 +300,6 @@
         letter-spacing: 2px;
         color: rgba(255, 255, 255, 0.3);
       }
-
-      /* TABS */
       .tabs {
         display: flex;
         gap: 0;
@@ -347,8 +337,6 @@
       .formation-panel.active {
         display: block;
       }
-
-      /* PITCH */
       .pitch-container {
         position: relative;
         width: 100%;
@@ -412,8 +400,6 @@
       .pulse-ring {
         animation: pulse-ring 2s ease-in-out infinite;
       }
-
-      /* PLAYER CARD POPUP */
       .card-overlay {
         position: fixed;
         inset: 0;
@@ -506,8 +492,6 @@
         padding: 2px 8px;
         border-radius: 2px;
       }
-
-      /* STATS */
       .card-stats {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -544,8 +528,6 @@
         font-size: 16px;
         letter-spacing: 1px;
       }
-
-      /* TRAITS */
       .card-traits {
         padding: 14px 22px 18px;
       }
@@ -582,7 +564,6 @@
         border-color: rgba(201, 168, 76, 0.3);
         color: var(--gold);
       }
-
       .card-close {
         position: absolute;
         top: 10px;
@@ -599,8 +580,6 @@
       .card-close:hover {
         color: var(--white);
       }
-
-      /* ROSTER TABLE */
       .roster {
         border: 1px solid rgba(201, 168, 76, 0.15);
         border-top: none;
@@ -672,7 +651,6 @@
         color: #ff5050;
         border: 1px solid rgba(255, 80, 80, 0.25);
       }
-
       footer {
         text-align: center;
         padding: 28px 0 10px;
@@ -684,7 +662,6 @@
       footer span {
         color: var(--gold-dark);
       }
-
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -707,7 +684,6 @@
       .wrapper > *:nth-child(4) {
         animation-delay: 0.22s;
       }
-
       @media (max-width: 480px) {
         .match-header {
           padding: 12px 10px;
@@ -725,12 +701,180 @@
           width: 64px;
         }
       }
+
+      /* ===== COST POPUP ===== */
+      .cost-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        animation: fadeUp 0.3s ease both;
+      }
+      .cost-card {
+        width: min(360px, 92vw);
+        background: linear-gradient(160deg, #0d1b3e 0%, #05080f 100%);
+        border: 1px solid var(--gold-dark);
+        border-radius: 8px;
+        overflow: hidden;
+        animation: cardIn 0.28s ease both;
+      }
+      .cost-header {
+        background: linear-gradient(
+          135deg,
+          rgba(201, 168, 76, 0.18) 0%,
+          rgba(10, 15, 30, 0) 70%
+        );
+        padding: 24px 24px 18px;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+        text-align: center;
+      }
+      .cost-icon {
+        font-size: 34px;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .cost-title {
+        font-family: "Anton", sans-serif;
+        font-size: 24px;
+        letter-spacing: 3px;
+        color: var(--white);
+        margin-bottom: 5px;
+      }
+      .cost-sub {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+      }
+      .cost-body {
+        padding: 6px 0;
+      }
+      .cost-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .cost-row-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.5px;
+      }
+      .cost-row-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: var(--white);
+      }
+      .cost-row-val.red {
+        color: #ff6060;
+      }
+      .cost-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        background: rgba(201, 168, 76, 0.08);
+        border-top: 1px solid rgba(201, 168, 76, 0.25);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      }
+      .cost-total-label {
+        font-family: "Anton", sans-serif;
+        font-size: 15px;
+        letter-spacing: 3px;
+        color: var(--gold);
+      }
+      .cost-total-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 30px;
+        letter-spacing: 2px;
+        color: var(--gold);
+        text-shadow: 0 0 18px rgba(201, 168, 76, 0.55);
+      }
+      .cost-footer {
+        padding: 18px 24px 20px;
+        text-align: center;
+      }
+      .cost-confirm-btn {
+        width: 100%;
+        padding: 13px;
+        font-family: "Anton", sans-serif;
+        font-size: 15px;
+        letter-spacing: 4px;
+        background: linear-gradient(
+          90deg,
+          rgba(201, 168, 76, 0.18),
+          rgba(201, 168, 76, 0.08)
+        );
+        border: 1px solid var(--gold-dark);
+        color: var(--gold);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .cost-confirm-btn:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(201, 168, 76, 0.32),
+          rgba(201, 168, 76, 0.18)
+        );
+        border-color: var(--gold);
+        box-shadow: 0 0 18px rgba(201, 168, 76, 0.22);
+      }
+      .cost-note {
+        margin-top: 10px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        color: rgba(255, 255, 255, 0.18);
+      }
     </style>
   </head>
   <body>
+    <!-- ===== COST POPUP ===== -->
+    <div class="cost-overlay" id="cost-overlay">
+      <div class="cost-card">
+        <div class="cost-header">
+          <span class="cost-icon">🏟️</span>
+          <div class="cost-title">구장빵 정산</div>
+          <div class="cost-sub">챔피언스리그 · 결승전 · 고양불스 풋살파크</div>
+        </div>
+        <div class="cost-body">
+          <div class="cost-row">
+            <span class="cost-row-label">⚽ 구장 대여료</span>
+            <span class="cost-row-val">120,000원</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-row-label">❌ 취소 수수료</span>
+            <span class="cost-row-val red">24,000원</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-row-label">음료비</span>
+            <span class="cost-row-val red">6,000원</span>
+          </div>
+        </div>
+        <div class="cost-total-row">
+          <span class="cost-total-label">TOTAL</span>
+          <span class="cost-total-val">150,000원</span>
+        </div>
+        <div class="cost-footer">
+          <button class="cost-confirm-btn" onclick="closeCostPopup()">
+            확인했습니다 ✓
+          </button>
+          <div class="cost-note" style="font-size: 13px">
+            진팀 10만원 1/N 부담(인당 16700원) <br />
+            이긴팀 5만원 1/N 부담(인당 8400원)
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="stars-bg"></div>
     <div class="wrapper">
-      <!-- HEADER -->
       <header>
         <div class="ucl-badge">
           <div class="star-row">
@@ -1025,7 +1169,6 @@
 
       <div class="gold-divider"></div>
 
-      <!-- MATCH INFO -->
       <div class="match-info-bar">
         <div class="match-info-item">
           <span class="info-text"
@@ -1035,7 +1178,7 @@
         <div class="info-sep">·</div>
         <div class="match-info-item">
           <span class="info-text"
-            >🕕 KO <span class="info-accent">18:00</span></span
+            >🕕 KO <span class="info-accent">20:00</span></span
           >
         </div>
         <div class="info-sep">·</div>
@@ -1045,7 +1188,6 @@
       </div>
       <div class="venue-address">통일로396번길 78-25, 고양</div>
 
-      <!-- MATCH HEADER -->
       <div class="match-header">
         <div class="team-name-block">
           <div class="team-label">Team A</div>
@@ -1053,7 +1195,7 @@
         </div>
         <div class="vs-block">
           <div class="vs-text">VS</div>
-          <div class="match-stage">GROUP STAGE · MD1</div>
+          <div class="match-stage">챔피언스리그 결승전</div>
         </div>
         <div class="team-name-block">
           <div class="team-label">Team B</div>
@@ -1061,7 +1203,6 @@
         </div>
       </div>
 
-      <!-- TABS -->
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTeam('a', this)">
           🔵 ?
@@ -1069,7 +1210,6 @@
         <button class="tab-btn" onclick="switchTeam('b', this)">🔴 ?</button>
       </div>
 
-      <!-- TEAM A -->
       <div class="formation-panel active" id="panel-a">
         <div class="pitch-container">
           <svg
@@ -1230,7 +1370,6 @@
         <div class="roster" id="roster-a"></div>
       </div>
 
-      <!-- TEAM B -->
       <div class="formation-panel" id="panel-b">
         <div class="pitch-container">
           <svg
@@ -1391,7 +1530,6 @@
         <div class="roster" id="roster-b"></div>
       </div>
 
-      <!-- PLAYER CARD POPUP -->
       <div class="card-overlay" id="card-overlay">
         <div class="player-card" id="player-card">
           <button class="card-close" onclick="closeCard()">✕</button>
@@ -1420,9 +1558,13 @@
     </div>
 
     <script>
+      // ===================== COST POPUP =====================
+      function closeCostPopup() {
+        document.getElementById("cost-overlay").style.display = "none";
+      }
+
       // ===================== PLAYER DATA =====================
       const PLAYERS = {
-        // 김범철: 존재감은 크지만 뜀박질은 포기. GK로 배치가 답
         bc: {
           name: "김범철",
           num: 21,
@@ -1442,8 +1584,6 @@
             { text: "골문 수호 특기", type: "skill" },
           ],
         },
-
-        // 임시원: 존잘 + 왼발의 마법사 → FWD
         tj: {
           name: "임시원",
           num: 9,
@@ -1464,7 +1604,6 @@
             { text: "씹테토남", type: "funny" },
           ],
         },
-        // 박기빈: 풋살 좀 함 → MID
         kb: {
           name: "박기빈",
           num: 7,
@@ -1483,7 +1622,6 @@
             { text: "💔 모태솔로", type: "funny" },
           ],
         },
-        // 문태종: 풋살 잘함 + 잘생김 → 팀의 큰 도움
         sw: {
           name: "유태종",
           num: 10,
@@ -1502,7 +1640,6 @@
             { text: "😎 잘생김 TOP2", type: "special" },
           ],
         },
-        // 문승재: 95KG + F4 → DEF
         sj: {
           name: "문승재",
           num: 5,
@@ -1522,7 +1659,6 @@
             { text: "대학생", type: "skill" },
           ],
         },
-        // 이지융: 에겐남 + 미필 → DEF (패기 있음)
         jy: {
           name: "이지융",
           num: 3,
@@ -1542,9 +1678,6 @@
             { text: "👟 풋살화 샀다고 신남", type: "funny" },
           ],
         },
-
-        // TEAM B =====================
-        // 선태민: 파워에이드 = 체력갑 → FWD
         tm: {
           name: "선태민",
           num: 11,
@@ -1564,7 +1697,6 @@
             { text: "체력 99", type: "skill" },
           ],
         },
-        // 김선우: 잘 뛰어다님 → MID
         su: {
           name: "김선우",
           num: 8,
@@ -1584,7 +1716,6 @@
             { text: "🍺 술 존나 못 마심", type: "funny" },
           ],
         },
-        // 한정호: 세차장 CEO + 자차 → GK (든든한 배경)
         jh: {
           name: "한정호",
           num: 1,
@@ -1604,7 +1735,6 @@
             { text: "풋살 처음", type: "funny" },
           ],
         },
-        // 허정현: 장발 → MID (비주얼 미드)
         jj: {
           name: "허정현",
           num: 6,
@@ -1623,7 +1753,6 @@
             { text: "정진욱이랑 동반입대 같이 함", type: "special" },
           ],
         },
-        // 박세준: 무릎 아픔 → DEF (움직임 제한)
         sej: {
           name: "박세준",
           num: 4,
@@ -1643,7 +1772,6 @@
             { text: " 무릎 괜찮아짐", type: "funny" },
           ],
         },
-        // 정진욱: 신장 결함 + 기흉 → DEF (한계 속의 전사)
         jw: {
           name: "정진욱",
           num: 2,
@@ -1712,7 +1840,6 @@
         FWD: { fill: "#6e0d0d", stroke: "#ff5050", text: "#ff7070" },
       };
 
-      // ===================== RENDER PITCH =====================
       function renderPitch(team) {
         const svg = document.getElementById(`pitch-${team}`);
         svg.querySelectorAll(".player-group").forEach((el) => el.remove());
@@ -1726,7 +1853,6 @@
           g.classList.add("player-group", "player-token");
           g.setAttribute("transform", `translate(${cx},${cy})`);
           g.dataset.pid = pid;
-
           const shadow = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "ellipse",
@@ -1735,7 +1861,6 @@
           shadow.setAttribute("ry", "6");
           shadow.setAttribute("cy", "22");
           shadow.setAttribute("fill", "rgba(0,0,0,0.4)");
-
           const outerRing = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
@@ -1745,7 +1870,6 @@
           outerRing.setAttribute("stroke", col.stroke);
           outerRing.setAttribute("stroke-width", "1.5");
           outerRing.setAttribute("opacity", "0.6");
-
           const circle = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
@@ -1755,7 +1879,6 @@
           circle.setAttribute("stroke", col.stroke);
           circle.setAttribute("stroke-width", "2");
           circle.classList.add("token-circle");
-
           const numText = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
@@ -1763,7 +1886,6 @@
           numText.classList.add("token-number");
           numText.setAttribute("y", "-3");
           numText.textContent = p.num;
-
           const nameText = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
@@ -1772,7 +1894,6 @@
           nameText.setAttribute("y", "7");
           nameText.textContent =
             p.name.length > 3 ? p.name.slice(0, 3) : p.name;
-
           const label = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
@@ -1780,7 +1901,6 @@
           label.classList.add("token-label");
           label.setAttribute("y", "32");
           label.textContent = p.pos;
-
           g.appendChild(shadow);
           g.appendChild(outerRing);
           g.appendChild(circle);
@@ -1792,7 +1912,6 @@
         });
       }
 
-      // ===================== RENDER ROSTER =====================
       function renderRoster(team) {
         const el = document.getElementById(`roster-${team}`);
         const td = TEAMS[team];
@@ -1800,42 +1919,31 @@
         td.order.forEach((pid) => {
           const p = PLAYERS[pid];
           const firstTrait = p.traits[0]?.text || "-";
-          html += `<div class="roster-row" onclick="openCard('${pid}')">
-      <div class="r-num">${p.num}</div>
-      <div class="r-name">${p.name}</div>
-      <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
-      <div class="r-trait">${firstTrait}</div>
-    </div>`;
+          html += `<div class="roster-row" onclick="openCard('${pid}')"><div class="r-num">${p.num}</div><div class="r-name">${p.name}</div><div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div><div class="r-trait">${firstTrait}</div></div>`;
         });
         el.innerHTML = html;
       }
 
-      // ===================== PLAYER CARD =====================
       function openCard(pid) {
         const p = PLAYERS[pid];
         const col = POS_COLORS[p.pos];
         const teamName = TEAMS[p.team].name;
         const teamColor = p.team === "a" ? "#1a3070" : "#6e1a1a";
         const teamTextColor = p.team === "a" ? "#4fc3f7" : "#ff8080";
-
         document.getElementById("c-num").textContent = p.num;
         document.getElementById("c-name").textContent = p.name;
         document.getElementById("c-pos-text").textContent =
           p.pos + " · " + posLabel(p.pos);
-
         const posBadge = document.getElementById("c-pos-badge");
         posBadge.style.background = col.fill;
         posBadge.style.border = `2px solid ${col.stroke}`;
         posBadge.style.color = col.text;
         posBadge.textContent = p.pos;
-
         const teamTag = document.getElementById("c-team-tag");
         teamTag.style.background = teamColor + "33";
         teamTag.style.border = `1px solid ${teamTextColor}44`;
         teamTag.style.color = teamTextColor;
         teamTag.textContent = teamName;
-
-        // stats
         const statNames = Object.keys(p.stats);
         const statColors = {
           스피드: "#ff9040",
@@ -1849,25 +1957,16 @@
         statNames.forEach((s) => {
           const val = p.stats[s];
           const color = statColors[s] || "#aaa";
-          statsHtml += `<div class="stat-item">
-      <div class="stat-label">${s}</div>
-      <div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div>
-      <div class="stat-val" style="color:${color}">${val}</div>
-    </div>`;
+          statsHtml += `<div class="stat-item"><div class="stat-label">${s}</div><div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div><div class="stat-val" style="color:${color}">${val}</div></div>`;
         });
         document.getElementById("c-stats").innerHTML = statsHtml;
-
-        // traits
         let traitsHtml = "";
         p.traits.forEach((t) => {
           traitsHtml += `<span class="trait-chip ${t.type}">${t.text}</span>`;
         });
         document.getElementById("c-traits").innerHTML = traitsHtml;
-
         const overlay = document.getElementById("card-overlay");
         overlay.classList.add("show");
-
-        // animate bars after paint
         setTimeout(() => {
           overlay.querySelectorAll(".stat-bar").forEach((bar) => {
             bar.style.width = bar.dataset.val + "%";
@@ -1878,7 +1977,6 @@
       function closeCard() {
         document.getElementById("card-overlay").classList.remove("show");
       }
-
       function posLabel(pos) {
         return (
           { GK: "골키퍼", DEF: "수비수", MID: "미드필더", FWD: "공격수" }[
@@ -1886,7 +1984,6 @@
           ] || pos
         );
       }
-
       function switchTeam(team, btn) {
         document
           .querySelectorAll(".tab-btn")
@@ -1898,7 +1995,6 @@
         document.getElementById(`panel-${team}`).classList.add("active");
       }
 
-      // 배경 클릭 or ESC → 닫기
       document
         .getElementById("card-overlay")
         .addEventListener("click", function (e) {
