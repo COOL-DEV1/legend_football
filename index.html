@@ -2,8 +2,8 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>영락 챔피언스리그 — 포메이션</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>영락 챔피언스리그 2026</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap"
       rel="stylesheet" />
@@ -13,17 +13,9 @@
         --gold-light: #f0d080;
         --gold-dark: #8a6a1a;
         --bg: #05080f;
-        --bg2: #0a0f1e;
-        --blue-deep: #0d1b3e;
-        --blue-mid: #1a3070;
         --white: #f5f5f5;
-        --star-white: #ffffff;
-        --pitch-green: #1e5c2a;
-        --pitch-light: #25712f;
-        --pitch-line: rgba(255, 255, 255, 0.5);
         --neon: #4fc3f7;
       }
-
       *,
       *::before,
       *::after {
@@ -31,7 +23,6 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         background: var(--bg);
         color: var(--white);
@@ -40,7 +31,6 @@
         overflow-x: hidden;
       }
 
-      /* === STARS BG === */
       .stars-bg {
         position: fixed;
         inset: 0;
@@ -75,44 +65,36 @@
             1.5px 1.5px at 90% 15%,
             rgba(255, 255, 255, 0.7) 0%,
             transparent 100%
-          ),
-          radial-gradient(
-            1px 1px at 45% 50%,
-            rgba(255, 255, 255, 0.5) 0%,
-            transparent 100%
           );
         opacity: 0.4;
       }
 
-      /* === WRAPPER === */
       .wrapper {
         position: relative;
         z-index: 1;
-        max-width: 900px;
+        max-width: 960px;
         margin: 0 auto;
-        padding: 0 16px 60px;
+        padding: 0 16px 80px;
       }
 
-      /* === HEADER === */
+      /* HEADER */
       header {
         text-align: center;
-        padding: 40px 0 24px;
-        position: relative;
+        padding: 36px 0 20px;
       }
-
       .ucl-badge {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 14px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
       .star-row {
         display: flex;
         gap: 5px;
       }
       .star-row span {
-        font-size: 18px;
+        font-size: 16px;
         color: var(--gold);
         text-shadow: 0 0 8px var(--gold);
         animation: twinkle 2s infinite alternate;
@@ -129,7 +111,6 @@
       .star-row span:nth-child(5) {
         animation-delay: 1.2s;
       }
-
       @keyframes twinkle {
         from {
           opacity: 0.6;
@@ -140,37 +121,76 @@
           transform: scale(1.15);
         }
       }
-
       .ucl-logo-text {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
+        font-size: 12px;
         letter-spacing: 4px;
         color: var(--gold);
         border: 1px solid var(--gold-dark);
         padding: 3px 12px;
       }
-
+      .header-logo-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 4px;
+      }
+      .logo-glow-wrap {
+        position: relative;
+        flex-shrink: 0;
+      }
+      .logo-glow-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(64, 180, 77, 0.25) 0%,
+          transparent 70%
+        );
+        animation: logo-pulse 3s ease-in-out infinite;
+      }
+      @keyframes logo-pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: scale(0.97);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.03);
+        }
+      }
+      .club-logo {
+        width: 80px;
+        height: auto;
+        filter: drop-shadow(0 0 10px rgba(64, 180, 77, 0.5));
+        position: relative;
+        z-index: 1;
+      }
+      .header-title {
+        text-align: left;
+      }
       h1 {
         font-family: "Anton", sans-serif;
-        font-size: clamp(32px, 7vw, 64px);
+        font-size: clamp(28px, 6vw, 58px);
         letter-spacing: 2px;
         line-height: 1;
-        color: var(--white);
         text-transform: uppercase;
       }
       h1 .yl {
         color: var(--gold);
         text-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
       }
-
       .subtitle {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 5px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.4);
-        margin-top: 8px;
+        margin-top: 6px;
       }
-
       .gold-divider {
         width: 100%;
         height: 1px;
@@ -180,16 +200,61 @@
           var(--gold),
           transparent
         );
-        margin: 20px 0;
+        margin: 18px 0;
       }
 
-      /* === MATCH HEADER === */
+      /* MATCH INFO */
+      .match-info-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0;
+        padding: 10px 16px;
+        background: linear-gradient(
+          90deg,
+          rgba(13, 27, 62, 0) 0%,
+          rgba(13, 27, 62, 0.6) 30%,
+          rgba(13, 27, 62, 0.6) 70%,
+          rgba(13, 27, 62, 0) 100%
+        );
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .match-info-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .info-text {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .info-accent {
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .info-sep {
+        font-size: 11px;
+        color: rgba(201, 168, 76, 0.3);
+        padding: 0 10px;
+      }
+      .venue-address {
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: rgba(255, 255, 255, 0.22);
+        padding: 5px 0 14px;
+      }
+
+      /* MATCH HEADER */
       .match-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 18px 24px;
+        padding: 16px 24px;
         background: linear-gradient(
           135deg,
           rgba(13, 27, 62, 0.9) 0%,
@@ -197,7 +262,7 @@
         );
         border: 1px solid var(--gold-dark);
         border-radius: 4px;
-        margin-bottom: 10px;
+        margin-bottom: 0;
         position: relative;
         overflow: hidden;
       }
@@ -212,7 +277,6 @@
           transparent
         );
       }
-
       .team-name-block {
         text-align: center;
         flex: 1;
@@ -223,35 +287,29 @@
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.35);
       }
-      .team-name {
+      .team-name-display {
         font-family: "Anton", sans-serif;
-        font-size: clamp(16px, 3.5vw, 26px);
+        font-size: clamp(15px, 3vw, 24px);
         letter-spacing: 1px;
         color: var(--white);
-        cursor: pointer;
-        transition: color 0.2s;
       }
-      .team-name:hover {
-        color: var(--gold-light);
-      }
-
       .vs-block {
         text-align: center;
         flex: 0 0 auto;
       }
       .vs-text {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 28px;
+        font-size: 26px;
         color: var(--gold);
         line-height: 1;
       }
-      .match-date {
+      .match-stage {
         font-size: 10px;
         letter-spacing: 2px;
         color: rgba(255, 255, 255, 0.3);
       }
 
-      /* === TABS === */
+      /* TABS */
       .tabs {
         display: flex;
         gap: 0;
@@ -283,8 +341,6 @@
       .tab-btn:hover:not(.active) {
         color: rgba(255, 255, 255, 0.7);
       }
-
-      /* === FORMATION PANEL === */
       .formation-panel {
         display: none;
       }
@@ -292,60 +348,7 @@
         display: block;
       }
 
-      /* === FORMATION CONTROLS === */
-      .controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        background: rgba(10, 15, 30, 0.8);
-        border: 1px solid rgba(201, 168, 76, 0.15);
-        border-top: none;
-        margin-bottom: 0;
-      }
-      .formation-select-wrap {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .formation-select-wrap label {
-        font-size: 10px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
-      }
-      .formation-select {
-        background: rgba(5, 8, 15, 0.9);
-        border: 1px solid var(--gold-dark);
-        color: var(--gold-light);
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 16px;
-        letter-spacing: 2px;
-        padding: 4px 8px;
-        cursor: pointer;
-        outline: none;
-      }
-      .formation-select option {
-        background: #0a0f1e;
-      }
-
-      .edit-toggle {
-        font-size: 10px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        background: none;
-        border: 1px solid rgba(201, 168, 76, 0.3);
-        color: rgba(255, 255, 255, 0.5);
-        padding: 5px 12px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .edit-toggle.on {
-        border-color: var(--gold);
-        color: var(--gold);
-      }
-
-      /* === PITCH === */
+      /* PITCH */
       .pitch-container {
         position: relative;
         width: 100%;
@@ -353,36 +356,20 @@
         max-height: 620px;
         overflow: hidden;
       }
-
       .pitch-svg {
         width: 100%;
         height: 100%;
       }
-
-      /* === PLAYER TOKENS === */
       .player-token {
         cursor: pointer;
-        transition: transform 0.2s;
+        transition: transform 0.15s;
       }
-      .player-token:hover {
-        transform: scale(1.08);
+      .player-token:hover .token-circle {
+        filter: brightness(1.25);
       }
-      .player-token.dragging {
-        opacity: 0.85;
-        cursor: grabbing;
-      }
-
       .token-circle {
-        transition:
-          fill 0.2s,
-          stroke 0.2s;
+        transition: filter 0.15s;
       }
-      .player-token.selected .token-circle {
-        stroke: var(--gold-light) !important;
-        stroke-width: 3 !important;
-        filter: url(#glow-gold);
-      }
-
       .token-number {
         font-family: "Bebas Neue", sans-serif;
         font-size: 13px;
@@ -408,120 +395,254 @@
         pointer-events: none;
         letter-spacing: 0.5px;
       }
+      @keyframes pulse-ring {
+        0% {
+          stroke-width: 1;
+          opacity: 0.4;
+        }
+        50% {
+          stroke-width: 2.5;
+          opacity: 1;
+        }
+        100% {
+          stroke-width: 1;
+          opacity: 0.4;
+        }
+      }
+      .pulse-ring {
+        animation: pulse-ring 2s ease-in-out infinite;
+      }
 
-      /* === PLAYER EDIT PANEL === */
-      .edit-panel {
+      /* PLAYER CARD POPUP */
+      .card-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(4px);
+      }
+      .card-overlay.show {
+        display: flex;
+      }
+      .player-card {
+        width: min(360px, 92vw);
+        background: linear-gradient(160deg, #0d1b3e 0%, #050810 100%);
+        border: 1px solid var(--gold-dark);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        animation: cardIn 0.22s ease both;
+      }
+      @keyframes cardIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .card-top {
         background: linear-gradient(
           135deg,
-          rgba(13, 27, 62, 0.97) 0%,
-          rgba(10, 15, 30, 0.99) 100%
+          rgba(201, 168, 76, 0.15) 0%,
+          rgba(10, 15, 30, 0) 60%
         );
-        border: 1px solid var(--gold-dark);
-        border-top: none;
-        padding: 16px 20px;
-        display: none;
+        padding: 22px 22px 16px;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
       }
-      .edit-panel.visible {
-        display: block;
-      }
-      .edit-panel h3 {
+      .card-num {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 18px;
-        letter-spacing: 3px;
+        font-size: 64px;
+        line-height: 1;
         color: var(--gold);
-        margin-bottom: 12px;
+        opacity: 0.25;
+        position: absolute;
+        top: 8px;
+        right: 16px;
+        pointer-events: none;
       }
-      .edit-fields {
+      .card-pos-badge {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: flex-end;
+        align-items: center;
+        justify-content: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 1px;
+        flex-shrink: 0;
       }
-      .edit-field {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+      .card-info {
+        flex: 1;
       }
-      .edit-field label {
-        font-size: 9px;
-        letter-spacing: 2px;
+      .card-player-name {
+        font-family: "Anton", sans-serif;
+        font-size: 22px;
+        letter-spacing: 1px;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .card-pos-text {
+        font-size: 10px;
+        letter-spacing: 3px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.35);
       }
-      .edit-field input,
-      .edit-field select {
-        background: rgba(5, 8, 15, 0.9);
-        border: 1px solid rgba(201, 168, 76, 0.3);
-        color: var(--white);
-        font-family: "Noto Sans KR", sans-serif;
-        font-size: 13px;
-        padding: 6px 10px;
-        outline: none;
-        width: 120px;
-      }
-      .edit-field input:focus {
-        border-color: var(--gold);
-      }
-      .save-btn {
-        background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-        border: none;
-        color: #000;
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 14px;
+      .card-team-tag {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 9px;
         letter-spacing: 2px;
-        padding: 8px 20px;
-        cursor: pointer;
-        transition: opacity 0.2s;
-      }
-      .save-btn:hover {
-        opacity: 0.85;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 2px;
       }
 
-      /* === TEAM ROSTER === */
+      /* STATS */
+      .card-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        padding: 16px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      .stat-label {
+        font-size: 8px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .stat-bar-wrap {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .stat-bar {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .stat-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+
+      /* TRAITS */
+      .card-traits {
+        padding: 14px 22px 18px;
+      }
+      .traits-title {
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 10px;
+      }
+      .trait-chip {
+        display: inline-block;
+        margin: 3px 4px 3px 0;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .trait-chip.funny {
+        background: rgba(255, 80, 80, 0.1);
+        border-color: rgba(255, 80, 80, 0.25);
+        color: #ff8080;
+      }
+      .trait-chip.skill {
+        background: rgba(79, 195, 247, 0.1);
+        border-color: rgba(79, 195, 247, 0.25);
+        color: #4fc3f7;
+      }
+      .trait-chip.special {
+        background: rgba(201, 168, 76, 0.1);
+        border-color: rgba(201, 168, 76, 0.3);
+        color: var(--gold);
+      }
+
+      .card-close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 20px;
+        cursor: pointer;
+        padding: 4px 8px;
+        transition: color 0.2s;
+        z-index: 2;
+      }
+      .card-close:hover {
+        color: var(--white);
+      }
+
+      /* ROSTER TABLE */
       .roster {
-        margin-top: 0;
         border: 1px solid rgba(201, 168, 76, 0.15);
         border-top: none;
       }
       .roster-header {
         display: grid;
-        grid-template-columns: 36px 1fr 60px 60px;
-        padding: 8px 16px;
+        grid-template-columns: 32px 1fr 48px 56px;
+        padding: 7px 14px;
         font-size: 9px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.22);
         background: rgba(5, 8, 15, 0.6);
         border-bottom: 1px solid rgba(201, 168, 76, 0.1);
       }
       .roster-row {
         display: grid;
-        grid-template-columns: 36px 1fr 60px 60px;
-        padding: 8px 16px;
+        grid-template-columns: 32px 1fr 48px 56px;
+        padding: 8px 14px;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         transition: background 0.15s;
         cursor: pointer;
       }
       .roster-row:hover {
-        background: rgba(201, 168, 76, 0.05);
+        background: rgba(201, 168, 76, 0.06);
       }
-      .roster-row.selected-row {
-        background: rgba(201, 168, 76, 0.1);
-      }
-      .roster-num {
+      .r-num {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 18px;
+        font-size: 17px;
         color: var(--gold);
       }
-      .roster-player-name {
+      .r-name {
         font-size: 13px;
         font-weight: 700;
       }
-      .roster-pos {
+      .r-trait {
         font-size: 10px;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.35);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .pos-badge {
         display: inline-block;
@@ -551,30 +672,23 @@
         color: #ff5050;
         border: 1px solid rgba(255, 80, 80, 0.25);
       }
-      .pos-PV {
-        background: rgba(201, 168, 76, 0.1);
-        color: var(--gold);
-        border: 1px solid rgba(201, 168, 76, 0.3);
-      }
 
-      /* === FOOTER === */
       footer {
         text-align: center;
-        padding: 30px 0 10px;
+        padding: 28px 0 10px;
         font-size: 10px;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.12);
       }
       footer span {
         color: var(--gold-dark);
       }
 
-      /* === ANIMATIONS === */
       @keyframes fadeUp {
         from {
           opacity: 0;
-          transform: translateY(16px);
+          transform: translateY(14px);
         }
         to {
           opacity: 1;
@@ -582,41 +696,33 @@
         }
       }
       .wrapper > * {
-        animation: fadeUp 0.5s ease both;
+        animation: fadeUp 0.45s ease both;
       }
       .wrapper > *:nth-child(2) {
-        animation-delay: 0.1s;
+        animation-delay: 0.08s;
       }
       .wrapper > *:nth-child(3) {
-        animation-delay: 0.2s;
+        animation-delay: 0.16s;
+      }
+      .wrapper > *:nth-child(4) {
+        animation-delay: 0.22s;
       }
 
-      @keyframes pulse-ring {
-        0% {
-          stroke-width: 1;
-          opacity: 0.5;
-        }
-        50% {
-          stroke-width: 2.5;
-          opacity: 1;
-        }
-        100% {
-          stroke-width: 1;
-          opacity: 0.5;
-        }
-      }
-      .pulse-ring {
-        animation: pulse-ring 2s ease-in-out infinite;
-      }
-
-      /* responsive */
-      @media (max-width: 520px) {
+      @media (max-width: 480px) {
         .match-header {
-          padding: 14px 10px;
+          padding: 12px 10px;
         }
-        .controls {
-          flex-wrap: wrap;
-          gap: 8px;
+        .info-sep {
+          padding: 0 6px;
+        }
+        .card-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .header-logo-row {
+          gap: 10px;
+        }
+        .club-logo {
+          width: 64px;
         }
       }
     </style>
@@ -637,69 +743,334 @@
             ><span>★</span>
           </div>
         </div>
-        <h1><span class="yl">영락</span> CL</h1>
-        <p class="subtitle">Youngnak Futsal Championship 2026</p>
+        <div class="header-logo-row">
+          <div class="logo-glow-wrap">
+            <svg
+              class="club-logo"
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              viewBox="0 0 239.54158 231.17612">
+              <defs>
+                <clipPath id="lca" clipPathUnits="userSpaceOnUse">
+                  <path d="M40.098 65.863h19.374V47.167H40.098z" />
+                </clipPath>
+                <clipPath id="lcb" clipPathUnits="userSpaceOnUse">
+                  <path d="M40.098 47.167h19.374v18.696H40.098Z" />
+                </clipPath>
+                <clipPath id="lcc" clipPathUnits="userSpaceOnUse">
+                  <path d="M48.145 60.061h3.801v-1.943h-3.801z" />
+                </clipPath>
+                <clipPath id="lcd" clipPathUnits="userSpaceOnUse">
+                  <path d="M48.145 58.118h3.802v1.943h-3.802z" />
+                </clipPath>
+              </defs>
+              <g style="stroke-width: 0.830788">
+                <g style="stroke-width: 0.107828">
+                  <g style="stroke-width: 0.107828">
+                    <g
+                      clip-path="url(#lca)"
+                      opacity="0.960007"
+                      style="stroke-width: 0.0185802"
+                      transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)">
+                      <g clip-path="url(#lcb)" style="stroke-width: 0.107828">
+                        <path
+                          d="M0 0c.362.465.746 1.374.746 1.374 1.572.081 4.638.081 6.642.081 1.532-2.477 3.811-4.795 6.287-6.327.121-2.092.117-4.167.117-6.091-.667-.119-4.911-3.617-6.444-6.209-1.611 0-5.899-.124-6.012-.04-.512.393-1.375 2.161-2.555 2.869-1.414 1.297-2.75 2.24-4.361 3.419v6.012C-3.34-3.733-1.651-2.121 0 0"
+                          style="
+                            fill: #9c9fa6;
+                            fill-opacity: 1;
+                            fill-rule: nonzero;
+                            stroke: none;
+                            stroke-width: 0.107828;
+                          "
+                          transform="translate(45.678 64.409)" />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c.122-.122.406-.486.528-.608-2.913-.849-6.392-.89-9.425-.282.848.849 2.02 2.791 2.02 2.791s3.681.081 5.218.081C-1.659 1.982-.727.727 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 173.075 33.208)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c0-1.214.001-3.317-.281-4.45-1.012.687-2.811 1.969-3.035 2.306-.082.121 0 3.156 0 4.895.848.607 2.064 1.295 2.792 2.022C-.038 2.164 0 1.824 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 51.52 119.748)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c-.029-.17-1.98-1.374-2.668-2.105-.607 2.831-.647 6.433 0 9.306C-.591 5.498-.01 5.17-.012 5.08-.029 4.056.025.134 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 229.6 147.258)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c-.228-.075-4.398-.032-5.231-.055l-2.126 2.484c1.129.485 6.797.861 9.231-.093C1.53 1.882.066.023 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 156.016 219.831)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c1.012 0-2.831-.041-2.872.121a35 35 0 0 0-.445 2.629c.849-.242 2.305-.404 3.237-.484C-.028-.109-.014 0 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 96.56 85.73)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c0 .069-2.711.122-2.711.079 0-.494-.435-2.552-.485-2.993 1.012.122 2.306.365 3.276.365C.08-2.549 0-.347 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 96.56 144.254)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c0-.069 2.407.061 2.589.061.04 0 .171 1.962.256 2.72.152.043-2.308-.69-2.925-.636C-.08 2.145 0 .348 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 151.582 82.74)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0c0 .069 1.982 0 2.427 0 0 0 .342-2.231.43-2.989-.85.241-1.926.276-2.776.521C.081-2.468 0-.348 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 152.577 145.25)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0s1.031-.141 2.286-.101C3.54-.06 4.47.041 4.47.041l.082-2.144 2.568.122s-.121-1.518-.121-2.327.06-2.893.06-2.893l-2.406.143.08-2.508s-.89.1-2.345.1c-1.457 0-2.206-.08-2.206-.08l-.08 2.548-2.691.041s.079 1.296 0 2.709c-.08 1.437-.181 2.064-.181 2.064l2.851-.101z"
+                    style="
+                      fill: #fff;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 95.303 57.23)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0a.18.18 0 0 1 .179-.183L.928-.19a.184.184 0 0 1 .186.179.187.187 0 0 1-.182.186L.183.179A.18.18 0 0 1 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 131.748 90.396)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="m0 0 .224-.175-.04-.197c-.098-.04-.238-.096-.28-.111h-1.128l-.272.162v.205l.118.079zm.056.366L-1.441.324a.16.16 0 0 1-.096-.03L-1.78.133a.19.19 0 0 1-.081-.152v-.404a.18.18 0 0 1 .089-.156l.404-.243a.2.2 0 0 1 .094-.026h1.213a.2.2 0 0 1 .068.013l.404.163c.058.021.1.071.112.132l.081.405a.18.18 0 0 1-.068.179L.173.327a.2.2 0 0 1-.117.039"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 121.999 84.271)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="m0 0 2.689-.039.203-.154v-.12l-.205-.103-.28-.07C2.36-.484.124-.447.044-.446l-.142.072-.061.161zm-.114.321A.18.18 0 0 1-.268.25l-.243-.324a.19.19 0 0 1-.024-.172l.121-.325a.2.2 0 0 1 .09-.099l.243-.121A.2.2 0 0 1-.004-.81l2.428-.041q.025 0 .046.006l.326.081q.017.005.037.014l.323.163c.061.03.101.093.101.162v.323a.18.18 0 0 1-.074.145L2.86.286a.2.2 0 0 1-.106.038L.002.364A.18.18 0 0 1-.114.321"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 105.24 101.75)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 141.903 150.495)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <g style="stroke-width: 0.107828">
+                    <g
+                      clip-path="url(#lcc)"
+                      opacity="0.979996"
+                      style="stroke-width: 0.0185802"
+                      transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)">
+                      <g clip-path="url(#lcd)" style="stroke-width: 0.107828">
+                        <path
+                          d="M0 0a.182.182 0 0 1 0-.364h2.999l.219-.219c.003-.129.038-1.183.038-1.183a.183.183 0 0 1 .364.012L3.579-.5a.18.18 0 0 1-.053.124l-.323.323a.2.2 0 0 1-.13.053Z"
+                          style="
+                            fill: #40b44d;
+                            fill-opacity: 1;
+                            fill-rule: nonzero;
+                            stroke: none;
+                            stroke-width: 0.107828;
+                          "
+                          transform="translate(48.327 60.06)" />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0a.182.182 0 0 1 0-.364h.688c.1 0 .183.082.183.182A.183.183 0 0 1 .688 0Z"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 134.754 81.251)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 101.746 122.262)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0a.183.183 0 0 1 0-.365h.384v-.181c0-.1.083-.181.183-.181s.181.081.181.181v.364A.18.18 0 0 1 .567 0Z"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 141.759 137.767)" />
+                </g>
+                <g style="stroke-width: 0.107828">
+                  <path
+                    d="M0 0v-.004a.18.18 0 0 1 .179-.18l2.289-.04v-.162H.182a.18.18 0 0 1-.133-.06.18.18 0 0 1-.048-.137l.04-.527a.18.18 0 0 1 .184-.166l2.508.039a.184.184 0 0 1 .181.184.185.185 0 0 1-.187.181L.391-.912.378-.75h2.273c.1 0 .18.08.18.181v.526a.18.18 0 0 1-.178.182L.185.178A.18.18 0 0 1 0 0"
+                    style="
+                      fill: #40b44d;
+                      fill-opacity: 1;
+                      fill-rule: nonzero;
+                      stroke: none;
+                      stroke-width: 0.107828;
+                    "
+                    transform="matrix(12.36534 0 0 -12.36534 99.984 131.983)" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="header-title">
+            <h1><span class="yl">영락</span> CL</h1>
+            <p class="subtitle">Youngnak Futsal Championship 2026</p>
+          </div>
+        </div>
       </header>
 
       <div class="gold-divider"></div>
 
+      <!-- MATCH INFO -->
+      <div class="match-info-bar">
+        <div class="match-info-item">
+          <span class="info-text"
+            >📅 2026. 04. 11 <span class="info-accent">SAT</span></span
+          >
+        </div>
+        <div class="info-sep">·</div>
+        <div class="match-info-item">
+          <span class="info-text"
+            >🕕 KO <span class="info-accent">18:00</span></span
+          >
+        </div>
+        <div class="info-sep">·</div>
+        <div class="match-info-item">
+          <span class="info-text">📍 고양불스 풋살파크</span>
+        </div>
+      </div>
+      <div class="venue-address">통일로396번길 78-25, 고양</div>
+
       <!-- MATCH HEADER -->
       <div class="match-header">
         <div class="team-name-block">
-          <div class="team-label">Home</div>
-          <div
-            class="team-name"
-            id="team-a-name"
-            ondblclick="editTeamName('a')">
-            레전드 FC
-          </div>
+          <div class="team-label">Team A</div>
+          <div class="team-name-display" id="team-a-display">?</div>
         </div>
         <div class="vs-block">
           <div class="vs-text">VS</div>
-          <div class="match-date" id="match-date">GROUP STAGE · MD1</div>
+          <div class="match-stage">GROUP STAGE · MD1</div>
         </div>
         <div class="team-name-block">
-          <div class="team-label">Away</div>
-          <div
-            class="team-name"
-            id="team-b-name"
-            ondblclick="editTeamName('b')">
-            다크나이츠
-          </div>
+          <div class="team-label">Team B</div>
+          <div class="team-name-display" id="team-b-display">?</div>
         </div>
       </div>
 
       <!-- TABS -->
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTeam('a', this)">
-          홈 포메이션
+          🔵 ?
         </button>
-        <button class="tab-btn" onclick="switchTeam('b', this)">
-          어웨이 포메이션
-        </button>
+        <button class="tab-btn" onclick="switchTeam('b', this)">🔴 ?</button>
       </div>
 
-      <!-- TEAM A PANEL -->
+      <!-- TEAM A -->
       <div class="formation-panel active" id="panel-a">
-        <div class="controls">
-          <div class="formation-select-wrap">
-            <label>포메이션</label>
-            <select
-              class="formation-select"
-              onchange="applyFormation('a', this.value)">
-              <option value="2-2-1">2-2-1</option>
-              <option value="3-1-1">3-1-1</option>
-              <option value="1-3-1">1-3-1</option>
-              <option value="2-1-2">2-1-2</option>
-            </select>
-          </div>
-          <button
-            class="edit-toggle"
-            id="edit-toggle-a"
-            onclick="toggleEdit('a')">
-            ✎ 선수 편집
-          </button>
-        </div>
         <div class="pitch-container">
           <svg
             class="pitch-svg"
@@ -707,36 +1078,19 @@
             viewBox="0 0 340 560"
             xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <filter id="glow-gold">
+              <filter id="glow-a">
                 <feGaussianBlur stdDeviation="3" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
-              <filter id="glow-soft">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              <radialGradient id="pitch-grad" cx="50%" cy="50%" r="50%">
+              <radialGradient id="pg-a" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#256b2e" />
                 <stop offset="100%" stop-color="#1a4d22" />
               </radialGradient>
-              <linearGradient id="home-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#1a3070" />
-                <stop offset="100%" stop-color="#0d1b3e" />
-              </linearGradient>
-              <linearGradient id="gk-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#8a6a1a" />
-                <stop offset="100%" stop-color="#4a3800" />
-              </linearGradient>
             </defs>
-            <!-- pitch bg -->
-            <rect width="340" height="560" fill="url(#pitch-grad)" rx="4" />
-            <!-- stripes -->
+            <rect width="340" height="560" fill="url(#pg-a)" rx="4" />
             <rect
               x="0"
               y="0"
@@ -767,7 +1121,6 @@
               width="340"
               height="56"
               fill="rgba(255,255,255,0.025)" />
-            <!-- outer border -->
             <rect
               x="14"
               y="14"
@@ -777,7 +1130,6 @@
               stroke="rgba(255,255,255,0.45)"
               stroke-width="2"
               rx="2" />
-            <!-- halfway line -->
             <line
               x1="14"
               y1="280"
@@ -785,7 +1137,6 @@
               y2="280"
               stroke="rgba(255,255,255,0.45)"
               stroke-width="1.5" />
-            <!-- center circle -->
             <circle
               cx="170"
               cy="280"
@@ -794,7 +1145,6 @@
               stroke="rgba(255,255,255,0.4)"
               stroke-width="1.5" />
             <circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)" />
-            <!-- top penalty area -->
             <rect
               x="72"
               y="14"
@@ -817,7 +1167,6 @@
               fill="none"
               stroke="rgba(255,255,255,0.35)"
               stroke-width="1.2" />
-            <!-- bottom penalty area -->
             <rect
               x="72"
               y="476"
@@ -840,7 +1189,6 @@
               fill="none"
               stroke="rgba(255,255,255,0.35)"
               stroke-width="1.2" />
-            <!-- corner arcs -->
             <path
               d="M 14 24 A 10 10 0 0 1 24 14"
               fill="none"
@@ -861,7 +1209,6 @@
               fill="none"
               stroke="rgba(255,255,255,0.35)"
               stroke-width="1.2" />
-            <!-- goals -->
             <rect
               x="126"
               y="8"
@@ -878,74 +1225,13 @@
               fill="rgba(201,168,76,0.1)"
               stroke="rgba(201,168,76,0.5)"
               stroke-width="1.5" />
-            <!-- players rendered by JS -->
           </svg>
-        </div>
-        <div class="edit-panel" id="edit-panel-a">
-          <h3>선수 정보 수정</h3>
-          <div class="edit-fields">
-            <div class="edit-field">
-              <label>등번호</label>
-              <input
-                type="number"
-                id="edit-num-a"
-                min="1"
-                max="99"
-                placeholder="10"
-                style="width: 70px" />
-            </div>
-            <div class="edit-field">
-              <label>선수명</label>
-              <input
-                type="text"
-                id="edit-name-a"
-                placeholder="홍길동"
-                style="width: 140px" />
-            </div>
-            <div class="edit-field">
-              <label>포지션</label>
-              <select
-                id="edit-pos-a"
-                class="formation-select"
-                style="
-                  width: 90px;
-                  font-size: 13px;
-                  font-family: &quot;Noto Sans KR&quot;, sans-serif;
-                ">
-                <option value="GK">GK</option>
-                <option value="DEF">DEF</option>
-                <option value="MID">MID</option>
-                <option value="FWD">FWD</option>
-                <option value="PV">PV</option>
-              </select>
-            </div>
-            <button class="save-btn" onclick="savePlayer('a')">저장</button>
-          </div>
         </div>
         <div class="roster" id="roster-a"></div>
       </div>
 
-      <!-- TEAM B PANEL -->
+      <!-- TEAM B -->
       <div class="formation-panel" id="panel-b">
-        <div class="controls">
-          <div class="formation-select-wrap">
-            <label>포메이션</label>
-            <select
-              class="formation-select"
-              onchange="applyFormation('b', this.value)">
-              <option value="2-2-1">2-2-1</option>
-              <option value="3-1-1">3-1-1</option>
-              <option value="1-3-1">1-3-1</option>
-              <option value="2-1-2">2-1-2</option>
-            </select>
-          </div>
-          <button
-            class="edit-toggle"
-            id="edit-toggle-b"
-            onclick="toggleEdit('b')">
-            ✎ 선수 편집
-          </button>
-        </div>
         <div class="pitch-container">
           <svg
             class="pitch-svg"
@@ -953,27 +1239,19 @@
             viewBox="0 0 340 560"
             xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <filter id="glow-gold-b">
+              <filter id="glow-b">
                 <feGaussianBlur stdDeviation="3" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
-              <radialGradient id="pitch-grad-b" cx="50%" cy="50%" r="50%">
+              <radialGradient id="pg-b" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#256b2e" />
                 <stop offset="100%" stop-color="#1a4d22" />
               </radialGradient>
-              <linearGradient id="away-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#6b1515" />
-                <stop offset="100%" stop-color="#3d0a0a" />
-              </linearGradient>
-              <linearGradient id="gk-grad-b" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#8a6a1a" />
-                <stop offset="100%" stop-color="#4a3800" />
-              </linearGradient>
             </defs>
-            <rect width="340" height="560" fill="url(#pitch-grad-b)" rx="4" />
+            <rect width="340" height="560" fill="url(#pg-b)" rx="4" />
             <rect
               x="0"
               y="0"
@@ -1110,488 +1388,341 @@
               stroke-width="1.5" />
           </svg>
         </div>
-        <div class="edit-panel" id="edit-panel-b">
-          <h3>선수 정보 수정</h3>
-          <div class="edit-fields">
-            <div class="edit-field">
-              <label>등번호</label>
-              <input
-                type="number"
-                id="edit-num-b"
-                min="1"
-                max="99"
-                placeholder="10"
-                style="width: 70px" />
+        <div class="roster" id="roster-b"></div>
+      </div>
+
+      <!-- PLAYER CARD POPUP -->
+      <div class="card-overlay" id="card-overlay">
+        <div class="player-card" id="player-card">
+          <button class="card-close" onclick="closeCard()">✕</button>
+          <div class="card-num" id="c-num"></div>
+          <div class="card-top">
+            <div class="card-pos-badge" id="c-pos-badge"></div>
+            <div class="card-info">
+              <div class="card-player-name" id="c-name"></div>
+              <div class="card-pos-text" id="c-pos-text"></div>
+              <div class="card-team-tag" id="c-team-tag"></div>
             </div>
-            <div class="edit-field">
-              <label>선수명</label>
-              <input
-                type="text"
-                id="edit-name-b"
-                placeholder="홍길동"
-                style="width: 140px" />
-            </div>
-            <div class="edit-field">
-              <label>포지션</label>
-              <select
-                id="edit-pos-b"
-                class="formation-select"
-                style="
-                  width: 90px;
-                  font-size: 13px;
-                  font-family: &quot;Noto Sans KR&quot;, sans-serif;
-                ">
-                <option value="GK">GK</option>
-                <option value="DEF">DEF</option>
-                <option value="MID">MID</option>
-                <option value="FWD">FWD</option>
-                <option value="PV">PV</option>
-              </select>
-            </div>
-            <button class="save-btn" onclick="savePlayer('b')">저장</button>
+          </div>
+          <div class="card-stats" id="c-stats"></div>
+          <div class="card-traits">
+            <div class="traits-title">특성 · TRAITS</div>
+            <div id="c-traits"></div>
           </div>
         </div>
-        <div class="roster" id="roster-b"></div>
       </div>
 
       <div class="gold-divider" style="margin-top: 24px"></div>
       <footer>
-        영락중학교 풋살 챔피언스리그 2026 <span>·</span> Legend Football Club
+        영락중학교 풋살 챔피언스리그 2026 <span>·</span> 선수 클릭 시 카드 확인
+        가능
       </footer>
     </div>
 
     <script>
-      // ============================================================
-      // DATA
-      // ============================================================
-      const teamData = {
-        a: {
-          name: "레전드 FC",
-          color: "home-grad",
-          gkColor: "gk-grad",
-          formation: "2-2-1",
-          players: [
-            { id: 1, num: 1, name: "수문장", pos: "GK" },
-            { id: 2, num: 4, name: "수비1", pos: "DEF" },
-            { id: 3, num: 5, name: "수비2", pos: "DEF" },
-            { id: 4, num: 8, name: "미드1", pos: "MID" },
-            { id: 5, num: 10, name: "미드2", pos: "MID" },
-            { id: 6, num: 9, name: "에이스", pos: "FWD" },
+      // ===================== PLAYER DATA =====================
+      const PLAYERS = {
+        // 김범철: 존재감은 크지만 뜀박질은 포기. GK로 배치가 답
+        bc: {
+          name: "김범철",
+          num: 21,
+          pos: "GK",
+          team: "a",
+          stats: {
+            스피드: 18,
+            슈팅: 85,
+            패스: 62,
+            드리블: 40,
+            체력: 35,
+            수비: 72,
+          },
+          traits: [
+            { text: "🐷 돼지x", type: "funny" },
+            { text: "잘 안 뜀", type: "funny" },
+            { text: "골문 수호 특기", type: "skill" },
           ],
         },
-        b: {
-          name: "다크나이츠",
-          color: "away-grad",
-          gkColor: "gk-grad-b",
-          formation: "2-2-1",
-          players: [
-            { id: 1, num: 1, name: "골키퍼", pos: "GK" },
-            { id: 2, num: 3, name: "수비A", pos: "DEF" },
-            { id: 3, num: 6, name: "수비B", pos: "DEF" },
-            { id: 4, num: 7, name: "미드A", pos: "MID" },
-            { id: 5, num: 11, name: "미드B", pos: "MID" },
-            { id: 6, num: 9, name: "스트라이커", pos: "FWD" },
+
+        // 임시원: 존잘 + 왼발의 마법사 → FWD
+        tj: {
+          name: "임시원",
+          num: 9,
+          pos: "FWD",
+          team: "a",
+          stats: {
+            스피드: 98,
+            슈팅: 95,
+            패스: 40,
+            드리블: 92,
+            체력: 97,
+            수비: 90,
+          },
+          traits: [
+            { text: "💅 존잘", type: "special" },
+            { text: "🪄 왼발의 마법사", type: "skill" },
+            { text: "솔로지옥6 신청", type: "funny" },
+            { text: "씹테토남", type: "funny" },
+          ],
+        },
+        // 박기빈: 풋살 좀 함 → MID
+        kb: {
+          name: "박기빈",
+          num: 7,
+          pos: "MID",
+          team: "a",
+          stats: {
+            스피드: 70,
+            슈팅: 68,
+            패스: 75,
+            드리블: 72,
+            체력: 74,
+            수비: 65,
+          },
+          traits: [
+            { text: "풋살 좀 함", type: "skill" },
+            { text: "💔 모태솔로", type: "funny" },
+          ],
+        },
+        // 문태종: 풋살 잘함 + 잘생김 → 팀의 큰 도움
+        sw: {
+          name: "문태종",
+          num: 10,
+          pos: "FWD",
+          team: "a",
+          stats: {
+            스피드: 82,
+            슈팅: 91,
+            패스: 78,
+            드리블: 88,
+            체력: 85,
+            수비: 55,
+          },
+          traits: [
+            { text: "⚽ 풋살 잘함", type: "skill" },
+            { text: "😎 잘생김 TOP2", type: "special" },
+          ],
+        },
+        // 문승재: 95KG + F4 → DEF
+        sj: {
+          name: "문승재",
+          num: 5,
+          pos: "DEF",
+          team: "a",
+          stats: {
+            스피드: 48,
+            슈팅: 60,
+            패스: 58,
+            드리블: 45,
+            체력: 88,
+            수비: 90,
+          },
+          traits: [
+            { text: "👑 영락중 F4", type: "special" },
+            { text: "⚖️ 95KG ㄷㄷ", type: "funny" },
+            { text: "대학생", type: "skill" },
+          ],
+        },
+        // 이지융: 에겐남 + 미필 → DEF (패기 있음)
+        jy: {
+          name: "이지융",
+          num: 3,
+          pos: "DEF",
+          team: "a",
+          stats: {
+            스피드: 72,
+            슈팅: 55,
+            패스: 62,
+            드리블: 58,
+            체력: 80,
+            수비: 75,
+          },
+          traits: [
+            { text: "😤 씹에겐남", type: "funny" },
+            { text: "🪖 미필 ㅋㅋ", type: "funny" },
+            { text: "👟 풋살화 샀다고 신남", type: "funny" },
+          ],
+        },
+
+        // TEAM B =====================
+        // 선태민: 파워에이드 = 체력갑 → FWD
+        tm: {
+          name: "선태민",
+          num: 11,
+          pos: "FWD",
+          team: "b",
+          stats: {
+            스피드: 85,
+            슈팅: 79,
+            패스: 70,
+            드리블: 77,
+            체력: 99,
+            수비: 52,
+          },
+          traits: [
+            { text: "⚡ 파워에이드", type: "special" },
+            { text: "⚡ 강남구청 수호자", type: "special" },
+            { text: "체력 99", type: "skill" },
+          ],
+        },
+        // 김선우: 잘 뛰어다님 → MID
+        su: {
+          name: "김선우",
+          num: 8,
+          pos: "MID",
+          team: "b",
+          stats: {
+            스피드: 88,
+            슈팅: 65,
+            패스: 72,
+            드리블: 74,
+            체력: 82,
+            수비: 60,
+          },
+          traits: [
+            { text: "🏃 잘 뛰어다님", type: "skill" },
+            { text: "😷 얼굴 공 맞으면 물어줘야 함", type: "funny" },
+            { text: "🍺 술 존나 못 마심", type: "funny" },
+          ],
+        },
+        // 한정호: 세차장 CEO + 자차 → GK (든든한 배경)
+        jh: {
+          name: "한정호",
+          num: 1,
+          pos: "GK",
+          team: "b",
+          stats: {
+            스피드: 55,
+            슈팅: 50,
+            패스: 60,
+            드리블: 48,
+            체력: 72,
+            수비: 80,
+          },
+          traits: [
+            { text: "🚗 세차장 CEO", type: "special" },
+            { text: "자차 보유", type: "special" },
+            { text: "풋살 처음", type: "funny" },
+          ],
+        },
+        // 허정현: 장발 → MID (비주얼 미드)
+        jj: {
+          name: "허정현",
+          num: 6,
+          pos: "MID",
+          team: "b",
+          stats: {
+            스피드: 74,
+            슈팅: 62,
+            패스: 78,
+            드리블: 68,
+            체력: 76,
+            수비: 63,
+          },
+          traits: [{ text: "💇 장발", type: "special" }],
+        },
+        // 박세준: 무릎 아픔 → DEF (움직임 제한)
+        sej: {
+          name: "박세준",
+          num: 4,
+          pos: "DEF",
+          team: "b",
+          stats: {
+            스피드: 55,
+            슈팅: 58,
+            패스: 65,
+            드리블: 52,
+            체력: 60,
+            수비: 78,
+          },
+          traits: [
+            { text: "💔 솔로", type: "funny" },
+            { text: "🦵 무릎 아픔", type: "funny" },
+            { text: " 무릎 아픔", type: "funny" },
+          ],
+        },
+        // 정진욱: 신장 결함 + 기흉 → DEF (한계 속의 전사)
+        jw: {
+          name: "정진욱",
+          num: 2,
+          pos: "DEF",
+          team: "b",
+          stats: {
+            스피드: 45,
+            슈팅: 52,
+            패스: 68,
+            드리블: 50,
+            체력: 40,
+            수비: 82,
+          },
+          traits: [
+            { text: "📏 신장 결함으로 잘 못 뜀", type: "funny" },
+            { text: "🫁 기흉으로 수능 혼자 봄", type: "funny" },
+            { text: "불굴의 전사", type: "skill" },
           ],
         },
       };
 
-      // formation positions: [x%, y%] on 340x560 viewBox
-      // y: 0=top(opponent goal), 560=bottom(own goal)
-      // Futsal: GK at bottom, FWD at top
-      const FORMATIONS = {
-        "2-2-1": [
-          [170, 510], // GK
-          [110, 420],
-          [230, 420], // DEF
-          [110, 300],
-          [230, 300], // MID
-          [170, 140], // FWD
+      const FORMATION = {
+        a: [
+          "2-2-1",
+          [
+            [170, 510],
+            [110, 420],
+            [230, 420],
+            [110, 295],
+            [230, 295],
+            [170, 140],
+          ],
         ],
-        "3-1-1": [
-          [170, 510],
-          [80, 410],
-          [170, 420],
-          [260, 410],
-          [170, 290],
-          [170, 140],
+        b: [
+          "2-2-1",
+          [
+            [170, 510],
+            [110, 420],
+            [230, 420],
+            [110, 295],
+            [230, 295],
+            [170, 140],
+          ],
         ],
-        "1-3-1": [
-          [170, 510],
-          [170, 430],
-          [80, 320],
-          [170, 300],
-          [260, 320],
-          [170, 140],
-        ],
-        "2-1-2": [
-          [170, 510],
-          [100, 420],
-          [240, 420],
-          [170, 330],
-          [100, 200],
-          [240, 200],
-        ],
+      };
+
+      const TEAMS = {
+        a: {
+          name: "?",
+          color: "#1a3070",
+          stroke: "#4fc3f7",
+          order: ["bc", "sj", "jy", "kb", "sw", "tj"],
+        },
+        b: {
+          name: "?",
+          color: "#6e1a1a",
+          stroke: "#ff6b6b",
+          order: ["jh", "sej", "jw", "jj", "su", "tm"],
+        },
       };
 
       const POS_COLORS = {
-        GK: { fill: "#8a6a1a", stroke: "#c9a84c" },
-        DEF: { fill: "#0d3a6e", stroke: "#4fc3f7" },
-        MID: { fill: "#1a5c1a", stroke: "#64dd64" },
-        FWD: { fill: "#6e0d0d", stroke: "#ff5050" },
-        PV: { fill: "#3d2060", stroke: "#b060ff" },
+        GK: { fill: "#6a4a00", stroke: "#c9a84c", text: "#ffc94a" },
+        DEF: { fill: "#0d3a6e", stroke: "#4fc3f7", text: "#4fc3f7" },
+        MID: { fill: "#1a5c1a", stroke: "#64dd64", text: "#64dd64" },
+        FWD: { fill: "#6e0d0d", stroke: "#ff5050", text: "#ff7070" },
       };
 
-      let selectedPlayer = { team: null, idx: null };
-      let editMode = { a: false, b: false };
-      let isDragging = false;
-      let dragState = null;
-
-      // ============================================================
-      // RENDER
-      // ============================================================
-      function renderPitch(team) {
-        const svg = document.getElementById(`pitch-${team}`);
-        // remove old players
-        svg.querySelectorAll(".player-group").forEach((el) => el.remove());
-
-        const td = teamData[team];
-        const positions = FORMATIONS[td.formation];
-
-        td.players.forEach((p, i) => {
-          const [cx, cy] = positions[i] || [170, 280];
-          const col = POS_COLORS[p.pos] || POS_COLORS.MID;
-          const isSelected =
-            selectedPlayer.team === team && selectedPlayer.idx === i;
-
-          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-          g.classList.add("player-group", "player-token");
-          if (isSelected) g.classList.add("selected");
-          g.setAttribute("transform", `translate(${cx}, ${cy})`);
-          g.dataset.team = team;
-          g.dataset.idx = i;
-
-          // shadow
-          const shadow = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "ellipse",
-          );
-          shadow.setAttribute("rx", "22");
-          shadow.setAttribute("ry", "6");
-          shadow.setAttribute("cy", "22");
-          shadow.setAttribute("fill", "rgba(0,0,0,0.35)");
-
-          // pulse ring (selected)
-          if (isSelected) {
-            const ring = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "circle",
-            );
-            ring.setAttribute("r", "26");
-            ring.setAttribute("fill", "none");
-            ring.setAttribute("stroke", "#f0d080");
-            ring.setAttribute("stroke-width", "1.5");
-            ring.classList.add("pulse-ring");
-            g.appendChild(ring);
-          }
-
-          // outer ring
-          const outerRing = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "circle",
-          );
-          outerRing.setAttribute("r", "22");
-          outerRing.setAttribute("fill", "none");
-          outerRing.setAttribute("stroke", col.stroke);
-          outerRing.setAttribute("stroke-width", isSelected ? "2.5" : "1.5");
-          outerRing.setAttribute("opacity", "0.7");
-
-          // main circle
-          const circle = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "circle",
-          );
-          circle.setAttribute("r", "19");
-          circle.setAttribute("fill", col.fill);
-          circle.setAttribute("stroke", col.stroke);
-          circle.setAttribute("stroke-width", isSelected ? "3" : "2");
-          circle.classList.add("token-circle");
-
-          // number
-          const numText = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          numText.classList.add("token-number");
-          numText.setAttribute("y", "-3");
-          numText.textContent = p.num;
-
-          // name
-          const nameText = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          nameText.classList.add("token-name");
-          nameText.setAttribute("y", "7");
-          nameText.textContent =
-            p.name.length > 4 ? p.name.slice(0, 4) : p.name;
-
-          // label below
-          const label = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          label.classList.add("token-label");
-          label.setAttribute("y", "32");
-          label.textContent = p.pos;
-
-          g.appendChild(shadow);
-          g.appendChild(outerRing);
-          g.appendChild(circle);
-          g.appendChild(numText);
-          g.appendChild(nameText);
-          g.appendChild(label);
-
-          // events
-          g.addEventListener("click", () => selectPlayer(team, i));
-          if (editMode[team]) {
-            makeDraggable(g, team, i, svg);
-          }
-
-          svg.appendChild(g);
-        });
-      }
-
-      function renderRoster(team) {
-        const el = document.getElementById(`roster-${team}`);
-        const td = teamData[team];
-        let html = `<div class="roster-header">
-    <div>#</div><div>선수명</div><div>포지션</div><div>등번호</div>
-  </div>`;
-        td.players.forEach((p, i) => {
-          const sel =
-            selectedPlayer.team === team && selectedPlayer.idx === i
-              ? "selected-row"
-              : "";
-          html += `<div class="roster-row ${sel}" onclick="selectPlayer('${team}', ${i})">
-      <div class="roster-num">${p.num}</div>
-      <div class="roster-player-name">${p.name}</div>
-      <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
-      <div class="roster-pos">${i === 0 ? "주장" : ""}</div>
-    </div>`;
-        });
-        el.innerHTML = html;
-      }
-
-      function render(team) {
-        renderPitch(team);
-        renderRoster(team);
-        // update edit panel if player selected
-        if (selectedPlayer.team === team && selectedPlayer.idx !== null) {
-          fillEditPanel(team);
-        }
-      }
-
-      // ============================================================
-      // SELECTION
-      // ============================================================
-      function selectPlayer(team, idx) {
-        if (selectedPlayer.team === team && selectedPlayer.idx === idx) {
-          selectedPlayer = { team: null, idx: null };
-        } else {
-          selectedPlayer = { team, idx };
-        }
-        render(team);
-        if (selectedPlayer.idx !== null && editMode[team]) {
-          document
-            .getElementById(`edit-panel-${team}`)
-            .classList.add("visible");
-          fillEditPanel(team);
-        }
-      }
-
-      function fillEditPanel(team) {
-        const p = teamData[team].players[selectedPlayer.idx];
-        if (!p) return;
-        document.getElementById(`edit-num-${team}`).value = p.num;
-        document.getElementById(`edit-name-${team}`).value = p.name;
-        document.getElementById(`edit-pos-${team}`).value = p.pos;
-      }
-
-      // ============================================================
-      // EDIT
-      // ============================================================
-      function toggleEdit(team) {
-        editMode[team] = !editMode[team];
-        const btn = document.getElementById(`edit-toggle-${team}`);
-        const panel = document.getElementById(`edit-panel-${team}`);
-        if (editMode[team]) {
-          btn.classList.add("on");
-          btn.textContent = "✓ 편집 완료";
-          if (selectedPlayer.team === team) panel.classList.add("visible");
-        } else {
-          btn.classList.remove("on");
-          btn.textContent = "✎ 선수 편집";
-          panel.classList.remove("visible");
-          selectedPlayer = { team: null, idx: null };
-        }
-        render(team);
-      }
-
-      function savePlayer(team) {
-        if (selectedPlayer.team !== team || selectedPlayer.idx === null) return;
-        const p = teamData[team].players[selectedPlayer.idx];
-        p.num =
-          parseInt(document.getElementById(`edit-num-${team}`).value) || p.num;
-        p.name =
-          document.getElementById(`edit-name-${team}`).value.trim() || p.name;
-        p.pos = document.getElementById(`edit-pos-${team}`).value;
-        render(team);
-      }
-
-      function applyFormation(team, val) {
-        teamData[team].formation = val;
-        selectedPlayer = { team: null, idx: null };
-        render(team);
-      }
-
-      function switchTeam(team, btn) {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        document
-          .querySelectorAll(".formation-panel")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById(`panel-${team}`).classList.add("active");
-      }
-
-      function editTeamName(team) {
-        const el = document.getElementById(`team-${team}-name`);
-        const current = el.textContent;
-        const input = document.createElement("input");
-        input.value = current;
-        input.style.cssText =
-          "background:transparent;border:none;border-bottom:1px solid #c9a84c;color:white;font-family:Anton,sans-serif;font-size:inherit;letter-spacing:1px;outline:none;width:120px;text-align:center";
-        el.textContent = "";
-        el.appendChild(input);
-        input.focus();
-        const done = () => {
-          teamData[team].name = input.value.trim() || current;
-          el.textContent = teamData[team].name;
-        };
-        input.addEventListener("blur", done);
-        input.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") done();
-        });
-      }
-
-      // ============================================================
-      // DRAG
-      // ============================================================
-      function makeDraggable(g, team, idx, svg) {
-        g.style.cursor = "grab";
-
-        const getPoint = (e) => {
-          const rect = svg.getBoundingClientRect();
-          const vbW = 340,
-            vbH = 560;
-          const scaleX = vbW / rect.width;
-          const scaleY = vbH / rect.height;
-          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-          const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-          return {
-            x: (clientX - rect.left) * scaleX,
-            y: (clientY - rect.top) * scaleY,
-          };
-        };
-
-        const onStart = (e) => {
-          e.preventDefault();
-          isDragging = true;
-          dragState = { team, idx, g, svg };
-          g.style.cursor = "grabbing";
-          g.style.opacity = "0.85";
-          selectedPlayer = { team, idx };
-          render(team); // re-render to show selection
-          // re-grab element after render
-          const newG = svg.querySelector(
-            `[data-team="${team}"][data-idx="${idx}"]`,
-          );
-          if (newG) {
-            dragState.g = newG;
-            newG.style.cursor = "grabbing";
-            newG.style.opacity = "0.85";
-          }
-        };
-
-        const onMove = (e) => {
-          if (!isDragging || !dragState || dragState.idx !== idx) return;
-          e.preventDefault();
-          const pt = getPoint(e);
-          const clampedX = Math.max(25, Math.min(315, pt.x));
-          const clampedY = Math.max(25, Math.min(535, pt.y));
-          if (dragState.g) {
-            dragState.g.setAttribute(
-              "transform",
-              `translate(${clampedX}, ${clampedY})`,
-            );
-          }
-        };
-
-        const onEnd = (e) => {
-          if (!isDragging || !dragState || dragState.idx !== idx) return;
-          const pt = getPoint(
-            e.changedTouches
-              ? {
-                  clientX: e.changedTouches[0].clientX,
-                  clientY: e.changedTouches[0].clientY,
-                }
-              : e,
-          );
-          const clampedX = Math.max(25, Math.min(315, pt.x));
-          const clampedY = Math.max(25, Math.min(535, pt.y));
-          // Update the formation position for this player
-          if (!teamData[team]._customPos)
-            teamData[team]._customPos = [
-              ...FORMATIONS[teamData[team].formation],
-            ];
-          teamData[team]._customPos[idx] = [clampedX, clampedY];
-          FORMATIONS[`_custom_${team}`] = teamData[team]._customPos;
-          isDragging = false;
-          dragState = null;
-          render(team);
-        };
-
-        g.addEventListener("mousedown", onStart);
-        g.addEventListener("touchstart", onStart, { passive: false });
-        document.addEventListener("mousemove", onMove);
-        document.addEventListener("touchmove", onMove, { passive: false });
-        document.addEventListener("mouseup", onEnd);
-        document.addEventListener("touchend", onEnd);
-      }
-
-      // Override render to support custom positions
-      const _origRender = renderPitch;
+      // ===================== RENDER PITCH =====================
       function renderPitch(team) {
         const svg = document.getElementById(`pitch-${team}`);
         svg.querySelectorAll(".player-group").forEach((el) => el.remove());
-
-        const td = teamData[team];
-        let positions = FORMATIONS[td.formation];
-        if (td._customPos && editMode[team]) positions = td._customPos;
-
-        td.players.forEach((p, i) => {
-          const [cx, cy] = positions[i] || [170, 280];
-          const col = POS_COLORS[p.pos] || POS_COLORS.MID;
-          const isSelected =
-            selectedPlayer.team === team && selectedPlayer.idx === i;
-
+        const td = TEAMS[team];
+        const positions = FORMATION[team][1];
+        td.order.forEach((pid, i) => {
+          const p = PLAYERS[pid];
+          const [cx, cy] = positions[i];
+          const col = POS_COLORS[p.pos];
           const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
           g.classList.add("player-group", "player-token");
-          if (isSelected) g.classList.add("selected");
-          g.setAttribute("transform", `translate(${cx}, ${cy})`);
-          g.dataset.team = team;
-          g.dataset.idx = i;
+          g.setAttribute("transform", `translate(${cx},${cy})`);
+          g.dataset.pid = pid;
 
           const shadow = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -1600,20 +1731,7 @@
           shadow.setAttribute("rx", "22");
           shadow.setAttribute("ry", "6");
           shadow.setAttribute("cy", "22");
-          shadow.setAttribute("fill", "rgba(0,0,0,0.35)");
-
-          if (isSelected) {
-            const ring = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "circle",
-            );
-            ring.setAttribute("r", "26");
-            ring.setAttribute("fill", "none");
-            ring.setAttribute("stroke", "#f0d080");
-            ring.setAttribute("stroke-width", "1.5");
-            ring.classList.add("pulse-ring");
-            g.appendChild(ring);
-          }
+          shadow.setAttribute("fill", "rgba(0,0,0,0.4)");
 
           const outerRing = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -1632,7 +1750,7 @@
           circle.setAttribute("r", "19");
           circle.setAttribute("fill", col.fill);
           circle.setAttribute("stroke", col.stroke);
-          circle.setAttribute("stroke-width", isSelected ? "3" : "2");
+          circle.setAttribute("stroke-width", "2");
           circle.classList.add("token-circle");
 
           const numText = document.createElementNS(
@@ -1650,7 +1768,7 @@
           nameText.classList.add("token-name");
           nameText.setAttribute("y", "7");
           nameText.textContent =
-            p.name.length > 4 ? p.name.slice(0, 4) : p.name;
+            p.name.length > 3 ? p.name.slice(0, 3) : p.name;
 
           const label = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -1666,28 +1784,132 @@
           g.appendChild(numText);
           g.appendChild(nameText);
           g.appendChild(label);
-
-          g.addEventListener("click", () => selectPlayer(team, i));
-          if (editMode[team]) makeDraggable(g, team, i, svg);
-
+          g.addEventListener("click", () => openCard(pid));
           svg.appendChild(g);
         });
       }
 
-      // reset custom pos when formation changes
-      const _origApply = applyFormation;
-      function applyFormation(team, val) {
-        teamData[team].formation = val;
-        teamData[team]._customPos = null;
-        selectedPlayer = { team: null, idx: null };
-        render(team);
+      // ===================== RENDER ROSTER =====================
+      function renderRoster(team) {
+        const el = document.getElementById(`roster-${team}`);
+        const td = TEAMS[team];
+        let html = `<div class="roster-header"><div>#</div><div>선수명</div><div>포지션</div><div>특성</div></div>`;
+        td.order.forEach((pid) => {
+          const p = PLAYERS[pid];
+          const firstTrait = p.traits[0]?.text || "-";
+          html += `<div class="roster-row" onclick="openCard('${pid}')">
+      <div class="r-num">${p.num}</div>
+      <div class="r-name">${p.name}</div>
+      <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
+      <div class="r-trait">${firstTrait}</div>
+    </div>`;
+        });
+        el.innerHTML = html;
       }
 
-      // ============================================================
-      // INIT
-      // ============================================================
-      render("a");
-      render("b");
+      // ===================== PLAYER CARD =====================
+      function openCard(pid) {
+        const p = PLAYERS[pid];
+        const col = POS_COLORS[p.pos];
+        const teamName = TEAMS[p.team].name;
+        const teamColor = p.team === "a" ? "#1a3070" : "#6e1a1a";
+        const teamTextColor = p.team === "a" ? "#4fc3f7" : "#ff8080";
+
+        document.getElementById("c-num").textContent = p.num;
+        document.getElementById("c-name").textContent = p.name;
+        document.getElementById("c-pos-text").textContent =
+          p.pos + " · " + posLabel(p.pos);
+
+        const posBadge = document.getElementById("c-pos-badge");
+        posBadge.style.background = col.fill;
+        posBadge.style.border = `2px solid ${col.stroke}`;
+        posBadge.style.color = col.text;
+        posBadge.textContent = p.pos;
+
+        const teamTag = document.getElementById("c-team-tag");
+        teamTag.style.background = teamColor + "33";
+        teamTag.style.border = `1px solid ${teamTextColor}44`;
+        teamTag.style.color = teamTextColor;
+        teamTag.textContent = teamName;
+
+        // stats
+        const statNames = Object.keys(p.stats);
+        const statColors = {
+          스피드: "#ff9040",
+          슈팅: "#ff5050",
+          패스: "#64dd64",
+          드리블: "#4fc3f7",
+          체력: "#c9a84c",
+          수비: "#b060ff",
+        };
+        let statsHtml = "";
+        statNames.forEach((s) => {
+          const val = p.stats[s];
+          const color = statColors[s] || "#aaa";
+          statsHtml += `<div class="stat-item">
+      <div class="stat-label">${s}</div>
+      <div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div>
+      <div class="stat-val" style="color:${color}">${val}</div>
+    </div>`;
+        });
+        document.getElementById("c-stats").innerHTML = statsHtml;
+
+        // traits
+        let traitsHtml = "";
+        p.traits.forEach((t) => {
+          traitsHtml += `<span class="trait-chip ${t.type}">${t.text}</span>`;
+        });
+        document.getElementById("c-traits").innerHTML = traitsHtml;
+
+        const overlay = document.getElementById("card-overlay");
+        overlay.classList.add("show");
+
+        // animate bars after paint
+        setTimeout(() => {
+          overlay.querySelectorAll(".stat-bar").forEach((bar) => {
+            bar.style.width = bar.dataset.val + "%";
+          });
+        }, 60);
+      }
+
+      function closeCard() {
+        document.getElementById("card-overlay").classList.remove("show");
+      }
+
+      function posLabel(pos) {
+        return (
+          { GK: "골키퍼", DEF: "수비수", MID: "미드필더", FWD: "공격수" }[
+            pos
+          ] || pos
+        );
+      }
+
+      function switchTeam(team, btn) {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document
+          .querySelectorAll(".formation-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById(`panel-${team}`).classList.add("active");
+      }
+
+      // 배경 클릭 or ESC → 닫기
+      document
+        .getElementById("card-overlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeCard();
+        });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeCard();
+      });
+
+      // ===================== INIT =====================
+      renderPitch("a");
+      renderRoster("a");
+      renderPitch("b");
+      renderRoster("b");
     </script>
   </body>
 </html>
