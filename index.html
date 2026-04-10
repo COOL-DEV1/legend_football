@@ -1,2257 +1,548 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>영락 챔피언스리그 2026</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap"
-      rel="stylesheet" />
-    <style>
-      :root {
-        --gold: #c9a84c;
-        --gold-light: #f0d080;
-        --gold-dark: #8a6a1a;
-        --bg: #05080f;
-        --white: #f5f5f5;
-        --neon: #4fc3f7;
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background: var(--bg);
-        color: var(--white);
-        font-family: "Noto Sans KR", sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-      .stars-bg {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        background:
-          radial-gradient(
-            ellipse at 20% 10%,
-            rgba(196, 160, 60, 0.12) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 80% 90%,
-            rgba(26, 48, 112, 0.3) 0%,
-            transparent 50%
-          ),
-          var(--bg);
-      }
-      .stars-bg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          radial-gradient(1px 1px at 10% 20%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 30% 60%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 50% 10%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 70% 40%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 85% 75%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 15% 85%, white 0%, transparent 100%),
-          radial-gradient(1px 1px at 60% 90%, white 0%, transparent 100%),
-          radial-gradient(
-            1.5px 1.5px at 90% 15%,
-            rgba(255, 255, 255, 0.7) 0%,
-            transparent 100%
-          );
-        opacity: 0.4;
-      }
-      .wrapper {
-        position: relative;
-        z-index: 1;
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 16px 80px;
-      }
-      header {
-        text-align: center;
-        padding: 36px 0 20px;
-      }
-      .ucl-badge {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-        margin-bottom: 14px;
-      }
-      .star-row {
-        display: flex;
-        gap: 5px;
-      }
-      .star-row span {
-        font-size: 16px;
-        color: var(--gold);
-        text-shadow: 0 0 8px var(--gold);
-        animation: twinkle 2s infinite alternate;
-      }
-      .star-row span:nth-child(2) {
-        animation-delay: 0.3s;
-      }
-      .star-row span:nth-child(3) {
-        animation-delay: 0.6s;
-      }
-      .star-row span:nth-child(4) {
-        animation-delay: 0.9s;
-      }
-      .star-row span:nth-child(5) {
-        animation-delay: 1.2s;
-      }
-      @keyframes twinkle {
-        from {
-          opacity: 0.6;
-          transform: scale(1);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1.15);
-        }
-      }
-      .ucl-logo-text {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 12px;
-        letter-spacing: 4px;
-        color: var(--gold);
-        border: 1px solid var(--gold-dark);
-        padding: 3px 12px;
-      }
-      .header-logo-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 4px;
-      }
-      .logo-glow-wrap {
-        position: relative;
-        flex-shrink: 0;
-      }
-      .logo-glow-wrap::before {
-        content: "";
-        position: absolute;
-        inset: -8px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(64, 180, 77, 0.25) 0%,
-          transparent 70%
-        );
-        animation: logo-pulse 3s ease-in-out infinite;
-      }
-      @keyframes logo-pulse {
-        0%,
-        100% {
-          opacity: 0.5;
-          transform: scale(0.97);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.03);
-        }
-      }
-      .club-logo {
-        width: 80px;
-        height: auto;
-        filter: drop-shadow(0 0 10px rgba(64, 180, 77, 0.5));
-        position: relative;
-        z-index: 1;
-      }
-      .header-title {
-        text-align: left;
-      }
-      h1 {
-        font-family: "Anton", sans-serif;
-        font-size: clamp(28px, 6vw, 58px);
-        letter-spacing: 2px;
-        line-height: 1;
-        text-transform: uppercase;
-      }
-      h1 .yl {
-        color: var(--gold);
-        text-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
-      }
-      .subtitle {
-        font-size: 11px;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
-        margin-top: 6px;
-      }
-      .gold-divider {
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--gold),
-          transparent
-        );
-        margin: 18px 0;
-      }
-      .match-info-bar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0;
-        padding: 10px 16px;
-        background: linear-gradient(
-          90deg,
-          rgba(13, 27, 62, 0) 0%,
-          rgba(13, 27, 62, 0.6) 30%,
-          rgba(13, 27, 62, 0.6) 70%,
-          rgba(13, 27, 62, 0) 100%
-        );
-        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-      }
-      .match-info-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .info-text {
-        font-size: 11px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.55);
-      }
-      .info-accent {
-        color: var(--gold);
-        font-weight: 700;
-      }
-      .info-sep {
-        font-size: 11px;
-        color: rgba(201, 168, 76, 0.3);
-        padding: 0 10px;
-      }
-      .venue-address {
-        text-align: center;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        color: rgba(255, 255, 255, 0.22);
-        padding: 5px 0 14px;
-      }
-      .match-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 16px 24px;
-        background: linear-gradient(
-          135deg,
-          rgba(13, 27, 62, 0.9) 0%,
-          rgba(10, 15, 30, 0.95) 100%
-        );
-        border: 1px solid var(--gold-dark);
-        border-radius: 4px;
-        margin-bottom: 0;
-        position: relative;
-        overflow: hidden;
-      }
-      .match-header::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(201, 168, 76, 0.05),
-          transparent
-        );
-      }
-      .team-name-block {
-        text-align: center;
-        flex: 1;
-      }
-      .team-label {
-        font-size: 10px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
-      }
-      .team-name-display {
-        font-family: "Anton", sans-serif;
-        font-size: clamp(15px, 3vw, 24px);
-        letter-spacing: 1px;
-        color: var(--white);
-      }
-      .vs-block {
-        text-align: center;
-        flex: 0 0 auto;
-      }
-      .vs-text {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 26px;
-        color: var(--gold);
-        line-height: 1;
-      }
-      .match-stage {
-        font-size: 10px;
-        letter-spacing: 2px;
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .tabs {
-        display: flex;
-        gap: 0;
-        margin-bottom: 0;
-      }
-      .tab-btn {
-        flex: 1;
-        padding: 10px;
-        font-family: "Noto Sans KR", sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        background: rgba(10, 15, 30, 0.8);
-        border: 1px solid rgba(201, 168, 76, 0.2);
-        color: rgba(255, 255, 255, 0.4);
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .tab-btn.active {
-        background: linear-gradient(
-          180deg,
-          rgba(201, 168, 76, 0.15) 0%,
-          transparent 100%
-        );
-        border-color: var(--gold);
-        color: var(--gold);
-      }
-      .tab-btn:hover:not(.active) {
-        color: rgba(255, 255, 255, 0.7);
-      }
-      .formation-panel {
-        display: none;
-      }
-      .formation-panel.active {
-        display: block;
-      }
-      .pitch-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 0.6;
-        max-height: 620px;
-        overflow: hidden;
-      }
-      .pitch-svg {
-        width: 100%;
-        height: 100%;
-      }
-      .player-token {
-        cursor: pointer;
-        transition: transform 0.15s;
-      }
-      .player-token:hover .token-circle {
-        filter: brightness(1.25);
-      }
-      .token-circle {
-        transition: filter 0.15s;
-      }
-      .token-number {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
-        fill: white;
-        text-anchor: middle;
-        dominant-baseline: central;
-        pointer-events: none;
-      }
-      .token-name {
-        font-family: "Noto Sans KR", sans-serif;
-        font-size: 8px;
-        font-weight: 700;
-        fill: white;
-        text-anchor: middle;
-        dominant-baseline: central;
-        pointer-events: none;
-      }
-      .token-label {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 9px;
-        fill: rgba(255, 255, 255, 0.8);
-        text-anchor: middle;
-        pointer-events: none;
-        letter-spacing: 0.5px;
-      }
-      .token-ovr {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
-        fill: var(--gold);
-        text-anchor: middle;
-        dominant-baseline: central;
-        pointer-events: none;
-        letter-spacing: 0px;
-      }
-      @keyframes pulse-ring {
-        0% {
-          stroke-width: 1;
-          opacity: 0.4;
-        }
-        50% {
-          stroke-width: 2.5;
-          opacity: 1;
-        }
-        100% {
-          stroke-width: 1;
-          opacity: 0.4;
-        }
-      }
-      .pulse-ring {
-        animation: pulse-ring 2s ease-in-out infinite;
-      }
-      .card-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.75);
-        backdrop-filter: blur(4px);
-      }
-      .card-overlay.show {
-        display: flex;
-      }
-      .player-card {
-        width: min(360px, 92vw);
-        background: linear-gradient(160deg, #0d1b3e 0%, #050810 100%);
-        border: 1px solid var(--gold-dark);
-        border-radius: 6px;
-        overflow: hidden;
-        position: relative;
-        animation: cardIn 0.22s ease both;
-      }
-      @keyframes cardIn {
-        from {
-          opacity: 0;
-          transform: translateY(16px) scale(0.96);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-      .card-top {
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.15) 0%,
-          rgba(10, 15, 30, 0) 60%
-        );
-        padding: 22px 22px 16px;
-        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      .card-num {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 64px;
-        line-height: 1;
-        color: var(--gold);
-        opacity: 0.25;
-        position: absolute;
-        top: 8px;
-        right: 16px;
-        pointer-events: none;
-      }
-      .card-pos-badge {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
-        letter-spacing: 1px;
-        flex-shrink: 0;
-      }
-      .card-info {
-        flex: 1;
-      }
-      .card-player-name {
-        font-family: "Anton", sans-serif;
-        font-size: 22px;
-        letter-spacing: 1px;
-        line-height: 1;
-        margin-bottom: 4px;
-      }
-      .card-pos-text {
-        font-size: 10px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
-      }
-      .card-team-tag {
-        display: inline-block;
-        margin-top: 6px;
-        font-size: 9px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 2px 8px;
-        border-radius: 2px;
-      }
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>영락 챔피언스리그 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold:#c9a84c;--gold-light:#f5d87a;--gold-dark:#7a5c0e;--gold-dim:rgba(201,168,76,0.12);
+  --bg:#04060c;--bg2:#080c18;--bg3:#0d1428;
+  --white:#f0eee8;--muted:rgba(240,238,232,0.38);--muted2:rgba(240,238,232,0.15);
+  --blue:#4fc3f7;--red:#ff5b5b;--green:#40dd70;--orange:#ffa040;--purple:#b060ff;
+  --border:rgba(201,168,76,0.18);--border2:rgba(201,168,76,0.38);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden}
 
-      /* OVR BADGE in card */
-      .card-ovr-badge {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.18) 0%,
-          rgba(201, 168, 76, 0.06) 100%
-        );
-        border: 1px solid rgba(201, 168, 76, 0.35);
-        border-radius: 6px;
-        padding: 8px 14px;
-        flex-shrink: 0;
-      }
-      .card-ovr-label {
-        font-size: 8px;
-        letter-spacing: 2px;
-        color: rgba(201, 168, 76, 0.6);
-        text-transform: uppercase;
-        margin-bottom: 2px;
-      }
-      .card-ovr-val {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 30px;
-        line-height: 1;
-        color: var(--gold);
-        text-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
-      }
+/* ── CANVAS BG ── */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-      .card-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px;
-        padding: 16px 22px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-      }
-      .stat-label {
-        font-size: 8px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .stat-bar-wrap {
-        width: 100%;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .stat-bar {
-        height: 100%;
-        border-radius: 2px;
-        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .stat-val {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 16px;
-        letter-spacing: 1px;
-      }
-      .card-traits {
-        padding: 14px 22px 18px;
-      }
-      .traits-title {
-        font-size: 9px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.25);
-        margin-bottom: 10px;
-      }
-      .trait-chip {
-        display: inline-block;
-        margin: 3px 4px 3px 0;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 700;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: rgba(255, 255, 255, 0.75);
-      }
-      .trait-chip.funny {
-        background: rgba(255, 80, 80, 0.1);
-        border-color: rgba(255, 80, 80, 0.25);
-        color: #ff8080;
-      }
-      .trait-chip.skill {
-        background: rgba(79, 195, 247, 0.1);
-        border-color: rgba(79, 195, 247, 0.25);
-        color: #4fc3f7;
-      }
-      .trait-chip.special {
-        background: rgba(201, 168, 76, 0.1);
-        border-color: rgba(201, 168, 76, 0.3);
-        color: var(--gold);
-      }
-      .card-close {
-        position: absolute;
-        top: 10px;
-        right: 12px;
-        background: none;
-        border: none;
-        color: rgba(255, 255, 255, 0.3);
-        font-size: 20px;
-        cursor: pointer;
-        padding: 4px 8px;
-        transition: color 0.2s;
-        z-index: 2;
-      }
-      .card-close:hover {
-        color: var(--white);
-      }
+/* ── LAYOUT ── */
+.wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 18px 100px}
 
-      /* ROSTER - OVR 컬럼 추가 */
-      .roster {
-        border: 1px solid rgba(201, 168, 76, 0.15);
-        border-top: none;
-      }
-      .roster-header {
-        display: grid;
-        grid-template-columns: 32px 1fr 48px 44px 48px;
-        padding: 7px 14px;
-        font-size: 9px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.22);
-        background: rgba(5, 8, 15, 0.6);
-        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-      }
-      .roster-row {
-        display: grid;
-        grid-template-columns: 32px 1fr 48px 44px 48px;
-        padding: 8px 14px;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        transition: background 0.15s;
-        cursor: pointer;
-      }
-      .roster-row:hover {
-        background: rgba(201, 168, 76, 0.06);
-      }
-      .r-num {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 17px;
-        color: var(--gold);
-      }
-      .r-name {
-        font-size: 13px;
-        font-weight: 700;
-      }
-      .r-trait {
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.35);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .r-ovr {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 16px;
-        color: var(--gold);
-        text-align: right;
-      }
-      .r-ovr.ovr-s {
-        color: #ff6060;
-      } /* 90+ */
-      .r-ovr.ovr-a {
-        color: #ffa040;
-      } /* 80-89 */
-      .r-ovr.ovr-b {
-        color: #64dd64;
-      } /* 70-79 */
-      .r-ovr.ovr-c {
-        color: #4fc3f7;
-      } /* 60-69 */
-      .r-ovr.ovr-d {
-        color: rgba(255, 255, 255, 0.4);
-      } /* ~59 */
+/* ── HEADER ── */
+.header{padding:44px 0 20px;text-align:center;position:relative}
+.ucl-tag{display:inline-flex;align-items:center;gap:10px;padding:5px 18px;border:1px solid var(--border2);background:rgba(201,168,76,0.07);margin-bottom:20px;letter-spacing:5px;font-size:9px;text-transform:uppercase;color:var(--gold)}
+.ucl-tag::before,.ucl-tag::after{content:'★';font-size:10px;color:var(--gold);animation:star-pulse 1.8s ease-in-out infinite}
+.ucl-tag::after{animation-delay:.6s}
+@keyframes star-pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
 
-      .pos-badge {
-        display: inline-block;
-        font-size: 9px;
-        letter-spacing: 1px;
-        padding: 2px 6px;
-        border-radius: 2px;
-        font-weight: 700;
-      }
-      .pos-GK {
-        background: rgba(255, 170, 0, 0.15);
-        color: #ffa500;
-        border: 1px solid rgba(255, 170, 0, 0.3);
-      }
-      .pos-DEF {
-        background: rgba(79, 195, 247, 0.1);
-        color: #4fc3f7;
-        border: 1px solid rgba(79, 195, 247, 0.25);
-      }
-      .pos-MID {
-        background: rgba(100, 221, 100, 0.1);
-        color: #64dd64;
-        border: 1px solid rgba(100, 221, 100, 0.25);
-      }
-      .pos-FWD {
-        background: rgba(255, 80, 80, 0.1);
-        color: #ff5050;
-        border: 1px solid rgba(255, 80, 80, 0.25);
-      }
+.logo-row{display:flex;align-items:center;justify-content:center;gap:22px;margin-bottom:8px}
+.logo-wrap{position:relative;width:88px;height:88px;flex-shrink:0}
+.logo-wrap svg{width:100%;height:100%;filter:drop-shadow(0 0 14px rgba(64,180,77,0.55))}
+.logo-ring{position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(64,180,77,0.3);animation:ring-spin 8s linear infinite}
+@keyframes ring-spin{to{transform:rotate(360deg)}}
 
-      /* TEAM OVR BAR */
-      .team-ovr-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 16px;
-        background: rgba(5, 8, 15, 0.5);
-        border: 1px solid rgba(201, 168, 76, 0.12);
-        border-top: none;
-      }
-      .team-ovr-label {
-        font-size: 9px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .team-ovr-val {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 22px;
-        color: var(--gold);
-        letter-spacing: 2px;
-      }
-      .team-ovr-grade {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
-        letter-spacing: 1px;
-        padding: 2px 8px;
-        border-radius: 2px;
-      }
+.title-block{text-align:left}
+h1{font-family:'Orbitron',sans-serif;font-size:clamp(26px,5.5vw,54px);font-weight:900;letter-spacing:-1px;line-height:.95;text-transform:uppercase}
+h1 .yl{
+  background:linear-gradient(135deg,#f5d87a 0%,#c9a84c 40%,#8a6a1a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,0.4))
+}
+h1 .cl{color:var(--white)}
+.sub{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
-      footer {
-        text-align: center;
-        padding: 28px 0 10px;
-        font-size: 10px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.12);
-      }
-      footer span {
-        color: var(--gold-dark);
-      }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .wrapper > * {
-        animation: fadeUp 0.45s ease both;
-      }
-      .wrapper > *:nth-child(2) {
-        animation-delay: 0.08s;
-      }
-      .wrapper > *:nth-child(3) {
-        animation-delay: 0.16s;
-      }
-      .wrapper > *:nth-child(4) {
-        animation-delay: 0.22s;
-      }
-      @media (max-width: 480px) {
-        .match-header {
-          padding: 12px 10px;
-        }
-        .info-sep {
-          padding: 0 6px;
-        }
-        .card-stats {
-          grid-template-columns: 1fr 1fr;
-        }
-        .header-logo-row {
-          gap: 10px;
-        }
-        .club-logo {
-          width: 64px;
-        }
-        .roster-header,
-        .roster-row {
-          grid-template-columns: 28px 1fr 40px 36px 42px;
-        }
-      }
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px 0;position:relative}
+.sep::before{content:'';position:absolute;left:50%;top:-3px;transform:translateX(-50%);width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px var(--gold)}
 
-      /* ===== COST POPUP ===== */
-      .cost-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 200;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(8px);
-        animation: fadeUp 0.3s ease both;
-      }
-      .cost-card {
-        width: min(360px, 92vw);
-        background: linear-gradient(160deg, #0d1b3e 0%, #05080f 100%);
-        border: 1px solid var(--gold-dark);
-        border-radius: 8px;
-        overflow: hidden;
-        animation: cardIn 0.28s ease both;
-      }
-      .cost-header {
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.18) 0%,
-          rgba(10, 15, 30, 0) 70%
-        );
-        padding: 24px 24px 18px;
-        border-bottom: 1px solid rgba(201, 168, 76, 0.18);
-        text-align: center;
-      }
-      .cost-icon {
-        font-size: 34px;
-        display: block;
-        margin-bottom: 10px;
-      }
-      .cost-title {
-        font-family: "Anton", sans-serif;
-        font-size: 24px;
-        letter-spacing: 3px;
-        color: var(--white);
-        margin-bottom: 5px;
-      }
-      .cost-sub {
-        font-size: 9px;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.28);
-      }
-      .cost-body {
-        padding: 6px 0;
-      }
-      .cost-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 13px 24px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .cost-row-label {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.45);
-        letter-spacing: 0.5px;
-      }
-      .cost-row-val {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 20px;
-        letter-spacing: 1px;
-        color: var(--white);
-      }
-      .cost-row-val.red {
-        color: #ff6060;
-      }
-      .cost-total-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 24px;
-        background: rgba(201, 168, 76, 0.08);
-        border-top: 1px solid rgba(201, 168, 76, 0.25);
-        border-bottom: 1px solid rgba(201, 168, 76, 0.25);
-      }
-      .cost-total-label {
-        font-family: "Anton", sans-serif;
-        font-size: 15px;
-        letter-spacing: 3px;
-        color: var(--gold);
-      }
-      .cost-total-val {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 30px;
-        letter-spacing: 2px;
-        color: var(--gold);
-        text-shadow: 0 0 18px rgba(201, 168, 76, 0.55);
-      }
-      .cost-footer {
-        padding: 18px 24px 20px;
-        text-align: center;
-      }
-      .cost-confirm-btn {
-        width: 100%;
-        padding: 13px;
-        font-family: "Anton", sans-serif;
-        font-size: 15px;
-        letter-spacing: 4px;
-        background: linear-gradient(
-          90deg,
-          rgba(201, 168, 76, 0.18),
-          rgba(201, 168, 76, 0.08)
-        );
-        border: 1px solid var(--gold-dark);
-        color: var(--gold);
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .cost-confirm-btn:hover {
-        background: linear-gradient(
-          90deg,
-          rgba(201, 168, 76, 0.32),
-          rgba(201, 168, 76, 0.18)
-        );
-        border-color: var(--gold);
-        box-shadow: 0 0 18px rgba(201, 168, 76, 0.22);
-      }
-      .cost-note {
-        margin-top: 10px;
-        font-size: 9px;
-        letter-spacing: 1.5px;
-        color: rgba(255, 255, 255, 0.18);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- ===== COST POPUP ===== -->
-    <div class="cost-overlay" id="cost-overlay">
-      <div class="cost-card">
-        <div class="cost-header">
-          <span class="cost-icon">🏟️</span>
-          <div class="cost-title">구장빵 정산</div>
-          <div class="cost-sub">챔피언스리그 · 결승전 · 고양불스 풋살파크</div>
-        </div>
-        <div class="cost-body">
-          <div class="cost-row">
-            <span class="cost-row-label">⚽ 구장 대여료</span>
-            <span class="cost-row-val">120,000원</span>
-          </div>
-          <div class="cost-row">
-            <span class="cost-row-label">❌ 취소 수수료</span>
-            <span class="cost-row-val red">24,000원</span>
-          </div>
-          <div class="cost-row">
-            <span class="cost-row-label">음료비</span>
-            <span class="cost-row-val red">6,000원</span>
-          </div>
-        </div>
-        <div class="cost-total-row">
-          <span class="cost-total-label">TOTAL</span>
-          <span class="cost-total-val">150,000원</span>
-        </div>
-        <div class="cost-footer">
-          <button class="cost-confirm-btn" onclick="closeCostPopup()">
-            확인했습니다 ✓
-          </button>
-          <div class="cost-note" style="font-size: 13px">
-            진팀 10만원 1/N 부담(인당 16700원) <br />
-            이긴팀 5만원 1/N 부담(인당 8400원)
-          </div>
-        </div>
+/* ── INFO BAR ── */
+.info-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;padding:12px 20px;background:linear-gradient(90deg,transparent,rgba(13,20,40,0.8),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.info-item{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.info-item b{color:var(--gold);font-weight:700}
+.info-dot{color:var(--border2);padding:0 12px;font-size:14px}
+.venue-addr{text-align:center;font-size:10px;letter-spacing:1.5px;color:rgba(240,238,232,0.2);padding:5px 0 16px}
+
+/* ── MATCH HEADER ── */
+.match-card{background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);border:1px solid var(--border);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;overflow:hidden}
+.match-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+.match-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.team-blk{text-align:center;flex:1;z-index:1}
+.t-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted)}
+.t-name{font-family:'Orbitron',sans-serif;font-size:clamp(13px,2.8vw,22px);font-weight:700;margin-top:3px;letter-spacing:.5px}
+.vs-blk{text-align:center;flex:0 0 auto;z-index:1}
+.vs-txt{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(201,168,76,0.5)}
+.vs-stage{font-size:9px;letter-spacing:2px;color:var(--muted2);margin-top:2px}
+.live-badge{display:inline-block;background:rgba(255,91,91,0.15);border:1px solid rgba(255,91,91,0.4);color:var(--red);font-size:9px;letter-spacing:2px;padding:2px 8px;margin-top:5px}
+.live-dot{display:inline-block;width:6px;height:6px;background:var(--red);border-radius:50%;margin-right:4px;animation:blink .8s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;background:rgba(4,6,12,0.8);border:1px solid var(--border);border-top:none}
+.tab-btn{flex:1;padding:11px 6px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:none;border:none;color:var(--muted);cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .25s}
+.tab-btn.active{color:var(--gold);background:rgba(201,168,76,0.06)}
+.tab-btn.active::after{transform:scaleX(1)}
+.tab-btn:hover:not(.active){color:var(--white);background:rgba(255,255,255,0.03)}
+
+/* ── PANEL ── */
+.panel{display:none}.panel.active{display:block}
+
+/* ── PITCH ── */
+.pitch-wrap{position:relative;width:100%;overflow:hidden;display:flex;justify-content:center;background:rgba(4,6,12,0.4)}
+.pitch-svg{width:min(450px,75vw);display:block}
+.player-g{cursor:pointer;transition:filter .15s}
+.player-g:hover{filter:brightness(1.3)}
+.p-ring{animation:p-pulse 2.5s ease-in-out infinite}
+@keyframes p-pulse{0%,100%{opacity:.3;r:23}50%{opacity:.7;r:26}}
+
+/* ── ROSTER ── */
+.roster{border:1px solid var(--border);border-top:none}
+.r-head{display:grid;grid-template-columns:36px 1fr 46px 44px 50px;padding:7px 16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);background:rgba(4,6,12,0.7);border-bottom:1px solid rgba(201,168,76,0.08)}
+.r-row{display:grid;grid-template-columns:36px 1fr 46px 44px 50px;padding:10px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.r-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .15s}
+.r-row:hover::before{transform:scaleY(1)}
+.r-row:hover{background:rgba(201,168,76,0.05);padding-left:20px}
+.r-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);opacity:.7;line-height:1}
+.r-name-wrap .r-name{font-size:13px;font-weight:700}
+.r-name-wrap .r-trait{font-size:10px;color:var(--muted);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
+.r-ovr{font-family:'Bebas Neue',sans-serif;font-size:18px;text-align:right;font-weight:700}
+.ovr-s{color:#ff4040;text-shadow:0 0 10px rgba(255,64,64,.4)}
+.ovr-a{color:#ff9020;text-shadow:0 0 8px rgba(255,144,32,.3)}
+.ovr-b{color:#40dd64;text-shadow:0 0 8px rgba(64,221,100,.25)}
+.ovr-c{color:var(--blue);text-shadow:0 0 8px rgba(79,195,247,.25)}
+.ovr-d{color:var(--muted)}
+
+.pos-badge{display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px}
+.pos-GK{background:rgba(255,165,0,.12);color:#ffa500;border:1px solid rgba(255,165,0,.3)}
+.pos-DEF{background:rgba(79,195,247,.1);color:var(--blue);border:1px solid rgba(79,195,247,.25)}
+.pos-MID{background:rgba(64,221,100,.1);color:var(--green);border:1px solid rgba(64,221,100,.25)}
+.pos-FWD{background:rgba(255,91,91,.1);color:var(--red);border:1px solid rgba(255,91,91,.25)}
+
+/* ── TEAM OVR BAR ── */
+.team-ovr{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(4,6,12,0.6);border:1px solid var(--border);border-top:none}
+.t-ovr-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.t-ovr-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px}
+.t-ovr-grade{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;padding:3px 10px;border-radius:2px}
+
+/* ── PLAYER CARD OVERLAY ── */
+.overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.82);backdrop-filter:blur(6px)}
+.overlay.show{display:flex}
+.p-card{width:min(380px,94vw);background:linear-gradient(160deg,var(--bg3) 0%,var(--bg) 100%);border:1px solid var(--border2);border-radius:4px;overflow:hidden;animation:card-in .22s ease both}
+@keyframes card-in{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+.card-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.12) 0%,transparent 50%);pointer-events:none}
+.card-head{padding:22px 24px 16px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;gap:16px;position:relative;overflow:hidden}
+.card-num-bg{position:absolute;top:4px;right:12px;font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:var(--gold);opacity:.12;pointer-events:none;z-index:0}
+.card-pos-ico{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;flex-shrink:0;z-index:1}
+.card-meta{flex:1;z-index:1}
+.card-pname{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px;line-height:1;margin-bottom:5px}
+.card-pos-txt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.card-tag{display:inline-block;margin-top:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+.card-ovr-box{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:10px 14px;flex-shrink:0;z-index:1}
+.card-ovr-lbl{font-size:8px;letter-spacing:2px;color:rgba(201,168,76,.5);text-transform:uppercase;margin-bottom:2px}
+.card-ovr-num{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:var(--gold);text-shadow:0 0 16px rgba(201,168,76,.5)}
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.04)}
+.s-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.s-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.s-bar-bg{width:100%;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.s-bar{height:100%;border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.s-val{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px}
+.card-traits{padding:14px 22px 20px}
+.trait-ttl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);margin-bottom:9px}
+.chip{display:inline-block;margin:3px 4px 3px 0;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+.chip.f{background:rgba(255,80,80,.1);border-color:rgba(255,80,80,.25);color:#ff8080}
+.chip.s{background:rgba(79,195,247,.1);border-color:rgba(79,195,247,.25);color:var(--blue)}
+.chip.sp{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.3);color:var(--gold)}
+.close-btn{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px 8px;transition:color .2s;z-index:10}
+.close-btn:hover{color:var(--white)}
+
+/* ── COST POPUP ── */
+.cost-overlay{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);animation:card-in .3s ease both}
+.cost-card{width:min(370px,94vw);background:linear-gradient(160deg,var(--bg3),var(--bg));border:1px solid var(--border2);border-radius:6px;overflow:hidden;animation:card-in .28s ease both}
+.cost-top{padding:26px 26px 18px;border-bottom:1px solid var(--border);text-align:center;position:relative}
+.cost-top::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.1) 0%,transparent 60%);pointer-events:none}
+.cost-icon{font-size:38px;display:block;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(201,168,76,.3))}
+.cost-ttl{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:5px;letter-spacing:1px}
+.cost-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);position:relative;z-index:1}
+.cost-body{padding:4px 0}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:14px 26px;border-bottom:1px solid rgba(255,255,255,.04)}
+.cost-lbl{font-size:12px;color:var(--muted)}
+.cost-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white)}
+.cost-val.red{color:var(--red)}
+.cost-total{display:flex;justify-content:space-between;align-items:center;padding:18px 26px;background:rgba(201,168,76,.07);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ct-lbl{font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:2px;color:var(--gold);font-weight:700}
+.ct-val{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,.4)}
+.cost-foot{padding:18px 26px 22px;text-align:center}
+.cost-btn{width:100%;padding:14px;font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;font-weight:700;background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.07));border:1px solid var(--border2);color:var(--gold);border-radius:3px;cursor:pointer;transition:all .2s}
+.cost-btn:hover{background:linear-gradient(90deg,rgba(201,168,76,.28),rgba(201,168,76,.14));box-shadow:0 0 24px rgba(201,168,76,.2)}
+.cost-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.3);line-height:1.7}
+
+footer{text-align:center;padding:32px 0 12px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.1)}
+footer span{color:var(--gold-dark)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.wrap>*{animation:fadeUp .5s ease both}
+.wrap>*:nth-child(2){animation-delay:.07s}
+.wrap>*:nth-child(3){animation-delay:.14s}
+.wrap>*:nth-child(4){animation-delay:.2s}
+.wrap>*:nth-child(5){animation-delay:.26s}
+
+@media(max-width:480px){
+  .r-head,.r-row{grid-template-columns:30px 1fr 40px 38px 44px}
+  .match-card{padding:14px 12px}
+  .card-stats{grid-template-columns:1fr 1fr}
+  .r-name-wrap .r-trait{max-width:100px}
+}
+</style>
+</head>
+<body>
+<!-- COST POPUP -->
+<div class="cost-overlay" id="cost-overlay">
+  <div class="cost-card">
+    <div class="cost-top">
+      <span class="cost-icon">🏟️</span>
+      <div class="cost-ttl">구장빵 정산</div>
+      <div class="cost-sub">챔피언스리그 · 결승전 · 고양불스 풋살파크</div>
+    </div>
+    <div class="cost-body">
+      <div class="cost-row"><span class="cost-lbl">⚽ 구장 대여료</span><span class="cost-val">120,000원</span></div>
+      <div class="cost-row"><span class="cost-lbl">❌ 취소 수수료</span><span class="cost-val red">24,000원</span></div>
+      <div class="cost-row"><span class="cost-lbl">🥤 음료비</span><span class="cost-val red">6,000원</span></div>
+    </div>
+    <div class="cost-total">
+      <span class="ct-lbl">TOTAL</span>
+      <span class="ct-val">150,000원</span>
+    </div>
+    <div class="cost-foot">
+      <button class="cost-btn" onclick="document.getElementById('cost-overlay').style.display='none'">확인했습니다 ✓</button>
+      <div class="cost-note">진팀 10만원 1/N 부담 (인당 16,700원)<br>이긴팀 5만원 1/N 부담 (인당 8,400원)</div>
+    </div>
+  </div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="wrap">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="ucl-tag">UEFA Champions League</div>
+    <div class="logo-row">
+      <div class="logo-wrap">
+        <div class="logo-ring"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 239.54158 231.17612">
+          <defs><clipPath id="lca" clipPathUnits="userSpaceOnUse"><path d="M40.098 65.863h19.374V47.167H40.098z"/></clipPath><clipPath id="lcb" clipPathUnits="userSpaceOnUse"><path d="M40.098 47.167h19.374v18.696H40.098Z"/></clipPath><clipPath id="lcc" clipPathUnits="userSpaceOnUse"><path d="M48.145 60.061h3.801v-1.943h-3.801z"/></clipPath><clipPath id="lcd" clipPathUnits="userSpaceOnUse"><path d="M48.145 58.118h3.802v1.943h-3.802z"/></clipPath></defs>
+          <g style="stroke-width:.830788"><g style="stroke-width:.107828"><g style="stroke-width:.107828"><g clip-path="url(#lca)" opacity=".960007" style="stroke-width:.0185802" transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)"><g clip-path="url(#lcb)" style="stroke-width:.107828"><path d="M0 0c.362.465.746 1.374.746 1.374 1.572.081 4.638.081 6.642.081 1.532-2.477 3.811-4.795 6.287-6.327.121-2.092.117-4.167.117-6.091-.667-.119-4.911-3.617-6.444-6.209-1.611 0-5.899-.124-6.012-.04-.512.393-1.375 2.161-2.555 2.869-1.414 1.297-2.75 2.24-4.361 3.419v6.012C-3.34-3.733-1.651-2.121 0 0" style="fill:#9c9fa6;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="translate(45.678 64.409)"/></g></g></g></g><g style="stroke-width:.107828"><path d="M0 0c.122-.122.406-.486.528-.608-2.913-.849-6.392-.89-9.425-.282.848.849 2.02 2.791 2.02 2.791s3.681.081 5.218.081C-1.659 1.982-.727.727 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 173.075 33.208)"/></g><g style="stroke-width:.107828"><path d="M0 0c0-1.214.001-3.317-.281-4.45-1.012.687-2.811 1.969-3.035 2.306-.082.121 0 3.156 0 4.895.848.607 2.064 1.295 2.792 2.022C-.038 2.164 0 1.824 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 51.52 119.748)"/></g><g style="stroke-width:.107828"><path d="M0 0c-.029-.17-1.98-1.374-2.668-2.105-.607 2.831-.647 6.433 0 9.306C-.591 5.498-.01 5.17-.012 5.08-.029 4.056.025.134 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 229.6 147.258)"/></g><g style="stroke-width:.107828"><path d="M0 0c-.228-.075-4.398-.032-5.231-.055l-2.126 2.484c1.129.485 6.797.861 9.231-.093C1.53 1.882.066.023 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 156.016 219.831)"/></g><g style="stroke-width:.107828"><path d="M0 0c1.012 0-2.831-.041-2.872.121a35 35 0 0 0-.445 2.629c.849-.242 2.305-.404 3.237-.484C-.028-.109-.014 0 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 96.56 85.73)"/></g><g style="stroke-width:.107828"><path d="M0 0c0 .069-2.711.122-2.711.079 0-.494-.435-2.552-.485-2.993 1.012.122 2.306.365 3.276.365C.08-2.549 0-.347 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 96.56 144.254)"/></g><g style="stroke-width:.107828"><path d="M0 0c0-.069 2.407.061 2.589.061.04 0 .171 1.962.256 2.72.152.043-2.308-.69-2.925-.636C-.08 2.145 0 .348 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 151.582 82.74)"/></g><g style="stroke-width:.107828"><path d="M0 0c0 .069 1.982 0 2.427 0 0 0 .342-2.231.43-2.989-.85.241-1.926.276-2.776.521C.081-2.468 0-.348 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 152.577 145.25)"/></g><g style="stroke-width:.107828"><path d="M0 0s1.031-.141 2.286-.101C3.54-.06 4.47.041 4.47.041l.082-2.144 2.568.122s-.121-1.518-.121-2.327.06-2.893.06-2.893l-2.406.143.08-2.508s-.89.1-2.345.1c-1.457 0-2.206-.08-2.206-.08l-.08 2.548-2.691.041s.079 1.296 0 2.709c-.08 1.437-.181 2.064-.181 2.064l2.851-.101z" style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 95.303 57.23)"/></g><g style="stroke-width:.107828"><path d="M0 0a.18.18 0 0 1 .179-.183L.928-.19a.184.184 0 0 1 .186.179.187.187 0 0 1-.182.186L.183.179A.18.18 0 0 1 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 131.748 90.396)"/></g><g style="stroke-width:.107828"><path d="m0 0 .224-.175-.04-.197c-.098-.04-.238-.096-.28-.111h-1.128l-.272.162v.205l.118.079zm.056.366L-1.441.324a.16.16 0 0 1-.096-.03L-1.78.133a.19.19 0 0 1-.081-.152v-.404a.18.18 0 0 1 .089-.156l.404-.243a.2.2 0 0 1 .094-.026h1.213a.2.2 0 0 1 .068.013l.404.163c.058.021.1.071.112.132l.081.405a.18.18 0 0 1-.068.179L.173.327a.2.2 0 0 1-.117.039" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 121.999 84.271)"/></g><g style="stroke-width:.107828"><path d="m0 0 2.689-.039.203-.154v-.12l-.205-.103-.28-.07C2.36-.484.124-.447.044-.446l-.142.072-.061.161zm-.114.321A.18.18 0 0 1-.268.25l-.243-.324a.19.19 0 0 1-.024-.172l.121-.325a.2.2 0 0 1 .09-.099l.243-.121A.2.2 0 0 1-.004-.81l2.428-.041q.025 0 .046.006l.326.081q.017.005.037.014l.323.163c.061.03.101.093.101.162v.323a.18.18 0 0 1-.074.145L2.86.286a.2.2 0 0 1-.106.038L.002.364A.18.18 0 0 1-.114.321" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 105.24 101.75)"/></g><g style="stroke-width:.107828"><path d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 141.903 150.495)"/></g><g style="stroke-width:.107828"><g clip-path="url(#lcc)" opacity=".979996" style="stroke-width:.0185802" transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)"><g clip-path="url(#lcd)" style="stroke-width:.107828"><path d="M0 0a.182.182 0 0 1 0-.364h2.999l.219-.219c.003-.129.038-1.183.038-1.183a.183.183 0 0 1 .364.012L3.579-.5a.18.18 0 0 1-.053.124l-.323.323a.2.2 0 0 1-.13.053Z" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="translate(48.327 60.06)"/></g></g></g><g style="stroke-width:.107828"><path d="M0 0a.182.182 0 0 1 0-.364h.688c.1 0 .183.082.183.182A.183.183 0 0 1 .688 0Z" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 134.754 81.251)"/></g><g style="stroke-width:.107828"><path d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 101.746 122.262)"/></g><g style="stroke-width:.107828"><path d="M0 0a.183.183 0 0 1 0-.365h.384v-.181c0-.1.083-.181.183-.181s.181.081.181.181v.364A.18.18 0 0 1 .567 0Z" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 141.759 137.767)"/></g><g style="stroke-width:.107828"><path d="M0 0v-.004a.18.18 0 0 1 .179-.18l2.289-.04v-.162H.182a.18.18 0 0 1-.133-.06.18.18 0 0 1-.048-.137l.04-.527a.18.18 0 0 1 .184-.166l2.508.039a.184.184 0 0 1 .181.184.185.185 0 0 1-.187.181L.391-.912.378-.75h2.273c.1 0 .18.08.18.181v.526a.18.18 0 0 1-.178.182L.185.178A.18.18 0 0 1 0 0" style="fill:#40b44d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:.107828" transform="matrix(12.36534 0 0 -12.36534 99.984 131.983)"/></g>
+        </svg>
+      </div>
+      <div class="title-block">
+        <h1><span class="yl">영락</span> <span class="cl">CL</span></h1>
+        <p class="sub">Youngnak Futsal Championship · 2026</p>
       </div>
     </div>
+  </header>
 
-    <div class="stars-bg"></div>
-    <div class="wrapper">
-      <header>
-        <div class="ucl-badge">
-          <div class="star-row">
-            <span>★</span><span>★</span><span>★</span><span>★</span
-            ><span>★</span>
-          </div>
-          <div class="ucl-logo-text">UEFA Champions League</div>
-          <div class="star-row">
-            <span>★</span><span>★</span><span>★</span><span>★</span
-            ><span>★</span>
-          </div>
-        </div>
-        <div class="header-logo-row">
-          <div class="logo-glow-wrap">
-            <svg
-              class="club-logo"
-              xmlns="http://www.w3.org/2000/svg"
-              xml:space="preserve"
-              viewBox="0 0 239.54158 231.17612">
-              <defs>
-                <clipPath id="lca" clipPathUnits="userSpaceOnUse">
-                  <path d="M40.098 65.863h19.374V47.167H40.098z" />
-                </clipPath>
-                <clipPath id="lcb" clipPathUnits="userSpaceOnUse">
-                  <path d="M40.098 47.167h19.374v18.696H40.098Z" />
-                </clipPath>
-                <clipPath id="lcc" clipPathUnits="userSpaceOnUse">
-                  <path d="M48.145 60.061h3.801v-1.943h-3.801z" />
-                </clipPath>
-                <clipPath id="lcd" clipPathUnits="userSpaceOnUse">
-                  <path d="M48.145 58.118h3.802v1.943h-3.802z" />
-                </clipPath>
-              </defs>
-              <g style="stroke-width: 0.830788">
-                <g style="stroke-width: 0.107828">
-                  <g style="stroke-width: 0.107828">
-                    <g
-                      clip-path="url(#lca)"
-                      opacity="0.960007"
-                      style="stroke-width: 0.0185802"
-                      transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)">
-                      <g clip-path="url(#lcb)" style="stroke-width: 0.107828">
-                        <path
-                          d="M0 0c.362.465.746 1.374.746 1.374 1.572.081 4.638.081 6.642.081 1.532-2.477 3.811-4.795 6.287-6.327.121-2.092.117-4.167.117-6.091-.667-.119-4.911-3.617-6.444-6.209-1.611 0-5.899-.124-6.012-.04-.512.393-1.375 2.161-2.555 2.869-1.414 1.297-2.75 2.24-4.361 3.419v6.012C-3.34-3.733-1.651-2.121 0 0"
-                          style="
-                            fill: #9c9fa6;
-                            fill-opacity: 1;
-                            fill-rule: nonzero;
-                            stroke: none;
-                            stroke-width: 0.107828;
-                          "
-                          transform="translate(45.678 64.409)" />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c.122-.122.406-.486.528-.608-2.913-.849-6.392-.89-9.425-.282.848.849 2.02 2.791 2.02 2.791s3.681.081 5.218.081C-1.659 1.982-.727.727 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 173.075 33.208)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c0-1.214.001-3.317-.281-4.45-1.012.687-2.811 1.969-3.035 2.306-.082.121 0 3.156 0 4.895.848.607 2.064 1.295 2.792 2.022C-.038 2.164 0 1.824 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 51.52 119.748)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c-.029-.17-1.98-1.374-2.668-2.105-.607 2.831-.647 6.433 0 9.306C-.591 5.498-.01 5.17-.012 5.08-.029 4.056.025.134 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 229.6 147.258)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c-.228-.075-4.398-.032-5.231-.055l-2.126 2.484c1.129.485 6.797.861 9.231-.093C1.53 1.882.066.023 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 156.016 219.831)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c1.012 0-2.831-.041-2.872.121a35 35 0 0 0-.445 2.629c.849-.242 2.305-.404 3.237-.484C-.028-.109-.014 0 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 96.56 85.73)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c0 .069-2.711.122-2.711.079 0-.494-.435-2.552-.485-2.993 1.012.122 2.306.365 3.276.365C.08-2.549 0-.347 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 96.56 144.254)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c0-.069 2.407.061 2.589.061.04 0 .171 1.962.256 2.72.152.043-2.308-.69-2.925-.636C-.08 2.145 0 .348 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 151.582 82.74)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0c0 .069 1.982 0 2.427 0 0 0 .342-2.231.43-2.989-.85.241-1.926.276-2.776.521C.081-2.468 0-.348 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 152.577 145.25)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0s1.031-.141 2.286-.101C3.54-.06 4.47.041 4.47.041l.082-2.144 2.568.122s-.121-1.518-.121-2.327.06-2.893.06-2.893l-2.406.143.08-2.508s-.89.1-2.345.1c-1.457 0-2.206-.08-2.206-.08l-.08 2.548-2.691.041s.079 1.296 0 2.709c-.08 1.437-.181 2.064-.181 2.064l2.851-.101z"
-                    style="
-                      fill: #fff;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 95.303 57.23)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0a.18.18 0 0 1 .179-.183L.928-.19a.184.184 0 0 1 .186.179.187.187 0 0 1-.182.186L.183.179A.18.18 0 0 1 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 131.748 90.396)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="m0 0 .224-.175-.04-.197c-.098-.04-.238-.096-.28-.111h-1.128l-.272.162v.205l.118.079zm.056.366L-1.441.324a.16.16 0 0 1-.096-.03L-1.78.133a.19.19 0 0 1-.081-.152v-.404a.18.18 0 0 1 .089-.156l.404-.243a.2.2 0 0 1 .094-.026h1.213a.2.2 0 0 1 .068.013l.404.163c.058.021.1.071.112.132l.081.405a.18.18 0 0 1-.068.179L.173.327a.2.2 0 0 1-.117.039"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 121.999 84.271)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="m0 0 2.689-.039.203-.154v-.12l-.205-.103-.28-.07C2.36-.484.124-.447.044-.446l-.142.072-.061.161zm-.114.321A.18.18 0 0 1-.268.25l-.243-.324a.19.19 0 0 1-.024-.172l.121-.325a.2.2 0 0 1 .09-.099l.243-.121A.2.2 0 0 1-.004-.81l2.428-.041q.025 0 .046.006l.326.081q.017.005.037.014l.323.163c.061.03.101.093.101.162v.323a.18.18 0 0 1-.074.145L2.86.286a.2.2 0 0 1-.106.038L.002.364A.18.18 0 0 1-.114.321"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 105.24 101.75)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 141.903 150.495)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <g style="stroke-width: 0.107828">
-                    <g
-                      clip-path="url(#lcc)"
-                      opacity="0.979996"
-                      style="stroke-width: 0.0185802"
-                      transform="matrix(12.36534 0 0 -12.36534 -495.83 814.416)">
-                      <g clip-path="url(#lcd)" style="stroke-width: 0.107828">
-                        <path
-                          d="M0 0a.182.182 0 0 1 0-.364h2.999l.219-.219c.003-.129.038-1.183.038-1.183a.183.183 0 0 1 .364.012L3.579-.5a.18.18 0 0 1-.053.124l-.323.323a.2.2 0 0 1-.13.053Z"
-                          style="
-                            fill: #40b44d;
-                            fill-opacity: 1;
-                            fill-rule: nonzero;
-                            stroke: none;
-                            stroke-width: 0.107828;
-                          "
-                          transform="translate(48.327 60.06)" />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0a.182.182 0 0 1 0-.364h.688c.1 0 .183.082.183.182A.183.183 0 0 1 .688 0Z"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 134.754 81.251)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0a.18.18 0 0 1-.182-.182c0-.1.082-.183.182-.183h2.858l.145-.097c.017-.057.04-.123.051-.155v-1.346a.18.18 0 0 1 .182-.181c.1 0 .182.08.182.181v1.377a.2.2 0 0 1-.009.057l-.082.243a.17.17 0 0 1-.071.093l-.243.163a.2.2 0 0 1-.1.03Z"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 101.746 122.262)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0a.183.183 0 0 1 0-.365h.384v-.181c0-.1.083-.181.183-.181s.181.081.181.181v.364A.18.18 0 0 1 .567 0Z"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 141.759 137.767)" />
-                </g>
-                <g style="stroke-width: 0.107828">
-                  <path
-                    d="M0 0v-.004a.18.18 0 0 1 .179-.18l2.289-.04v-.162H.182a.18.18 0 0 1-.133-.06.18.18 0 0 1-.048-.137l.04-.527a.18.18 0 0 1 .184-.166l2.508.039a.184.184 0 0 1 .181.184.185.185 0 0 1-.187.181L.391-.912.378-.75h2.273c.1 0 .18.08.18.181v.526a.18.18 0 0 1-.178.182L.185.178A.18.18 0 0 1 0 0"
-                    style="
-                      fill: #40b44d;
-                      fill-opacity: 1;
-                      fill-rule: nonzero;
-                      stroke: none;
-                      stroke-width: 0.107828;
-                    "
-                    transform="matrix(12.36534 0 0 -12.36534 99.984 131.983)" />
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div class="header-title">
-            <h1><span class="yl">영락</span> CL</h1>
-            <p class="subtitle">Youngnak Futsal Championship 2026</p>
-          </div>
-        </div>
-      </header>
+  <div class="sep"></div>
 
-      <div class="gold-divider"></div>
+  <div class="info-bar">
+    <div class="info-item">📅 2026. 04. 11 <b>SAT</b></div>
+    <span class="info-dot">·</span>
+    <div class="info-item">🕕 KO <b>20:00</b></div>
+    <span class="info-dot">·</span>
+    <div class="info-item">📍 고양불스 풋살파크</div>
+  </div>
+  <div class="venue-addr">통일로396번길 78-25, 고양시</div>
 
-      <div class="match-info-bar">
-        <div class="match-info-item">
-          <span class="info-text"
-            >📅 2026. 04. 11 <span class="info-accent">SAT</span></span
-          >
-        </div>
-        <div class="info-sep">·</div>
-        <div class="match-info-item">
-          <span class="info-text"
-            >🕕 KO <span class="info-accent">20:00</span></span
-          >
-        </div>
-        <div class="info-sep">·</div>
-        <div class="match-info-item">
-          <span class="info-text">📍 고양불스 풋살파크</span>
-        </div>
-      </div>
-      <div class="venue-address">통일로396번길 78-25, 고양</div>
-
-      <div class="match-header">
-        <div class="team-name-block">
-          <div class="team-label">Team A</div>
-          <div class="team-name-display" id="team-a-display">?</div>
-        </div>
-        <div class="vs-block">
-          <div class="vs-text">VS</div>
-          <div class="match-stage">GROUP STAGE · MD1</div>
-        </div>
-        <div class="team-name-block">
-          <div class="team-label">Team B</div>
-          <div class="team-name-display" id="team-b-display">?</div>
-        </div>
-      </div>
-
-      <div class="tabs">
-        <button class="tab-btn active" onclick="switchTeam('a', this)">
-          🔵 ?
-        </button>
-        <button class="tab-btn" onclick="switchTeam('b', this)">🔴 ?</button>
-      </div>
-
-      <div class="formation-panel active" id="panel-a">
-        <div class="pitch-container">
-          <svg
-            class="pitch-svg"
-            id="pitch-a"
-            viewBox="0 0 340 560"
-            xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="glow-a">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              <radialGradient id="pg-a" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#256b2e" />
-                <stop offset="100%" stop-color="#1a4d22" />
-              </radialGradient>
-            </defs>
-            <rect width="340" height="560" fill="url(#pg-a)" rx="4" />
-            <rect
-              x="0"
-              y="0"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="112"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="224"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="336"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="448"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="14"
-              y="14"
-              width="312"
-              height="532"
-              fill="none"
-              stroke="rgba(255,255,255,0.45)"
-              stroke-width="2"
-              rx="2" />
-            <line
-              x1="14"
-              y1="280"
-              x2="326"
-              y2="280"
-              stroke="rgba(255,255,255,0.45)"
-              stroke-width="1.5" />
-            <circle
-              cx="170"
-              cy="280"
-              r="40"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.5" />
-            <circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)" />
-            <rect
-              x="72"
-              y="14"
-              width="196"
-              height="70"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.3" />
-            <rect
-              x="120"
-              y="14"
-              width="100"
-              height="30"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.6)" />
-            <path
-              d="M 130 84 A 40 40 0 0 1 210 84"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <rect
-              x="72"
-              y="476"
-              width="196"
-              height="70"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.3" />
-            <rect
-              x="120"
-              y="516"
-              width="100"
-              height="30"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.6)" />
-            <path
-              d="M 130 476 A 40 40 0 0 0 210 476"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 14 24 A 10 10 0 0 1 24 14"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 316 14 A 10 10 0 0 1 326 24"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 14 536 A 10 10 0 0 0 24 546"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 316 546 A 10 10 0 0 0 326 536"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <rect
-              x="126"
-              y="8"
-              width="88"
-              height="14"
-              fill="rgba(201,168,76,0.1)"
-              stroke="rgba(201,168,76,0.5)"
-              stroke-width="1.5" />
-            <rect
-              x="126"
-              y="538"
-              width="88"
-              height="14"
-              fill="rgba(201,168,76,0.1)"
-              stroke="rgba(201,168,76,0.5)"
-              stroke-width="1.5" />
-          </svg>
-        </div>
-        <div class="roster" id="roster-a"></div>
-        <div class="team-ovr-bar" id="team-ovr-a"></div>
-      </div>
-
-      <div class="formation-panel" id="panel-b">
-        <div class="pitch-container">
-          <svg
-            class="pitch-svg"
-            id="pitch-b"
-            viewBox="0 0 340 560"
-            xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="glow-b">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              <radialGradient id="pg-b" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#256b2e" />
-                <stop offset="100%" stop-color="#1a4d22" />
-              </radialGradient>
-            </defs>
-            <rect width="340" height="560" fill="url(#pg-b)" rx="4" />
-            <rect
-              x="0"
-              y="0"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="112"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="224"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="336"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="0"
-              y="448"
-              width="340"
-              height="56"
-              fill="rgba(255,255,255,0.025)" />
-            <rect
-              x="14"
-              y="14"
-              width="312"
-              height="532"
-              fill="none"
-              stroke="rgba(255,255,255,0.45)"
-              stroke-width="2"
-              rx="2" />
-            <line
-              x1="14"
-              y1="280"
-              x2="326"
-              y2="280"
-              stroke="rgba(255,255,255,0.45)"
-              stroke-width="1.5" />
-            <circle
-              cx="170"
-              cy="280"
-              r="40"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.5" />
-            <circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)" />
-            <rect
-              x="72"
-              y="14"
-              width="196"
-              height="70"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.3" />
-            <rect
-              x="120"
-              y="14"
-              width="100"
-              height="30"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.6)" />
-            <path
-              d="M 130 84 A 40 40 0 0 1 210 84"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <rect
-              x="72"
-              y="476"
-              width="196"
-              height="70"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="1.3" />
-            <rect
-              x="120"
-              y="516"
-              width="100"
-              height="30"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.6)" />
-            <path
-              d="M 130 476 A 40 40 0 0 0 210 476"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 14 24 A 10 10 0 0 1 24 14"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 316 14 A 10 10 0 0 1 326 24"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 14 536 A 10 10 0 0 0 24 546"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <path
-              d="M 316 546 A 10 10 0 0 0 326 536"
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              stroke-width="1.2" />
-            <rect
-              x="126"
-              y="8"
-              width="88"
-              height="14"
-              fill="rgba(201,168,76,0.1)"
-              stroke="rgba(201,168,76,0.5)"
-              stroke-width="1.5" />
-            <rect
-              x="126"
-              y="538"
-              width="88"
-              height="14"
-              fill="rgba(201,168,76,0.1)"
-              stroke="rgba(201,168,76,0.5)"
-              stroke-width="1.5" />
-          </svg>
-        </div>
-        <div class="roster" id="roster-b"></div>
-        <div class="team-ovr-bar" id="team-ovr-b"></div>
-      </div>
-
-      <div class="card-overlay" id="card-overlay">
-        <div class="player-card" id="player-card">
-          <button class="card-close" onclick="closeCard()">✕</button>
-          <div class="card-num" id="c-num"></div>
-          <div class="card-top">
-            <div class="card-pos-badge" id="c-pos-badge"></div>
-            <div class="card-info">
-              <div class="card-player-name" id="c-name"></div>
-              <div class="card-pos-text" id="c-pos-text"></div>
-              <div class="card-team-tag" id="c-team-tag"></div>
-            </div>
-            <div class="card-ovr-badge">
-              <div class="card-ovr-label">OVR</div>
-              <div class="card-ovr-val" id="c-ovr">--</div>
-            </div>
-          </div>
-          <div class="card-stats" id="c-stats"></div>
-          <div class="card-traits">
-            <div class="traits-title">특성 · TRAITS</div>
-            <div id="c-traits"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gold-divider" style="margin-top: 24px"></div>
-      <footer>
-        영락중학교 풋살 챔피언스리그 2026 <span>·</span> 선수 클릭 시 카드 확인
-        가능
-      </footer>
+  <!-- MATCH CARD -->
+  <div class="match-card">
+    <div class="team-blk">
+      <div class="t-label">Team A</div>
+      <div class="t-name" id="team-a-name" style="color:var(--blue)">?</div>
     </div>
+    <div class="vs-blk">
+      <div class="vs-txt">VS</div>
+      <div class="vs-stage">GROUP STAGE · MD1</div>
+      <div class="live-badge"><span class="live-dot"></span>TOMORROW</div>
+    </div>
+    <div class="team-blk">
+      <div class="t-label">Team B</div>
+      <div class="t-name" id="team-b-name" style="color:var(--red)">?</div>
+    </div>
+  </div>
 
-    <script>
-      // ===================== COST POPUP =====================
-      function closeCostPopup() {
-        document.getElementById("cost-overlay").style.display = "none";
-      }
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-a" onclick="switchTeam('a',this)">🔵 Team A</button>
+    <button class="tab-btn" id="tab-b" onclick="switchTeam('b',this)">🔴 Team B</button>
+  </div>
 
-      // ===================== OVR 계산 =====================
-      // 포지션별 스탯 가중치
-      const OVR_WEIGHTS = {
-        GK: {
-          스피드: 0.05,
-          슈팅: 0.1,
-          패스: 0.1,
-          드리블: 0.05,
-          체력: 0.2,
-          수비: 0.5,
-        },
-        DEF: {
-          스피드: 0.15,
-          슈팅: 0.05,
-          패스: 0.15,
-          드리블: 0.1,
-          체력: 0.2,
-          수비: 0.35,
-        },
-        MID: {
-          스피드: 0.15,
-          슈팅: 0.15,
-          패스: 0.25,
-          드리블: 0.2,
-          체력: 0.15,
-          수비: 0.1,
-        },
-        FWD: {
-          스피드: 0.2,
-          슈팅: 0.35,
-          패스: 0.1,
-          드리블: 0.25,
-          체력: 0.05,
-          수비: 0.05,
-        },
-      };
+  <!-- PANELS -->
+  <div class="panel active" id="panel-a">
+    <div class="pitch-wrap"><svg class="pitch-svg" id="pitch-a" viewBox="0 0 340 560" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="pg-a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e6b28"/><stop offset="100%" stop-color="#124018"/></radialGradient></defs><rect width="340" height="560" fill="url(#pg-a)" rx="4"/><rect x="0" y="0" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="112" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="224" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="336" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="448" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="14" y="14" width="312" height="532" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" rx="2"/><line x1="14" y1="280" x2="326" y2="280" stroke="rgba(255,255,255,0.42)" stroke-width="1.5"/><circle cx="170" cy="280" r="40" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/><circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)"/><rect x="72" y="14" width="196" height="70" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.2"/><rect x="120" y="14" width="100" height="30" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.55)"/><path d="M130 84 A40 40 0 0 1 210 84" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><rect x="72" y="476" width="196" height="70" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.2"/><rect x="120" y="516" width="100" height="30" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.55)"/><path d="M130 476 A40 40 0 0 0 210 476" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><rect x="126" y="8" width="88" height="14" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/><rect x="126" y="538" width="88" height="14" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/></svg></div>
+    <div class="roster" id="roster-a"></div>
+    <div class="team-ovr" id="ovr-a"></div>
+  </div>
 
-      function calcOvr(p) {
-        const w = OVR_WEIGHTS[p.pos];
-        let sum = 0;
-        for (const k in w) sum += p.stats[k] * w[k];
-        return Math.round(sum);
-      }
+  <div class="panel" id="panel-b">
+    <div class="pitch-wrap"><svg class="pitch-svg" id="pitch-b" viewBox="0 0 340 560" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="pg-b" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e6b28"/><stop offset="100%" stop-color="#124018"/></radialGradient></defs><rect width="340" height="560" fill="url(#pg-b)" rx="4"/><rect x="0" y="0" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="112" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="224" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="336" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="0" y="448" width="340" height="56" fill="rgba(255,255,255,0.022)"/><rect x="14" y="14" width="312" height="532" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" rx="2"/><line x1="14" y1="280" x2="326" y2="280" stroke="rgba(255,255,255,0.42)" stroke-width="1.5"/><circle cx="170" cy="280" r="40" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/><circle cx="170" cy="280" r="3" fill="rgba(255,255,255,0.7)"/><rect x="72" y="14" width="196" height="70" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.2"/><rect x="120" y="14" width="100" height="30" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><circle cx="170" cy="60" r="3" fill="rgba(255,255,255,0.55)"/><path d="M130 84 A40 40 0 0 1 210 84" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><rect x="72" y="476" width="196" height="70" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.2"/><rect x="120" y="516" width="100" height="30" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><circle cx="170" cy="500" r="3" fill="rgba(255,255,255,0.55)"/><path d="M130 476 A40 40 0 0 0 210 476" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.1"/><rect x="126" y="8" width="88" height="14" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/><rect x="126" y="538" width="88" height="14" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/></svg></div>
+    <div class="roster" id="roster-b"></div>
+    <div class="team-ovr" id="ovr-b"></div>
+  </div>
 
-      function ovrGrade(ovr) {
-        if (ovr >= 90) return { label: "S", cls: "ovr-s" };
-        if (ovr >= 80) return { label: "A", cls: "ovr-a" };
-        if (ovr >= 70) return { label: "B", cls: "ovr-b" };
-        if (ovr >= 60) return { label: "C", cls: "ovr-c" };
-        return { label: "D", cls: "ovr-d" };
-      }
+  <!-- PLAYER CARD OVERLAY -->
+  <div class="overlay" id="overlay">
+    <div class="p-card">
+      <div class="card-shine"></div>
+      <button class="close-btn" onclick="closeCard()">✕</button>
+      <div class="card-num-bg" id="c-num-bg"></div>
+      <div class="card-head">
+        <div class="card-pos-ico" id="c-pos-ico"></div>
+        <div class="card-meta">
+          <div class="card-pname" id="c-name"></div>
+          <div class="card-pos-txt" id="c-pos-txt"></div>
+          <div class="card-tag" id="c-tag"></div>
+        </div>
+        <div class="card-ovr-box">
+          <div class="card-ovr-lbl">OVR</div>
+          <div class="card-ovr-num" id="c-ovr">--</div>
+        </div>
+      </div>
+      <div class="card-stats" id="c-stats"></div>
+      <div class="card-traits">
+        <div class="trait-ttl">특성 · TRAITS</div>
+        <div id="c-traits"></div>
+      </div>
+    </div>
+  </div>
 
-      // ===================== PLAYER DATA =====================
-      const PLAYERS = {
-        bc: {
-          name: "김범철",
-          num: 21,
-          pos: "GK",
-          team: "a",
-          stats: {
-            스피드: 18,
-            슈팅: 85,
-            패스: 52,
-            드리블: 40,
-            체력: 35,
-            수비: 72,
-          },
-          traits: [
-            { text: "🐷 돼지x", type: "funny" },
-            { text: "잘 안 뜀", type: "funny" },
-            { text: "골문 수호 특기", type: "skill" },
-          ],
-        },
-        tj: {
-          name: "임시원",
-          num: 9,
-          pos: "FWD",
-          team: "a",
-          stats: {
-            스피드: 98,
-            슈팅: 95,
-            패스: 50,
-            드리블: 92,
-            체력: 97,
-            수비: 90,
-          },
-          traits: [
-            { text: "💅 존잘", type: "special" },
-            { text: "🪄 왼발의 마법사", type: "skill" },
-            { text: "솔로지옥6 신청", type: "funny" },
-            { text: "씹테토남", type: "funny" },
-          ],
-        },
-        kb: {
-          name: "박기빈",
-          num: 7,
-          pos: "MID",
-          team: "a",
-          stats: {
-            스피드: 70,
-            슈팅: 68,
-            패스: 75,
-            드리블: 72,
-            체력: 74,
-            수비: 55,
-          },
-          traits: [
-            { text: "풋살 좀 함", type: "skill" },
-            { text: "💔 모태솔로", type: "funny" },
-          ],
-        },
-        sw: {
-          name: "유태종",
-          num: 10,
-          pos: "FWD",
-          team: "a",
-          stats: {
-            스피드: 82,
-            슈팅: 91,
-            패스: 78,
-            드리블: 88,
-            체력: 85,
-            수비: 55,
-          },
-          traits: [
-            { text: "⚽ 풋살 잘함", type: "skill" },
-            { text: "😎 잘생김 TOP2", type: "special" },
-          ],
-        },
-        sj: {
-          name: "문승재",
-          num: 5,
-          pos: "DEF",
-          team: "a",
-          stats: {
-            스피드: 48,
-            슈팅: 60,
-            패스: 58,
-            드리블: 45,
-            체력: 88,
-            수비: 90,
-          },
-          traits: [
-            { text: "👑 영락중 F4", type: "special" },
-            { text: "⚖️ 95KG ㄷㄷ", type: "funny" },
-            { text: "대학생", type: "skill" },
-          ],
-        },
-        jy: {
-          name: "이지융",
-          num: 3,
-          pos: "DEF",
-          team: "a",
-          stats: {
-            스피드: 72,
-            슈팅: 55,
-            패스: 62,
-            드리블: 58,
-            체력: 80,
-            수비: 75,
-          },
-          traits: [
-            { text: "😤 씹에겐남", type: "funny" },
-            { text: "🪖 미필 ㅋㅋ", type: "funny" },
-            { text: "👟 풋살화 샀다고 신남", type: "funny" },
-          ],
-        },
-        tm: {
-          name: "선태민",
-          num: 11,
-          pos: "FWD",
-          team: "b",
-          stats: {
-            스피드: 85,
-            슈팅: 79,
-            패스: 80,
-            드리블: 77,
-            체력: 99,
-            수비: 62,
-          },
-          traits: [
-            { text: "⚡ 파워에이드", type: "special" },
-            { text: "⚡ 강남구청 수호자", type: "special" },
-            { text: "체력 99", type: "skill" },
-          ],
-        },
-        su: {
-          name: "김선우",
-          num: 8,
-          pos: "MID",
-          team: "b",
-          stats: {
-            스피드: 88,
-            슈팅: 65,
-            패스: 72,
-            드리블: 84,
-            체력: 82,
-            수비: 60,
-          },
-          traits: [
-            { text: "🏃 잘 뛰어다님", type: "skill" },
-            { text: "😷 얼굴 공 맞으면 물어줘야 함", type: "funny" },
-            { text: "🍺 술 존나 못 마심", type: "funny" },
-          ],
-        },
-        jh: {
-          name: "한정호",
-          num: 1,
-          pos: "GK",
-          team: "b",
-          stats: {
-            스피드: 55,
-            슈팅: 50,
-            패스: 60,
-            드리블: 48,
-            체력: 72,
-            수비: 90,
-          },
-          traits: [
-            { text: "🚗 세차장 CEO", type: "special" },
-            { text: "자차 보유", type: "special" },
-            { text: "풋살 처음", type: "funny" },
-          ],
-        },
-        jj: {
-          name: "허정현",
-          num: 6,
-          pos: "MID",
-          team: "b",
-          stats: {
-            스피드: 74,
-            슈팅: 82,
-            패스: 78,
-            드리블: 68,
-            체력: 76,
-            수비: 63,
-          },
-          traits: [
-            { text: "💇 장발", type: "special" },
-            { text: "정진욱이랑 동반입대 같이 함", type: "special" },
-          ],
-        },
-        sej: {
-          name: "박세준",
-          num: 4,
-          pos: "DEF",
-          team: "b",
-          stats: {
-            스피드: 75,
-            슈팅: 88,
-            패스: 65,
-            드리블: 52,
-            체력: 60,
-            수비: 78,
-          },
-          traits: [
-            { text: "💔 솔로", type: "funny" },
-            { text: "🦵 무릎 아픔", type: "funny" },
-            { text: " 무릎 괜찮아짐", type: "funny" },
-          ],
-        },
-        jw: {
-          name: "정진욱",
-          num: 2,
-          pos: "DEF",
-          team: "b",
-          stats: {
-            스피드: 45,
-            슈팅: 52,
-            패스: 68,
-            드리블: 50,
-            체력: 40,
-            수비: 82,
-          },
-          traits: [
-            { text: "📏 신장 결함으로 잘 못 뜀", type: "funny" },
-            { text: "🫁 기흉으로 수능 혼자 봄", type: "funny" },
-            { text: "불굴의 전사", type: "skill" },
-          ],
-        },
-      };
+  <div class="sep" style="margin-top:28px"></div>
+  <footer>영락중학교 풋살 챔피언스리그 2026 <span>·</span> 선수 클릭 시 카드 확인</footer>
+</div>
 
-      const FORMATION = {
-        a: [
-          "2-2-1",
-          [
-            [170, 510],
-            [110, 420],
-            [230, 420],
-            [110, 295],
-            [230, 295],
-            [170, 140],
-          ],
-        ],
-        b: [
-          "2-2-1",
-          [
-            [170, 510],
-            [110, 420],
-            [230, 420],
-            [110, 295],
-            [230, 295],
-            [170, 140],
-          ],
-        ],
-      };
+<script>
+// ── CANVAS PARTICLE BG ──
+(()=>{
+  const c=document.getElementById('bg-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function init(){
+    W=c.width=innerWidth;H=c.height=innerHeight;
+    pts=Array.from({length:80},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,
+      r:Math.random()*1.2+.3,o:Math.random()*.5+.1
+    }))
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // subtle nebula
+    const g=ctx.createRadialGradient(W*.2,H*.1,0,W*.2,H*.1,W*.5);
+    g.addColorStop(0,'rgba(201,168,76,0.06)');g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    const g2=ctx.createRadialGradient(W*.8,H*.85,0,W*.8,H*.85,W*.5);
+    g2.addColorStop(0,'rgba(26,48,112,0.2)');g2.addColorStop(1,'transparent');
+    ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${p.o})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  init();draw();
+  addEventListener('resize',init);
+})();
 
-      const TEAMS = {
-        a: {
-          name: "?",
-          color: "#1a3070",
-          stroke: "#4fc3f7",
-          order: ["bc", "sj", "jy", "kb", "sw", "tj"],
-        },
-        b: {
-          name: "?",
-          color: "#6e1a1a",
-          stroke: "#ff6b6b",
-          order: ["jh", "sej", "jw", "jj", "su", "tm"],
-        },
-      };
+// ── OVR WEIGHTS ──
+const W={
+  GK:{스피드:.05,슈팅:.1,패스:.1,드리블:.05,체력:.2,수비:.5},
+  DEF:{스피드:.15,슈팅:.05,패스:.15,드리블:.1,체력:.2,수비:.35},
+  MID:{스피드:.15,슈팅:.15,패스:.25,드리블:.2,체력:.15,수비:.1},
+  FWD:{스피드:.2,슈팅:.35,패스:.1,드리블:.25,체력:.05,수비:.05}
+};
+const calcOvr=p=>{let s=0;for(const k in W[p.pos])s+=p.stats[k]*W[p.pos][k];return Math.round(s)};
+const ovrGrade=o=>o>=90?{l:'S',c:'ovr-s'}:o>=80?{l:'A',c:'ovr-a'}:o>=70?{l:'B',c:'ovr-b'}:o>=60?{l:'C',c:'ovr-c'}:{l:'D',c:'ovr-d'};
 
-      const POS_COLORS = {
-        GK: { fill: "#6a4a00", stroke: "#c9a84c", text: "#ffc94a" },
-        DEF: { fill: "#0d3a6e", stroke: "#4fc3f7", text: "#4fc3f7" },
-        MID: { fill: "#1a5c1a", stroke: "#64dd64", text: "#64dd64" },
-        FWD: { fill: "#6e0d0d", stroke: "#ff5050", text: "#ff7070" },
-      };
+// ── PLAYERS ──
+const PL={
+  bc:{name:'김범철',num:21,pos:'GK',team:'a',stats:{스피드:18,슈팅:85,패스:52,드리블:40,체력:35,수비:72},traits:[{t:'🐷 돼지x',type:'f'},{t:'잘 안 뜀',type:'f'},{t:'골문 수호 특기',type:'s'}]},
+  tj:{name:'임시원',num:9,pos:'FWD',team:'a',stats:{스피드:98,슈팅:95,패스:50,드리블:92,체력:97,수비:90},traits:[{t:'💅 존잘',type:'sp'},{t:'🪄 왼발의 마법사',type:'s'},{t:'솔로지옥6 신청',type:'f'},{t:'씹테토남',type:'f'}]},
+  kb:{name:'박기빈',num:7,pos:'MID',team:'a',stats:{스피드:70,슈팅:68,패스:75,드리블:72,체력:74,수비:55},traits:[{t:'풋살 좀 함',type:'s'},{t:'💔 모태솔로',type:'f'}]},
+  sw:{name:'유태종',num:10,pos:'FWD',team:'a',stats:{스피드:82,슈팅:91,패스:78,드리블:88,체력:85,수비:55},traits:[{t:'⚽ 풋살 잘함',type:'s'},{t:'😎 잘생김 TOP2',type:'sp'}]},
+  sj:{name:'문승재',num:5,pos:'DEF',team:'a',stats:{스피드:48,슈팅:60,패스:58,드리블:45,체력:88,수비:90},traits:[{t:'👑 영락중 F4',type:'sp'},{t:'⚖️ 95KG ㄷㄷ',type:'f'},{t:'대학생',type:'s'}]},
+  jy:{name:'이지융',num:3,pos:'DEF',team:'a',stats:{스피드:72,슈팅:55,패스:62,드리블:58,체력:80,수비:75},traits:[{t:'😤 씹에겐남',type:'f'},{t:'🪖 미필 ㅋㅋ',type:'f'},{t:'👟 풋살화 샀다고 신남',type:'f'}]},
+  tm:{name:'선태민',num:11,pos:'FWD',team:'b',stats:{스피드:85,슈팅:79,패스:80,드리블:77,체력:99,수비:62},traits:[{t:'⚡ 파워에이드',type:'sp'},{t:'⚡ 강남구청 수호자',type:'sp'},{t:'체력 99',type:'s'}]},
+  su:{name:'김선우',num:8,pos:'MID',team:'b',stats:{스피드:88,슈팅:65,패스:72,드리블:84,체력:82,수비:60},traits:[{t:'🏃 잘 뛰어다님',type:'s'},{t:'😷 얼굴 공 맞으면 물어줘야 함',type:'f'},{t:'🍺 술 존나 못 마심',type:'f'}]},
+  jh:{name:'한정호',num:1,pos:'GK',team:'b',stats:{스피드:55,슈팅:50,패스:60,드리블:48,체력:72,수비:90},traits:[{t:'🚗 세차장 CEO',type:'sp'},{t:'자차 보유',type:'sp'},{t:'풋살 처음',type:'f'}]},
+  jj:{name:'허정현',num:6,pos:'MID',team:'b',stats:{스피드:74,슈팅:82,패스:78,드리블:68,체력:76,수비:63},traits:[{t:'💇 장발',type:'sp'},{t:'정진욱이랑 동반입대',type:'sp'}]},
+  sej:{name:'박세준',num:4,pos:'DEF',team:'b',stats:{스피드:75,슈팅:88,패스:65,드리블:52,체력:60,수비:78},traits:[{t:'💔 솔로',type:'f'},{t:'🦵 무릎 아픔',type:'f'},{t:'무릎 괜찮아짐',type:'f'}]},
+  jw:{name:'정진욱',num:2,pos:'DEF',team:'b',stats:{스피드:45,슈팅:52,패스:68,드리블:50,체력:40,수비:82},traits:[{t:'📏 신장 결함으로 잘 못 뜀',type:'f'},{t:'🫁 기흉으로 수능 혼자 봄',type:'f'},{t:'불굴의 전사',type:'s'}]}
+};
 
-      // ===================== RENDER PITCH =====================
-      function renderPitch(team) {
-        const svg = document.getElementById(`pitch-${team}`);
-        svg.querySelectorAll(".player-group").forEach((el) => el.remove());
-        const td = TEAMS[team];
-        const positions = FORMATION[team][1];
-        td.order.forEach((pid, i) => {
-          const p = PLAYERS[pid];
-          const ovr = calcOvr(p);
-          const [cx, cy] = positions[i];
-          const col = POS_COLORS[p.pos];
-          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-          g.classList.add("player-group", "player-token");
-          g.setAttribute("transform", `translate(${cx},${cy})`);
-          g.dataset.pid = pid;
+const TEAMS={
+  a:{name:'?',color:'#1a3070',stroke:'#4fc3f7',order:['bc','sj','jy','kb','sw','tj']},
+  b:{name:'?',color:'#6e1a1a',stroke:'#ff6b6b',order:['jh','sej','jw','jj','su','tm']}
+};
 
-          const shadow = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "ellipse",
-          );
-          shadow.setAttribute("rx", "22");
-          shadow.setAttribute("ry", "6");
-          shadow.setAttribute("cy", "22");
-          shadow.setAttribute("fill", "rgba(0,0,0,0.4)");
+const PPOS=[
+  [170,510],[110,420],[230,420],[110,295],[230,295],[170,140]
+];
 
-          const outerRing = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "circle",
-          );
-          outerRing.setAttribute("r", "22");
-          outerRing.setAttribute("fill", "none");
-          outerRing.setAttribute("stroke", col.stroke);
-          outerRing.setAttribute("stroke-width", "1.5");
-          outerRing.setAttribute("opacity", "0.6");
+const POS_COL={
+  GK:{fill:'#3d2800',stroke:'#c9a84c',text:'#ffc94a'},
+  DEF:{fill:'#082040',stroke:'#4fc3f7',text:'#4fc3f7'},
+  MID:{fill:'#0a3010',stroke:'#40dd70',text:'#40dd70'},
+  FWD:{fill:'#3d0808',stroke:'#ff5050',text:'#ff7070'}
+};
 
-          const circle = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "circle",
-          );
-          circle.setAttribute("r", "19");
-          circle.setAttribute("fill", col.fill);
-          circle.setAttribute("stroke", col.stroke);
-          circle.setAttribute("stroke-width", "2");
-          circle.classList.add("token-circle");
+const STAT_COL={스피드:'#ff9040',슈팅:'#ff5050',패스:'#40dd70',드리블:'#4fc3f7',체력:'#c9a84c',수비:'#b060ff'};
+const POS_LBL={GK:'골키퍼',DEF:'수비수',MID:'미드필더',FWD:'공격수'};
 
-          const numText = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          numText.classList.add("token-number");
-          numText.setAttribute("y", "-4");
-          numText.textContent = p.num;
+// ── RENDER PITCH ──
+function renderPitch(team){
+  const svg=document.getElementById(`pitch-${team}`);
+  svg.querySelectorAll('.pg').forEach(e=>e.remove());
+  const td=TEAMS[team];
+  td.order.forEach((pid,i)=>{
+    const p=PL[pid];
+    const ovr=calcOvr(p);
+    const [cx,cy]=PPOS[i];
+    const col=POS_COL[p.pos];
+    const ns='http://www.w3.org/2000/svg';
+    const g=document.createElementNS(ns,'g');
+    g.classList.add('pg','player-g');
+    g.setAttribute('transform',`translate(${cx},${cy})`);
+    g.dataset.pid=pid;
 
-          const nameText = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          nameText.classList.add("token-name");
-          nameText.setAttribute("y", "8");
-          nameText.textContent =
-            p.name.length > 3 ? p.name.slice(0, 3) : p.name;
+    // glow ring
+    const glow=document.createElementNS(ns,'circle');
+    glow.setAttribute('r','28');glow.setAttribute('fill','none');
+    glow.setAttribute('stroke',col.stroke);glow.setAttribute('stroke-width','1');
+    glow.setAttribute('opacity','.35');glow.classList.add('p-ring');
 
-          const label = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          label.classList.add("token-label");
-          label.setAttribute("y", "32");
-          label.textContent = p.pos;
+    // shadow
+    const sh=document.createElementNS(ns,'ellipse');
+    sh.setAttribute('rx','20');sh.setAttribute('ry','5');sh.setAttribute('cy','22');
+    sh.setAttribute('fill','rgba(0,0,0,0.5)');
 
-          // OVR 배지 — 토큰 우측 바깥
-          const ovrBg = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "rect",
-          );
-          ovrBg.setAttribute("x", "17");
-          ovrBg.setAttribute("y", "-18");
-          ovrBg.setAttribute("width", "26");
-          ovrBg.setAttribute("height", "16");
-          ovrBg.setAttribute("rx", "3");
-          ovrBg.setAttribute("fill", "#05080f");
-          ovrBg.setAttribute("stroke", "rgba(201,168,76,0.65)");
-          ovrBg.setAttribute("stroke-width", "1");
+    // main circle
+    const ci=document.createElementNS(ns,'circle');
+    ci.setAttribute('r','20');ci.setAttribute('fill',col.fill);
+    ci.setAttribute('stroke',col.stroke);ci.setAttribute('stroke-width','2');
 
-          const ovrText = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text",
-          );
-          ovrText.classList.add("token-ovr");
-          ovrText.setAttribute("x", "30");
-          ovrText.setAttribute("y", "-10");
-          ovrText.textContent = ovr;
+    // inner highlight
+    const hi=document.createElementNS(ns,'circle');
+    hi.setAttribute('r','18');hi.setAttribute('fill','none');
+    hi.setAttribute('stroke','rgba(255,255,255,0.08)');hi.setAttribute('stroke-width','1');
 
-          g.appendChild(shadow);
-          g.appendChild(outerRing);
-          g.appendChild(circle);
-          g.appendChild(numText);
-          g.appendChild(nameText);
-          g.appendChild(label);
-          g.appendChild(ovrBg);
-          g.appendChild(ovrText);
-          g.addEventListener("click", () => openCard(pid));
-          svg.appendChild(g);
-        });
-      }
+    const num=document.createElementNS(ns,'text');
+    num.style.cssText='font-family:Bebas Neue,sans-serif;font-size:14px;fill:white;text-anchor:middle;dominant-baseline:central;pointer-events:none';
+    num.setAttribute('y','-4');num.textContent=p.num;
 
-      // ===================== RENDER ROSTER =====================
-      function renderRoster(team) {
-        const el = document.getElementById(`roster-${team}`);
-        const td = TEAMS[team];
-        let html = `<div class="roster-header"><div>#</div><div>선수명</div><div>포지션</div><div>특성</div><div style="text-align:right">OVR</div></div>`;
-        let totalOvr = 0;
-        td.order.forEach((pid) => {
-          const p = PLAYERS[pid];
-          const ovr = calcOvr(p);
-          totalOvr += ovr;
-          const { cls } = ovrGrade(ovr);
-          const firstTrait = p.traits[0]?.text || "-";
-          html += `<div class="roster-row" onclick="openCard('${pid}')">
-            <div class="r-num">${p.num}</div>
-            <div class="r-name">${p.name}</div>
-            <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
-            <div class="r-trait">${firstTrait}</div>
-            <div class="r-ovr ${cls}">${ovr}</div>
-          </div>`;
-        });
-        el.innerHTML = html;
+    const nm=document.createElementNS(ns,'text');
+    nm.style.cssText='font-family:Noto Sans KR,sans-serif;font-size:8px;font-weight:700;fill:white;text-anchor:middle;dominant-baseline:central;pointer-events:none';
+    nm.setAttribute('y','8');nm.textContent=p.name.length>3?p.name.slice(0,3):p.name;
 
-        // 팀 평균 OVR
-        const avgOvr = Math.round(totalOvr / td.order.length);
-        const { label, cls } = ovrGrade(avgOvr);
-        const gradeColors = {
-          "ovr-s": "#ff6060",
-          "ovr-a": "#ffa040",
-          "ovr-b": "#64dd64",
-          "ovr-c": "#4fc3f7",
-          "ovr-d": "rgba(255,255,255,0.4)",
-        };
-        const gc = {
-          "ovr-s": "#ff6060",
-          "ovr-a": "#ffa040",
-          "ovr-b": "#64dd64",
-          "ovr-c": "#4fc3f7",
-          "ovr-d": "rgba(255,255,255,0.4)",
-        }[cls];
-        const ovrBar = document.getElementById(`team-ovr-${team}`);
-        ovrBar.innerHTML = `
-          <span class="team-ovr-label">팀 평균 OVR</span>
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="team-ovr-val">${avgOvr}</span>
-            <span class="team-ovr-grade" style="background:${gc}22;border:1px solid ${gc}55;color:${gc}">${label} GRADE</span>
-          </div>`;
-      }
+    const lbl=document.createElementNS(ns,'text');
+    lbl.style.cssText='font-family:Bebas Neue,sans-serif;font-size:9px;fill:rgba(255,255,255,0.75);text-anchor:middle;pointer-events:none;letter-spacing:.5px';
+    lbl.setAttribute('y','32');lbl.textContent=p.pos;
 
-      // ===================== PLAYER CARD =====================
-      function openCard(pid) {
-        const p = PLAYERS[pid];
-        const ovr = calcOvr(p);
-        const col = POS_COLORS[p.pos];
-        const teamName = TEAMS[p.team].name;
-        const teamColor = p.team === "a" ? "#1a3070" : "#6e1a1a";
-        const teamTextColor = p.team === "a" ? "#4fc3f7" : "#ff8080";
+    // OVR badge
+    const obg=document.createElementNS(ns,'rect');
+    obg.setAttribute('x','16');obg.setAttribute('y','-20');
+    obg.setAttribute('width','28');obg.setAttribute('height','17');
+    obg.setAttribute('rx','3');obg.setAttribute('fill','#04060c');
+    obg.setAttribute('stroke','rgba(201,168,76,0.7)');obg.setAttribute('stroke-width','1');
 
-        document.getElementById("c-num").textContent = p.num;
-        document.getElementById("c-name").textContent = p.name;
-        document.getElementById("c-pos-text").textContent =
-          p.pos + " · " + posLabel(p.pos);
-        document.getElementById("c-ovr").textContent = ovr;
+    const otx=document.createElementNS(ns,'text');
+    otx.style.cssText='font-family:Bebas Neue,sans-serif;font-size:14px;fill:#c9a84c;text-anchor:middle;dominant-baseline:central;pointer-events:none';
+    otx.setAttribute('x','30');otx.setAttribute('y','-12');otx.textContent=ovr;
 
-        const posBadge = document.getElementById("c-pos-badge");
-        posBadge.style.background = col.fill;
-        posBadge.style.border = `2px solid ${col.stroke}`;
-        posBadge.style.color = col.text;
-        posBadge.textContent = p.pos;
+    g.append(sh,glow,ci,hi,num,nm,lbl,obg,otx);
+    g.addEventListener('click',()=>openCard(pid));
+    svg.appendChild(g);
+  });
+}
 
-        const teamTag = document.getElementById("c-team-tag");
-        teamTag.style.background = teamColor + "33";
-        teamTag.style.border = `1px solid ${teamTextColor}44`;
-        teamTag.style.color = teamTextColor;
-        teamTag.textContent = teamName;
+// ── RENDER ROSTER ──
+function renderRoster(team){
+  const el=document.getElementById(`roster-${team}`);
+  const td=TEAMS[team];
+  let html=`<div class="r-head"><div>#</div><div>선수</div><div>포지션</div><div>특성</div><div style="text-align:right">OVR</div></div>`;
+  let tot=0;
+  td.order.forEach(pid=>{
+    const p=PL[pid];const ovr=calcOvr(p);tot+=ovr;
+    const {c}=ovrGrade(ovr);
+    const trait=p.traits[0]?.t||'-';
+    html+=`<div class="r-row" onclick="openCard('${pid}')">
+      <div class="r-num">${p.num}</div>
+      <div class="r-name-wrap"><div class="r-name">${p.name}</div><div class="r-trait">${trait}</div></div>
+      <div><span class="pos-badge pos-${p.pos}">${p.pos}</span></div>
+      <div></div>
+      <div class="r-ovr ${c}">${ovr}</div>
+    </div>`;
+  });
+  el.innerHTML=html;
+  const avg=Math.round(tot/td.order.length);
+  const {l,c}=ovrGrade(avg);
+  const gc={ovr_s:'#ff4040',ovr_a:'#ff9020',ovr_b:'#40dd64',ovr_c:'#4fc3f7',ovr_d:'rgba(240,238,232,.4)'}[c.replace('-','_')]||'#c9a84c';
+  document.getElementById(`ovr-${team}`).innerHTML=`
+    <span class="t-ovr-label">팀 평균 OVR</span>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="t-ovr-val">${avg}</span>
+      <span class="t-ovr-grade" style="background:${gc}22;border:1px solid ${gc}44;color:${gc}">${l} GRADE</span>
+    </div>`;
+}
 
-        const statNames = Object.keys(p.stats);
-        const statColors = {
-          스피드: "#ff9040",
-          슈팅: "#ff5050",
-          패스: "#64dd64",
-          드리블: "#4fc3f7",
-          체력: "#c9a84c",
-          수비: "#b060ff",
-        };
-        const weights = OVR_WEIGHTS[p.pos];
-        let statsHtml = "";
-        statNames.forEach((s) => {
-          const val = p.stats[s];
-          const color = statColors[s] || "#aaa";
-          const wPct = Math.round(weights[s] * 100);
-          statsHtml += `<div class="stat-item">
-            <div class="stat-label">${s} <span style="color:rgba(255,255,255,0.2);font-size:7px">${wPct}%</span></div>
-            <div class="stat-bar-wrap"><div class="stat-bar" style="width:0%;background:${color}" data-val="${val}"></div></div>
-            <div class="stat-val" style="color:${color}">${val}</div>
-          </div>`;
-        });
-        document.getElementById("c-stats").innerHTML = statsHtml;
+// ── PLAYER CARD ──
+function openCard(pid){
+  const p=PL[pid];const ovr=calcOvr(p);
+  const col=POS_COL[p.pos];
+  const tc=p.team==='a'?'#4fc3f7':'#ff5b5b';
+  const tbg=p.team==='a'?'rgba(26,48,112,0.35)':'rgba(110,26,26,0.35)';
 
-        let traitsHtml = "";
-        p.traits.forEach((t) => {
-          traitsHtml += `<span class="trait-chip ${t.type}">${t.text}</span>`;
-        });
-        document.getElementById("c-traits").innerHTML = traitsHtml;
+  document.getElementById('c-num-bg').textContent=p.num;
+  document.getElementById('c-name').textContent=p.name;
+  document.getElementById('c-pos-txt').textContent=`${p.pos} · ${POS_LBL[p.pos]}`;
+  document.getElementById('c-ovr').textContent=ovr;
 
-        const overlay = document.getElementById("card-overlay");
-        overlay.classList.add("show");
-        setTimeout(() => {
-          overlay.querySelectorAll(".stat-bar").forEach((bar) => {
-            bar.style.width = bar.dataset.val + "%";
-          });
-        }, 60);
-      }
+  const ico=document.getElementById('c-pos-ico');
+  ico.style.background=col.fill;ico.style.border=`2px solid ${col.stroke}`;
+  ico.style.color=col.text;ico.textContent=p.pos;
 
-      function closeCard() {
-        document.getElementById("card-overlay").classList.remove("show");
-      }
-      function posLabel(pos) {
-        return (
-          { GK: "골키퍼", DEF: "수비수", MID: "미드필더", FWD: "공격수" }[
-            pos
-          ] || pos
-        );
-      }
-      function switchTeam(team, btn) {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        document
-          .querySelectorAll(".formation-panel")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById(`panel-${team}`).classList.add("active");
-      }
+  const tag=document.getElementById('c-tag');
+  tag.style.background=tbg;tag.style.border=`1px solid ${tc}44`;
+  tag.style.color=tc;tag.textContent=TEAMS[p.team].name;
 
-      document
-        .getElementById("card-overlay")
-        .addEventListener("click", function (e) {
-          if (e.target === this) closeCard();
-        });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeCard();
-      });
+  const wts=W[p.pos];
+  let sh='';
+  Object.keys(p.stats).forEach(s=>{
+    const v=p.stats[s];const cl=STAT_COL[s]||'#aaa';
+    const wp=Math.round(wts[s]*100);
+    sh+=`<div class="s-item">
+      <div class="s-label">${s} <span style="color:rgba(255,255,255,.18);font-size:7px">${wp}%</span></div>
+      <div class="s-bar-bg"><div class="s-bar" style="width:0%;background:${cl}" data-v="${v}"></div></div>
+      <div class="s-val" style="color:${cl}">${v}</div>
+    </div>`;
+  });
+  document.getElementById('c-stats').innerHTML=sh;
 
-      // ===================== INIT =====================
-      renderPitch("a");
-      renderRoster("a");
-      renderPitch("b");
-      renderRoster("b");
-    </script>
-  </body>
+  let tr='';p.traits.forEach(x=>{tr+=`<span class="chip ${x.type}">${x.t}</span>`});
+  document.getElementById('c-traits').innerHTML=tr;
+
+  document.getElementById('overlay').classList.add('show');
+  setTimeout(()=>{
+    document.querySelectorAll('#c-stats .s-bar').forEach(b=>b.style.width=b.dataset.v+'%');
+  },60);
+}
+function closeCard(){document.getElementById('overlay').classList.remove('show')}
+
+function switchTeam(team,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(`panel-${team}`).classList.add('active');
+}
+
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeCard()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCard()});
+
+renderPitch('a');renderRoster('a');
+renderPitch('b');renderRoster('b');
+</script>
+</body>
 </html>
