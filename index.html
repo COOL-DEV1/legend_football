@@ -199,16 +199,14 @@ footer span{color:var(--gold-dark)}
     </div>
     <div class="cost-body">
       <div class="cost-row"><span class="cost-lbl">⚽ 구장 대여료</span><span class="cost-val">120,000원</span></div>
-      <div class="cost-row"><span class="cost-lbl">❌ 취소 수수료</span><span class="cost-val red">24,000원</span></div>
-      <div class="cost-row"><span class="cost-lbl">🥤 음료비</span><span class="cost-val red">6,000원</span></div>
     </div>
     <div class="cost-total">
       <span class="ct-lbl">TOTAL</span>
-      <span class="ct-val">150,000원</span>
+      <span class="ct-val">120,000원</span>
     </div>
     <div class="cost-foot">
       <button class="cost-btn" onclick="document.getElementById('cost-overlay').style.display='none'">확인했습니다 ✓</button>
-      <div class="cost-note">진팀 10만원 1/N 부담 (인당 16,700원)<br>이긴팀 5만원 1/N 부담 (인당 8,400원)</div>
+      <div class="cost-note">진팀 인당 2만원 부담 ㅋㅋ</div>
     </div>
   </div>
 </div>
@@ -237,9 +235,9 @@ footer span{color:var(--gold-dark)}
   <div class="sep"></div>
 
   <div class="info-bar">
-    <div class="info-item">📅 2026. 04. 11 <b>SAT</b></div>
+    <div class="info-item">📅 2026. 05. 02 <b>SAT</b></div>
     <span class="info-dot">·</span>
-    <div class="info-item">🕕 KO <b>20:00</b></div>
+    <div class="info-item">🕕 KO <b>20:00–22:00</b></div>
     <span class="info-dot">·</span>
     <div class="info-item">📍 고양불스 풋살파크</div>
   </div>
@@ -327,7 +325,6 @@ footer span{color:var(--gold-dark)}
   }
   function draw(){
     ctx.clearRect(0,0,W,H);
-    // subtle nebula
     const g=ctx.createRadialGradient(W*.2,H*.1,0,W*.2,H*.1,W*.5);
     g.addColorStop(0,'rgba(201,168,76,0.06)');g.addColorStop(1,'transparent');
     ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
@@ -359,23 +356,23 @@ const ovrGrade=o=>o>=90?{l:'S',c:'ovr-s'}:o>=80?{l:'A',c:'ovr-a'}:o>=70?{l:'B',c
 
 // ── PLAYERS ──
 const PL={
-  bc:{name:'김범철',num:21,pos:'GK',team:'a',stats:{스피드:18,슈팅:85,패스:52,드리블:40,체력:35,수비:72},traits:[{t:'🐷 돼지x',type:'f'},{t:'잘 안 뜀',type:'f'},{t:'골문 수호 특기',type:'s'}]},
-  tj:{name:'임시원',num:9,pos:'FWD',team:'a',stats:{스피드:98,슈팅:95,패스:50,드리블:92,체력:97,수비:90},traits:[{t:'💅 존잘',type:'sp'},{t:'🪄 왼발의 마법사',type:'s'},{t:'솔로지옥6 신청',type:'f'},{t:'씹테토남',type:'f'}]},
-  kb:{name:'박기빈',num:7,pos:'MID',team:'a',stats:{스피드:70,슈팅:68,패스:75,드리블:72,체력:74,수비:55},traits:[{t:'풋살 좀 함',type:'s'},{t:'💔 모태솔로',type:'f'}]},
-  sw:{name:'유태종',num:10,pos:'FWD',team:'a',stats:{스피드:82,슈팅:91,패스:78,드리블:88,체력:85,수비:55},traits:[{t:'⚽ 풋살 잘함',type:'s'},{t:'😎 잘생김 TOP2',type:'sp'}]},
-  sj:{name:'문승재',num:5,pos:'DEF',team:'a',stats:{스피드:48,슈팅:60,패스:58,드리블:45,체력:88,수비:90},traits:[{t:'👑 영락중 F4',type:'sp'},{t:'⚖️ 95KG ㄷㄷ',type:'f'},{t:'대학생',type:'s'}]},
-  jy:{name:'이지융',num:3,pos:'DEF',team:'a',stats:{스피드:72,슈팅:55,패스:62,드리블:58,체력:80,수비:75},traits:[{t:'😤 씹에겐남',type:'f'},{t:'🪖 미필 ㅋㅋ',type:'f'},{t:'👟 풋살화 샀다고 신남',type:'f'}]},
-  tm:{name:'선태민',num:11,pos:'FWD',team:'b',stats:{스피드:85,슈팅:79,패스:80,드리블:77,체력:99,수비:62},traits:[{t:'⚡ 파워에이드',type:'sp'},{t:'⚡ 강남구청 수호자',type:'sp'},{t:'체력 99',type:'s'}]},
-  su:{name:'김선우',num:8,pos:'MID',team:'b',stats:{스피드:88,슈팅:65,패스:72,드리블:84,체력:82,수비:60},traits:[{t:'🏃 잘 뛰어다님',type:'s'},{t:'😷 얼굴 공 맞으면 물어줘야 함',type:'f'},{t:'🍺 술 존나 못 마심',type:'f'}]},
-  jh:{name:'한정호',num:1,pos:'GK',team:'b',stats:{스피드:55,슈팅:50,패스:60,드리블:48,체력:72,수비:90},traits:[{t:'🚗 세차장 CEO',type:'sp'},{t:'자차 보유',type:'sp'},{t:'풋살 처음',type:'f'}]},
-  jj:{name:'허정현',num:6,pos:'MID',team:'b',stats:{스피드:74,슈팅:82,패스:78,드리블:68,체력:76,수비:63},traits:[{t:'💇 장발',type:'sp'},{t:'정진욱이랑 동반입대',type:'sp'}]},
-  sej:{name:'박세준',num:4,pos:'DEF',team:'b',stats:{스피드:75,슈팅:88,패스:65,드리블:52,체력:60,수비:78},traits:[{t:'💔 솔로',type:'f'},{t:'🦵 무릎 아픔',type:'f'},{t:'무릎 괜찮아짐',type:'f'}]},
-  jw:{name:'정진욱',num:2,pos:'DEF',team:'b',stats:{스피드:45,슈팅:52,패스:68,드리블:50,체력:40,수비:82},traits:[{t:'📏 신장 결함으로 잘 못 뜀',type:'f'},{t:'🫁 기흉으로 수능 혼자 봄',type:'f'},{t:'불굴의 전사',type:'s'}]}
+  bc:{name:'김범철',num:21,pos:'GK',team:'b',stats:{스피드:15,슈팅:83,패스:49,드리블:38,체력:32,수비:69},traits:[{t:'🐷 돼지x',type:'f'},{t:'다이어트중',type:'f'},{t:'낭심 지킴이',type:'s'}]},
+  tj:{name:'임시원',num:9,pos:'FWD',team:'a',stats:{스피드:84,슈팅:84,패스:84,드리블:84,체력:84,수비:84},traits:[{t:'💅 존잘',type:'sp'},{t:'순애',type:'s'},{t:'솔로지옥6 신청',type:'f'},{t:'씹테토남',type:'f'}]},
+  kb:{name:'박기빈',num:7,pos:'MID',team:'a',stats:{스피드:73,슈팅:70,패스:78,드리블:75,체력:77,수비:57},traits:[{t:'풋살 좀 함',type:'s'},{t:'💔 모태솔로',type:'f'},{t:'💔 모태솔로',type:'f'}]},
+  sw:{name:'유태종',num:10,pos:'FWD',team:'a',stats:{스피드:80,슈팅:89,패스:76,드리블:86,체력:82,수비:53},traits:[{t:'⚽ 풋살 잘함',type:'s'},{t:'당구 좀 침',type:'sp'}]},
+  sj:{name:'문승재',num:5,pos:'DEF',team:'b',stats:{스피드:46,슈팅:58,패스:55,드리블:42,체력:85,수비:87},traits:[{t:'👑 영락중 F4',type:'sp'},{t:'⚖️ 93KG ㄷㄷ',type:'f'},{t:'교회 오빠',type:'s'}]},
+  jy:{name:'이지융',num:3,pos:'DEF',team:'b',stats:{스피드:70,슈팅:52,패스:59,드리블:56,체력:77,수비:73},traits:[{t:'😤 씹에겐남',type:'f'},{t:'🪖 미필 ㅋㅋ',type:'f'},{t:'기사님',type:'f'}]},
+  tm:{name:'선태민',num:11,pos:'FWD',team:'b',stats:{스피드:87,슈팅:81,패스:82,드리블:79,체력:99,수비:64},traits:[{t:'⚡ 파워에이드',type:'sp'},{t:'⚡ 강남구청 수호자',type:'sp'},{t:'솔로가 편해',type:'s'}]},
+  su:{name:'김선우',num:8,pos:'MID',team:'a',stats:{스피드:90,슈팅:67,패스:75,드리블:86,체력:84,수비:62},traits:[{t:'개깝침',type:'s'},{t:'😷 얼굴 공 맞으면 물어줘야 함',type:'f'},{t:'🍺 술 존나 못 마심',type:'f'}]},
+  jh:{name:'한정호',num:1,pos:'GK',team:'a',stats:{스피드:58,슈팅:53,패스:62,드리블:50,체력:75,수비:93},traits:[{t:'🚗 세차장 CEO',type:'sp'},{t:'개귀염둥이',type:'sp'},{t:'풋살 존나 잘함 ㅋㅋ',type:'f'}]},
+  jj:{name:'허정현',num:6,pos:'MID',team:'b',stats:{스피드:72,슈팅:80,패스:76,드리블:65,체력:73,수비:60},traits:[{t:'💇 장발',type:'sp'},{t:'ㅋㅋㅋㅋ 솔로 병x zz',type:'sp'}]},
+  sej:{name:'박세준',num:4,pos:'DEF',team:'b',stats:{스피드:78,슈팅:90,패스:67,드리블:55,체력:62,수비:80},traits:[{t:'솔로 탈출',type:'f'},{t:'🦵 무릎 아픔',type:'f'},{t:'고학력',type:'f'}]},
+  jw:{name:'정진욱',num:2,pos:'DEF',team:'a',stats:{스피드:47,슈팅:54,패스:71,드리블:52,체력:42,수비:84},traits:[{t:'📏 신장 결함으로 잘 못 뜀',type:'f'},{t:'🫁 기흉으로 수능 혼자 봄',type:'f'},{t:'클럽 메이트',type:'s'}]}
 };
 
 const TEAMS={
-  a:{name:'?',color:'#1a3070',stroke:'#4fc3f7',order:['bc','sj','jy','kb','sw','tj']},
-  b:{name:'?',color:'#6e1a1a',stroke:'#ff6b6b',order:['jh','sej','jw','jj','su','tm']}
+  a:{name:'?',color:'#1a3070',stroke:'#4fc3f7',order:['jh','su','tj','jw','sw','kb']},
+  b:{name:'?',color:'#6e1a1a',stroke:'#ff6b6b',order:['bc','sej','sj','jj','tm','jy']}
 };
 
 const PPOS=[
@@ -408,23 +405,19 @@ function renderPitch(team){
     g.setAttribute('transform',`translate(${cx},${cy})`);
     g.dataset.pid=pid;
 
-    // glow ring
     const glow=document.createElementNS(ns,'circle');
     glow.setAttribute('r','28');glow.setAttribute('fill','none');
     glow.setAttribute('stroke',col.stroke);glow.setAttribute('stroke-width','1');
     glow.setAttribute('opacity','.35');glow.classList.add('p-ring');
 
-    // shadow
     const sh=document.createElementNS(ns,'ellipse');
     sh.setAttribute('rx','20');sh.setAttribute('ry','5');sh.setAttribute('cy','22');
     sh.setAttribute('fill','rgba(0,0,0,0.5)');
 
-    // main circle
     const ci=document.createElementNS(ns,'circle');
     ci.setAttribute('r','20');ci.setAttribute('fill',col.fill);
     ci.setAttribute('stroke',col.stroke);ci.setAttribute('stroke-width','2');
 
-    // inner highlight
     const hi=document.createElementNS(ns,'circle');
     hi.setAttribute('r','18');hi.setAttribute('fill','none');
     hi.setAttribute('stroke','rgba(255,255,255,0.08)');hi.setAttribute('stroke-width','1');
@@ -441,7 +434,6 @@ function renderPitch(team){
     lbl.style.cssText='font-family:Bebas Neue,sans-serif;font-size:9px;fill:rgba(255,255,255,0.75);text-anchor:middle;pointer-events:none;letter-spacing:.5px';
     lbl.setAttribute('y','32');lbl.textContent=p.pos;
 
-    // OVR badge
     const obg=document.createElementNS(ns,'rect');
     obg.setAttribute('x','16');obg.setAttribute('y','-20');
     obg.setAttribute('width','28');obg.setAttribute('height','17');
