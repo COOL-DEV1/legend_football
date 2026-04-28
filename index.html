@@ -92,7 +92,7 @@ h1 .cl{color:var(--white)}
 /* ── ROSTER ── */
 .roster{border:1px solid var(--border);border-top:none}
 .r-head{display:grid;grid-template-columns:36px 1fr 46px 44px 50px;padding:7px 16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);background:rgba(4,6,12,0.7);border-bottom:1px solid rgba(201,168,76,0.08)}
-.r-row{display:grid;grid-template-columns:36px 1fr 46px 44px 50px;padding:10px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.r-row{display:grid;grid-template-columns:36px 1fr 46px 44px 50px;padding:10px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
 .r-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .15s}
 .r-row:hover::before{transform:scaleY(1)}
 .r-row:hover{background:rgba(201,168,76,0.05);padding-left:20px}
@@ -355,24 +355,28 @@ const calcOvr=p=>{let s=0;for(const k in W[p.pos])s+=p.stats[k]*W[p.pos][k];retu
 const ovrGrade=o=>o>=90?{l:'S',c:'ovr-s'}:o>=80?{l:'A',c:'ovr-a'}:o>=70?{l:'B',c:'ovr-b'}:o>=60?{l:'C',c:'ovr-c'}:{l:'D',c:'ovr-d'};
 
 // ── PLAYERS ──
+// 팀1 (a): 기빈, 세준, 지융, 시원, 정호, 정현
+// 팀2 (b): 승재, 태종, 선우, 진욱, 범철, 태민
 const PL={
   bc:{name:'김범철',num:21,pos:'GK',team:'b',stats:{스피드:15,슈팅:83,패스:49,드리블:38,체력:32,수비:69},traits:[{t:'🐷 돼지x',type:'f'},{t:'다이어트중',type:'f'},{t:'낭심 지킴이',type:'s'}]},
   tj:{name:'임시원',num:9,pos:'FWD',team:'a',stats:{스피드:84,슈팅:84,패스:84,드리블:84,체력:84,수비:84},traits:[{t:'💅 존잘',type:'sp'},{t:'순애',type:'s'},{t:'솔로지옥6 신청',type:'f'},{t:'씹테토남',type:'f'}]},
   kb:{name:'박기빈',num:7,pos:'MID',team:'a',stats:{스피드:73,슈팅:70,패스:78,드리블:75,체력:77,수비:57},traits:[{t:'풋살 좀 함',type:'s'},{t:'💔 모태솔로',type:'f'},{t:'💔 모태솔로',type:'f'}]},
-  sw:{name:'유태종',num:10,pos:'FWD',team:'a',stats:{스피드:80,슈팅:89,패스:76,드리블:86,체력:82,수비:53},traits:[{t:'⚽ 풋살 잘함',type:'s'},{t:'당구 좀 침',type:'sp'}]},
+  sw:{name:'유태종',num:10,pos:'FWD',team:'b',stats:{스피드:80,슈팅:89,패스:76,드리블:86,체력:82,수비:53},traits:[{t:'⚽ 풋살 잘함',type:'s'},{t:'당구 좀 침',type:'sp'}]},
   sj:{name:'문승재',num:5,pos:'DEF',team:'b',stats:{스피드:46,슈팅:58,패스:55,드리블:42,체력:85,수비:87},traits:[{t:'👑 영락중 F4',type:'sp'},{t:'⚖️ 93KG ㄷㄷ',type:'f'},{t:'교회 오빠',type:'s'}]},
-  jy:{name:'이지융',num:3,pos:'DEF',team:'b',stats:{스피드:70,슈팅:52,패스:59,드리블:56,체력:77,수비:73},traits:[{t:'😤 씹에겐남',type:'f'},{t:'🪖 미필 ㅋㅋ',type:'f'},{t:'기사님',type:'f'}]},
+  jy:{name:'이지융',num:3,pos:'DEF',team:'a',stats:{스피드:70,슈팅:52,패스:59,드리블:56,체력:77,수비:73},traits:[{t:'😤 씹에겐남',type:'f'},{t:'🪖 미필 ㅋㅋ',type:'f'},{t:'기사님',type:'f'}]},
   tm:{name:'선태민',num:11,pos:'FWD',team:'b',stats:{스피드:87,슈팅:81,패스:82,드리블:79,체력:99,수비:64},traits:[{t:'⚡ 파워에이드',type:'sp'},{t:'⚡ 강남구청 수호자',type:'sp'},{t:'솔로가 편해',type:'s'}]},
-  su:{name:'김선우',num:8,pos:'MID',team:'a',stats:{스피드:90,슈팅:67,패스:75,드리블:86,체력:84,수비:62},traits:[{t:'개깝침',type:'s'},{t:'😷 얼굴 공 맞으면 물어줘야 함',type:'f'},{t:'🍺 술 존나 못 마심',type:'f'}]},
+  su:{name:'김선우',num:8,pos:'MID',team:'b',stats:{스피드:90,슈팅:67,패스:75,드리블:86,체력:84,수비:62},traits:[{t:'개깝침',type:'s'},{t:'😷 얼굴 공 맞으면 물어줘야 함',type:'f'},{t:'🍺 술 존나 못 마심',type:'f'}]},
   jh:{name:'한정호',num:1,pos:'GK',team:'a',stats:{스피드:58,슈팅:53,패스:62,드리블:50,체력:75,수비:93},traits:[{t:'🚗 세차장 CEO',type:'sp'},{t:'개귀염둥이',type:'sp'},{t:'풋살 존나 잘함 ㅋㅋ',type:'f'}]},
-  jj:{name:'허정현',num:6,pos:'MID',team:'b',stats:{스피드:72,슈팅:80,패스:76,드리블:65,체력:73,수비:60},traits:[{t:'💇 장발',type:'sp'},{t:'ㅋㅋㅋㅋ 솔로 병x zz',type:'sp'}]},
-  sej:{name:'박세준',num:4,pos:'DEF',team:'b',stats:{스피드:78,슈팅:90,패스:67,드리블:55,체력:62,수비:80},traits:[{t:'솔로 탈출',type:'f'},{t:'🦵 무릎 아픔',type:'f'},{t:'고학력',type:'f'}]},
-  jw:{name:'정진욱',num:2,pos:'DEF',team:'a',stats:{스피드:47,슈팅:54,패스:71,드리블:52,체력:42,수비:84},traits:[{t:'📏 신장 결함으로 잘 못 뜀',type:'f'},{t:'🫁 기흉으로 수능 혼자 봄',type:'f'},{t:'클럽 메이트',type:'s'}]}
+  jj:{name:'허정현',num:6,pos:'MID',team:'a',stats:{스피드:72,슈팅:80,패스:76,드리블:65,체력:73,수비:60},traits:[{t:'💇 장발',type:'sp'},{t:'ㅋㅋㅋㅋ 솔로 병x zz',type:'sp'}]},
+  sej:{name:'박세준',num:4,pos:'DEF',team:'a',stats:{스피드:78,슈팅:90,패스:67,드리블:55,체력:62,수비:80},traits:[{t:'솔로 탈출',type:'f'},{t:'🦵 무릎 아픔',type:'f'},{t:'고학력',type:'f'}]},
+  jw:{name:'정진욱',num:2,pos:'DEF',team:'b',stats:{스피드:47,슈팅:54,패스:71,드리블:52,체력:42,수비:84},traits:[{t:'📏 신장 결함으로 잘 못 뜀',type:'f'},{t:'🫁 기흉으로 수능 혼자 봄',type:'f'},{t:'클럽 메이트',type:'s'}]}
 };
 
+// 팀1(a): 기빈(kb), 세준(sej), 지융(jy), 시원(tj), 정호(jh), 정현(jj)
+// 팀2(b): 승재(sj), 태종(sw), 선우(su), 진욱(jw), 범철(bc), 태민(tm)
 const TEAMS={
-  a:{name:'?',color:'#1a3070',stroke:'#4fc3f7',order:['jh','su','tj','jw','sw','kb']},
-  b:{name:'?',color:'#6e1a1a',stroke:'#ff6b6b',order:['bc','sej','sj','jj','tm','jy']}
+  a:{name:'?',color:'#1a3070',stroke:'#4fc3f7',order:['jh','kb','sej','jy','tj','jj']},
+  b:{name:'?',color:'#6e1a1a',stroke:'#ff6b6b',order:['bc','sj','sw','su','jw','tm']}
 };
 
 const PPOS=[
